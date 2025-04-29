@@ -1,7 +1,5 @@
 package doaltoBienvenido;
 
-import java.util.Scanner;
-
 
 public class Solitario {
     private Tapete tapete;
