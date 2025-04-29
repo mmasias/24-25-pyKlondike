@@ -2,7 +2,6 @@ package doaltoBienvenido;
 
 import java.util.Scanner;
 
-import javafx.scene.control.Menu;
 
 public class Solitario {
     private Tapete tapete;
@@ -35,6 +34,11 @@ public class Solitario {
 
         mensaje = new Mensajes();
         iniciarTablero();
+    }
+
+    private void iniciarTablero() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'iniciarTablero'");
     }
 
     public void jugar() {
