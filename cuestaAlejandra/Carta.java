@@ -17,6 +17,14 @@ public class Carta {
         this.visible = true;
     }
 
+    public String getValor() {
+        return valor;
+    }
+
+    public PaloCarta getPalo() {
+        return palo;
+    }
+
     public String toString() {
         return visible ? "[" + valor + " " + palo.getSimbolo() + "]" : "[? ?]";
     }

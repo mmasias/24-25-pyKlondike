@@ -28,7 +28,7 @@ public class Baraja {
     public void reiniciarDesdeDescarte(Descarte descarte) {
         while (!descarte.estaVacio()) {
             Carta carta = descarte.quitarUltima();
-            carta.voltear();
+            carta.voltear(); // volver a poner boca abajo
             agregar(carta);
         }
     }
