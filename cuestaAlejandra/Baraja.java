@@ -24,3 +24,16 @@ public class Baraja {
             System.out.println("Baraja vacía.");
         }
     }
+
+    public void reiniciarDesdeDescarte(Descarte descarte) {
+        while (!descarte.estaVacio()) {
+            Carta carta = descarte.quitarUltima();
+            carta.voltear();
+            agregar(carta);
+        }
+    }
+
+    public String toString() {
+        return estaVacia() ? "Vacía" : "[? ?]";
+    }
+}
