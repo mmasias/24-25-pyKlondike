@@ -18,6 +18,18 @@ public class Klondike {
 
             if (opcion == 1) {
                 baraja.voltear(descarte);
+            } else if (opcion == 2) {
+                System.out.println("Mover de Descarte a Palo (no implementado aún).");
+            } else if (opcion == 3) {
+                System.out.println("Mover de Descarte a Columna (no implementado aún).");
+            } else if (opcion == 4) {
+                System.out.println("Mover de Palo a Columna (no implementado aún).");
+            } else if (opcion == 5) {
+                System.out.println("Mover de Columna a Palo (no implementado aún).");
+            } else if (opcion == 6) {
+                System.out.println("Mover de Columna a Columna (no implementado aún).");
+            } else if (opcion == 7) {
+                System.out.println("Voltear carta de Columna (no implementado aún).");
             } else if (opcion == 8) {
                 baraja.reiniciarDesdeDescarte(descarte);
             } else if (opcion == 9) {
