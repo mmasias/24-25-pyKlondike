@@ -8,3 +8,16 @@ public class Carta {
         this.palo = palo;
         this.visible = visible;
     }
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void voltear() {
+        this.visible = true;
+    }
+
+    public String toString() {
+        return visible ? "[" + valor + " " + palo.getSimbolo() + "]" : "[? ?]";
+    }
+}
