@@ -41,14 +41,36 @@ public class Klondike {
         }
     }
 
-    private void mostrarEstado() {
+   private void mostrarEstado() {
         System.out.println("BARAJA: " + baraja);
         System.out.println("Descarte: " + descarte);
+        for (int i = 0; i < 4; i++) {
+            System.out.print((i + 1) + "º Palo: ");
+            if (palos[i] != null) {
+                System.out.println(palos[i]);
+            } else {
+                System.out.println("No hay cartas en el palo");
+            }
+        }
+        for (int i = 0; i < 7; i++) {
+            System.out.print("Columna [" + (i + 1) + "]: ");
+            if (columnas[i] != null) {
+                System.out.println(columnas[i]);
+            } else {
+                System.out.println("Vacía");
+            }
+        }
     }
 
     private void mostrarMenu() {
         System.out.println("OPCIONES>");
         System.out.println("  1. Mover de Baraja a Descarte");
+        System.out.println("  2. Mover de Descarte a Palo");
+        System.out.println("  3. Mover de Descarte a Columna");
+        System.out.println("  4. Mover de Palo a Columna");
+        System.out.println("  5. Mover de Columna a Palo");
+        System.out.println("  6. Mover de Columna a Columna");
+        System.out.println("  7. Voltear carta de Columna");
         System.out.println("  8. Voltear Descarte en Baraja");
         System.out.println("  9. Salir");
     }
@@ -57,6 +79,21 @@ public class Klondike {
         baraja.agregar(new Carta("Q", PaloCarta.DIAMANTES, false));
         baraja.agregar(new Carta("7", PaloCarta.DIAMANTES, false));
         baraja.agregar(new Carta("9", PaloCarta.TREBOLES, false));
+
+        for (int i = 0; i < 4; i++) {
+            palos[i] = new Palo();
+        }
+
+        for (int i = 0; i < 7; i++) {
+            columnas[i] = new Columna();
+        }
+
+        // Ejemplo: poner A ♥️ en el primer palo
+        palos[0].agregar(new Carta("A", PaloCarta.CORAZONES, true));
+        palos[1].agregar(new Carta("A", PaloCarta.DIAMANTES, true));
+
+        columnas[0].agregar(new Carta("3", PaloCarta.PICAS, true));
+        columnas[1].agregar(new Carta("K", PaloCarta.CORAZONES, true));
     }
 
     public static void main(String[] args) {
