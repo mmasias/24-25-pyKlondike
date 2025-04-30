@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Column {
@@ -52,6 +53,46 @@ public class Column {
                 break;
             }
         }
+    }
+
+    public boolean isEmpty() {
+        return cards.isEmpty();
+    }
+}
+
+public class Deck {
+    private List<Card> cards;
+
+    public Deck() {
+        cards = new ArrayList<>();
+    }
+
+    public void initializeStandardDeck() {
+        cards.clear();
+        for (Suit suit : Suit.values()) {
+            for (Rank rank : Rank.values()) {
+                Card card = new Card(suit, rank);
+                card.flip(); /
+                cards.add(card);
+            }
+        }
+        Collections.shuffle(cards);
+    }
+
+    public Card drawCard() {
+        if (cards.isEmpty()) {
+            return null;
+        }
+        return cards.remove(cards.size() - 1);
+    }
+
+    public void reshuffleFromWaste(Waste waste) {
+        List<Card> wasteCards = waste.removeAllCards();
+        for (Card card : wasteCards) {
+            card.flip(); 
+        }
+        cards.addAll(wasteCards);
+        Collections.shuffle(cards);
     }
 
     public boolean isEmpty() {
