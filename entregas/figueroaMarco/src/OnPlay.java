@@ -4,6 +4,7 @@ import java.util.List;
 public class OnPlay {
     private final Suit suit;
     private final List<Card> cards;
+    private static final int INDEX_CARD = 1;
 
     public OnPlay(Suit suit) {
         this.suit = suit;
@@ -15,8 +16,8 @@ public class OnPlay {
         if (cards.isEmpty()) {
             return card.getRank() == Rank.ACE;
         } else {
-            Card topCard = cards.getLast();
-            return card.getRank().ordinal() == topCard.getRank().ordinal() + 1;
+            Card topCard = getTopCard();
+            return card.getRank().ordinal() == topCard.getRank().ordinal() + INDEX_CARD;
         }
     }
 
@@ -27,7 +28,11 @@ public class OnPlay {
     }
 
     public Card getTopCard() {
-        return cards.isEmpty() ? null : cards.getLast();
+        return cards.isEmpty() ? null : cards.get(cards.size() - INDEX_CARD);
+    }
+
+    public Card removeTopCard() {
+        return cards.isEmpty() ? null : cards.remove(cards.size() - INDEX_CARD);
     }
 
     public boolean isEmpty() {
