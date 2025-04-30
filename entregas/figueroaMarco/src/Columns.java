@@ -42,14 +42,12 @@ public class Column {
                 return cards.get(i);
             }
         }
-        return null;
     }
 
     public void flipTopHiddenCard() {
         for (int i = cards.size() - 1; i >= 0; i--) {
             if (!cards.get(i).isFaceUp()) {
                 cards.get(i).flip();
-                break;
             }
         }
     }
