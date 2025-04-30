@@ -9,3 +9,15 @@ public class Descarte {
             cantidad++;
         }
     }
+
+    public boolean estaVacio() {
+        return cantidad == 0;
+    }
+
+    public Carta quitarUltima() {
+        if (!estaVacio()) {
+            cantidad--;
+            return cartas[cantidad];
+        }
+        return null;
+    }
