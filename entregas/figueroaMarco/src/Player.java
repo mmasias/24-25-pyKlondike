@@ -1,6 +1,8 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Main {
+public class Player {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Deck deck = new Deck();
@@ -62,10 +64,8 @@ public class Main {
                     System.out.print("¿Qué columna voltear? (0-6): ");
                     int flipCardIndex = scanner.nextInt();
                     game.flipColumnCard(flipCardIndex);
-                    break;
                 case 8:
                     game.resetDeckFromWaste();
-                    break;
                 case 9:
                     System.out.println("¡Juego terminado!");
                     return;
