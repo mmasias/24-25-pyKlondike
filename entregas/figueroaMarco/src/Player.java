@@ -14,7 +14,6 @@ public class Main {
         List<Column> columns = new ArrayList<>();
         for (int i = 0; i < 7; i++) columns.add(new Column());
 
-        // Initialize deck and setup initial state...
         deck.initializeStandardDeck();
 
         Klondike game = new Klondike(deck, waste, foundations, columns);
