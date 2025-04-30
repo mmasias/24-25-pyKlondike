@@ -21,12 +21,13 @@ public class Klondike {
         return false;
     }
 
-    public boolean moveToFoundation(Pile source, int foundationIndex) {
-        Card card = source.drawCard();
-        if (card != null && foundations.get(foundationIndex).addCard(card)) {
+    public boolean moveToFoundationFromWaste(int foundationIndex) {
+        Card card = waste.removeTopCard();
+        if (card != null && foundations.get(foundationIndex).canAddCard(card)) {
+            foundations.get(foundationIndex).addCard(card);
             return true;
         }
-        if (card != null) source.addCard(card); // Revert if invalid
+        if (card != null) waste.addCard(card); 
         return false;
     }
 
@@ -38,7 +39,50 @@ public class Klondike {
             toColumn.addCard(card);
             return true;
         }
-        if (card != null) fromColumn.addCard(card); // Revert
+        if (card != null) fromColumn.addCard(card);
+        return false;
+    }
+
+    public boolean moveToColumnFromWaste(int columnIndex) {
+        Card card = waste.removeTopCard();
+        if (card != null && columns.get(columnIndex).canReceiveCard(card)) {
+            columns.get(columnIndex).addCard(card);
+            return true;
+        }
+        if (card != null) waste.addCard(card);
+        return false;
+    }
+
+    public boolean moveFoundationToColumn(int foundationIndex, int columnIndex) {
+        Card card = foundations.get(foundationIndex).getTopCard();
+        if (card != null && columns.get(columnIndex).canReceiveCard(card)) {
+            foundations.get(foundationIndex).removeTopCard();
+            columns.get(columnIndex).addCard(card);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean moveColumnToFoundation(int columnIndex, int foundationIndex) {
+        Column column = columns.get(columnIndex);
+        Card card = column.getFaceUpTopCard();
+        if (card != null && foundations.get(foundationIndex).canAddCard(card)) {
+            column.removeTopCard();
+            foundations.get(foundationIndex).addCard(card);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean moveColumnToColumn(int fromIndex, int toIndex) {
+        Column from = columns.get(fromIndex);
+        Column to = columns.get(toIndex);
+        Card card = from.getFaceUpTopCard();
+        if (card != null && to.canReceiveCard(card)) {
+            from.removeTopCard();
+            to.addCard(card);
+            return true;
+        }
         return false;
     }
 
