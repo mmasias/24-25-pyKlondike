@@ -95,7 +95,13 @@ public class Klondike {
     }
 
     public boolean isGameOver() {
-        return foundations.stream().allMatch(f -> f.getTopCard().getRank() == Rank.KING);
+        for (OnPlay foundation : foundations) {
+            Card topCard = foundation.getTopCard();
+            if (topCard == null || topCard.getRank() != Rank.KING) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public void displayGameState() {
