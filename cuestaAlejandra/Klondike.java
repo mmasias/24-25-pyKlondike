@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Klondike {
     private Baraja baraja = new Baraja();
     private Descarte descarte = new Descarte();
+    private Palo[] palo = new Palo[4];
+    private Columna[] columna = new Columna[7];
+   
 
     public void ejecutar() {
         inicializarEjemplo();
@@ -15,6 +18,7 @@ public class Klondike {
 
             System.out.print("Elige una opción [1-9]: ");
             int opcion = scanner.nextInt();
+            scanner.nextLine(); 
 
             if (opcion == 1) {
                 baraja.voltear(descarte);
@@ -46,16 +50,16 @@ public class Klondike {
         System.out.println("Descarte: " + descarte);
         for (int i = 0; i < 4; i++) {
             System.out.print((i + 1) + "º Palo: ");
-            if (palos[i] != null) {
-                System.out.println(palos[i]);
+            if (palo[i] != null) {
+                System.out.println(palo[i]);
             } else {
                 System.out.println("No hay cartas en el palo");
             }
         }
         for (int i = 0; i < 7; i++) {
             System.out.print("Columna [" + (i + 1) + "]: ");
-            if (columnas[i] != null) {
-                System.out.println(columnas[i]);
+            if (columna[i] != null) {
+                System.out.println(columna[i]);
             } else {
                 System.out.println("Vacía");
             }
@@ -81,22 +85,22 @@ public class Klondike {
         baraja.agregar(new Carta("9", PaloCarta.TREBOLES, false));
 
         for (int i = 0; i < 4; i++) {
-            palos[i] = new Palo();
+            palo[i] = new Palo();
         }
 
         for (int i = 0; i < 7; i++) {
-            columnas[i] = new Columna();
+            columna[i] = new Columna();
         }
 
-        // Ejemplo: poner A ♥️ en el primer palo
-        palos[0].agregar(new Carta("A", PaloCarta.CORAZONES, true));
-        palos[1].agregar(new Carta("A", PaloCarta.DIAMANTES, true));
+        
+        palo[0].agregar(new Carta("A", PaloCarta.CORAZONES, true));
+        palo[1].agregar(new Carta("A", PaloCarta.DIAMANTES, true));
 
-        columnas[0].agregar(new Carta("3", PaloCarta.PICAS, true));
-        columnas[1].agregar(new Carta("K", PaloCarta.CORAZONES, true));
+        columna[0].agregar(new Carta("3", PaloCarta.PICAS, true));
+        columna[1].agregar(new Carta("K", PaloCarta.CORAZONES, true));
     }
 
     public static void main(String[] args) {
-        new Juego().ejecutar();
+        new Klondike().ejecutar();
     }
 }
