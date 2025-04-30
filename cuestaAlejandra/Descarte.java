@@ -21,3 +21,12 @@ public class Descarte {
         }
         return null;
     }
+
+    public String toString() {
+        String resultado = "";
+        for (int i = 0; i < cantidad; i++) {
+            resultado = resultado + cartas[i].toString();
+        }
+        return resultado;
+    }
+}
