@@ -21,8 +21,8 @@ public class Baraja {
         String[] palos = {"Corazones", "Diamantes", "Picas", "Treboles"};
         int contador = 0;
         for (String palo : palos) {
-            for (int valor = VALOR_MINIMO_CARTAS; valor <= VALOR_MAXIMO_CARTAS; valor++) {
-                cartas[contador] = new Carta(palo, valor);
+            for (int valorCarta = VALOR_MINIMO_CARTAS; valorCarta <= VALOR_MAXIMO_CARTAS; valorCarta++) {
+                cartas[contador] = new Carta(palo, valorCarta);
                 contador++;
             }
         }
