@@ -32,7 +32,9 @@ public class Solitario {
     public void jugar() {
         boolean sigueJugando = true;
         mensaje.mostrarMensajeLn("BIENVENIDO AL SOLITARIO");
-        mensaje.mostrarMensajeLn(null);
+        System.out.println();
+        
+        tapete.repartirCartasIniciales();
 
         while (sigueJugando) {
             menu.mostrarOpciones();

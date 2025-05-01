@@ -17,6 +17,13 @@ public class Tapete {
         palos = new Palo[NUM_PALOS];
         columnas = new Columna[NUM_COLUMNAS];
         mensaje = new Mensajes();
+
+        for (int i = 0; i < NUM_PALOS; i++) {
+            palos[i] = new Palo();
+        }
+        for (int i = 0; i < NUM_COLUMNAS; i++) {
+            columnas[i] = new Columna();
+        }
     }
 
     public void mostrar() {
@@ -36,6 +43,20 @@ public class Tapete {
                 System.out.println(columnas[i]);
             } else {
                 mensaje.mostrarMensajeLn("Columna Vacia");
+            }
+        }
+    }
+
+    public void repartirCartasIniciales() {
+        for (int i = 0; i < columnas.length; i++) {
+            for (int j = 0; j <= i; j++) {
+                if (baraja.tieneCartas()) {
+                    Carta carta = baraja.sacarCarta();
+                    if (j == i) {
+                        carta.darVuelta();
+                    }
+                    columnas[i].agregarCarta(carta);
+                }
             }
         }
     }
