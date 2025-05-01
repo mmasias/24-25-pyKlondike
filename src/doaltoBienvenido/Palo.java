@@ -27,6 +27,14 @@ public class Palo {
         return null;
     }
 
+    public boolean puedeAgregar(Carta carta) {
+        if (cantidad == 0) {
+            return carta.getValor() == 1; 
+        }
+        Carta cartaSuperior = cartas[cantidad - 1]; 
+        return carta.getValor() == cartaSuperior.getValor() + 1; 
+    }
+
     public String toString() {
         String resultado = "";
         for (int i = 0; i < cantidad; i++) {
