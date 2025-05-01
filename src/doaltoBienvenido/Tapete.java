@@ -41,33 +41,141 @@ public class Tapete {
     }
 
     public void moverBarajaADescarte() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverBarajaADescarte'");
+        if (baraja.tieneCartas()) {
+            Carta carta = baraja.sacarCarta();
+            descarte.agregarCarta(carta);
+            mensaje.mostrarMensajeLn("Carta movida de la baraja al descarte: " + carta);
+        } else {
+            mensaje.mostrarMensajeLn("No hay cartas en la baraja.");
+        }
     }
 
     public void moverDescarteAPalo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverDescarteAPalo'");
+        if (descarte.tieneCartas()) {
+            Carta carta = descarte.sacarCarta();
+            boolean colocado = false;
+            for (int i = 0; i < NUM_PALOS; i++) {
+                if (palos[i].puedeAgregar(carta)) {
+                    palos[i].agregarCarta(carta);
+                    mensaje.mostrarMensajeLn("Carta movida de descarte a palo: " + carta);
+                    colocado = true;
+                    break;
+                }
+            }
+            if (!colocado) {
+                mensaje.mostrarMensajeLn("No se pudo mover la carta al palo.");
+            }
+        } else {
+            mensaje.mostrarMensajeLn("No hay cartas en el descarte.");
+        }
+    }
+
+    public void moverDescarteAColumna() {
+        if (descarte.tieneCartas()) {
+            Carta carta = descarte.sacarCarta();
+            boolean colocado = false;
+            for (int i = 0; i < NUM_COLUMNAS; i++) {
+                if (columnas[i].puedeAgregar(carta)) {
+                    columnas[i].agregarCarta(carta);
+                    mensaje.mostrarMensajeLn("Carta movida de descarte a columna: " + carta);
+                    colocado = true;
+                    break;
+                }
+            }
+            if (!colocado) {
+                mensaje.mostrarMensajeLn("No se pudo mover la carta a la columna.");
+            }
+        } else {
+            mensaje.mostrarMensajeLn("No hay cartas en el descarte.");
+        }
     }
 
     public void moverPaloAColumna() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverPaloAColumna'");
+        boolean movido = false;
+        for (int i = 0; i < NUM_PALOS; i++) {
+            if (palos[i].tieneCartas()) {
+                Carta carta = palos[i].extraerCarta();
+                for (int j = 0; j < NUM_COLUMNAS; j++) {
+                    if (columnas[j].puedeAgregar(carta)) {
+                        columnas[j].agregarCarta(carta);
+                        mensaje.mostrarMensajeLn("Carta movida de palo a columna: " + carta);
+                        movido = true;
+                        break;
+                    }
+                }
+                if (movido) {
+                    break;
+                }
+            }
+        }
+        if (!movido) {
+            mensaje.mostrarMensajeLn("No se pudo mover la carta de palo a columna.");
+        }
     }
 
     public void moverColumnaAPalo() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'moverColumnaAPalo'");
+        boolean movido = false;
+        for (int i = 0; i < NUM_COLUMNAS; i++) {
+            if (columnas[i].tieneCartas()) {
+                Carta carta = columnas[i].extraerCarta();
+                for (int j = 0; j < NUM_PALOS; j++) {
+                    if (palos[j].puedeAgregar(carta)) {
+                        palos[j].agregarCarta(carta);
+                        mensaje.mostrarMensajeLn("Carta movida de columna a palo: " + carta);
+                        movido = true;
+                        break;
+                    }
+                }
+                if (movido) {
+                    break;
+                }
+            }
+        }
+        if (!movido) {
+            mensaje.mostrarMensajeLn("No se pudo mover la carta de columna a palo.");
+        }
+    }
+
+    public void moverColumnaAColumna() {
+        boolean movido = false;
+        for (int i = 0; i < NUM_COLUMNAS; i++) {
+            if (columnas[i].tieneCartas()) {
+                Carta carta = columnas[i].extraerCarta();
+                for (int j = 0; j < NUM_COLUMNAS; j++) {
+                    if (i != j && columnas[j].puedeAgregar(carta)) {
+                        columnas[j].agregarCarta(carta);
+                        mensaje.mostrarMensajeLn("Carta movida de columna a columna: " + carta);
+                        movido = true;
+                        break;
+                    }
+                }
+                if (movido) {
+                    break;
+                }
+            }
+        }
+        if (!movido) {
+            mensaje.mostrarMensajeLn("No se pudo mover la carta de columna a columna.");
+        }
     }
 
     public void darVueltaCartaColumna() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'darVueltaCartaColumna'");
+        for (int i = 0; i < NUM_COLUMNAS; i++) {
+            if (columnas[i].tieneCartas()) {
+                columnas[i].darVueltaCarta();
+                mensaje.mostrarMensajeLn("Carta volteada en la columna [" + (i + 1) + "]");
+                break;
+            }
+        }
     }
 
     public void darVueltaDescarteEnBaraja() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'darVueltaDescarteEnBaraja'");
+        if (descarte.tieneCartas()) {
+            Carta carta = descarte.sacarCarta();
+            baraja.agregarCarta(carta);
+            mensaje.mostrarMensajeLn("Carta volteada del descarte a la baraja: " + carta);
+        } else {
+            mensaje.mostrarMensajeLn("No hay cartas en el descarte.");
+        }
     }
-
 }
