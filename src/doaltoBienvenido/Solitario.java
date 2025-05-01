@@ -1,6 +1,5 @@
 package doaltoBienvenido;
 
-
 public class Solitario {
     private Tapete tapete;
     private Baraja baraja;
@@ -28,18 +27,20 @@ public class Solitario {
         }
 
         mensaje = new Mensajes();
-        
     }
-
 
     public void jugar() {
+        boolean sigueJugando = true;
         mensaje.mostrarMensajeLn("BIENVENIDO AL SOLITARIO");
-        System.out.println();
+        mensaje.mostrarMensajeLn(null);
 
-        menu.mostrarOpciones();
-        tapete.mostrar();
-
-        mensaje.mostrarMensajeLn("Elige una Opcion");
-        menu.elegirOpcion();
+        while (sigueJugando) {
+            menu.mostrarOpciones();
+            tapete.mostrar();
+            mensaje.mostrarMensajeLn("Elige una opcion :");
+            sigueJugando = menu.elegirOpcion(tapete);
+        }
+        mensaje.mostrarMensajeLn("Gracias por jugar.");
     }
+
 }
