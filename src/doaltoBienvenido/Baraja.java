@@ -37,18 +37,26 @@ public class Baraja {
         }
     }
 
+    public boolean tieneCartas() {
+        return indiceCartaActual < cartas.length;
+    }
+
     public Carta sacarCarta(){
-        if (indiceCartaActual < cartas.length) {
+        if (tieneCartas()) {
             return cartas[indiceCartaActual++];
         } else {
             return null;
         }
     }
     
+    public void agregarCarta(Carta carta) {
+        if (indiceCartaActual > 0) {
+            cartas[--indiceCartaActual] = carta;
+        }
+    }
+
     public String toString() {
         return "Baraja con " + (cartas.length - indiceCartaActual) + " cartas restantes.";
     }
-
-
 
 }

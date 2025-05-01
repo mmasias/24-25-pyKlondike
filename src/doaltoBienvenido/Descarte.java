@@ -3,32 +3,36 @@ package doaltoBienvenido;
 public class Descarte {
 
     private Carta[] cartas;
-    private int indiceCarta;
+    private int cantidad;
     private final int CARTAS_TOTALES = 52;
 
     public Descarte() {
         cartas = new Carta[CARTAS_TOTALES];
-        indiceCarta = 0;
+        cantidad = 0;
     }
 
     public void agregarCarta(Carta carta) {
-        if (indiceCarta < cartas.length) {
+        if (cantidad < cartas.length) {
             carta.darVuelta(); 
-            cartas[indiceCarta++] = carta;
+            cartas[cantidad++] = carta;
         }
     }
 
     public Carta sacarCarta() {
-        if (indiceCarta > 0) {
-            return cartas[--indiceCarta];
+        if (cantidad > 0) {
+            return cartas[--cantidad];
         }
         return null;
+    }
+
+    public boolean tieneCartas() {
+        return cantidad > 0;
     }
 
     public String toString() {
         String resultado = "";
         
-        for (int i = 0; i < indiceCarta; i++) {
+        for (int i = 0; i < cantidad; i++) {
             resultado += cartas[i].toString();
         }
         return resultado;

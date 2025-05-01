@@ -35,6 +35,10 @@ public class Carta {
         return palo;
     }
 
+    public int getValor() {
+        return valorCarta;
+    }
+
     public int getValorCarta() {
         return valorCarta;
     }
@@ -45,6 +49,13 @@ public class Carta {
 
     public void darVuelta() {
         cartaVisible = true;
+    }
+
+    public boolean puedeColocarSobre(Carta otraCarta) {
+        if (otraCarta == null) {
+            return false;
+        }
+        return (this.valorCarta == otraCarta.valorCarta - 1);
     }
 
     public String toString() {
