@@ -17,17 +17,18 @@ public class Carta {
     }
 
     public String getEmojiPalo() {
-        switch (palo) {
-            case "Corazones":
-                return "♥️";
-            case "Diamantes":
-                return "♦️";
-            case "Treboles":
-                return "♣️";
-            case "Picas":
-                return "♠️";
-            default:
-                return "?";
+        String paloMayus = palo.toUpperCase();
+
+        if (paloMayus.equals("PICAS")) {
+            return "P";
+        } else if (paloMayus.equals("CORAZONES")) {
+            return "C";
+        } else if (paloMayus.equals("DIAMANTES")) {
+            return "D";
+        } else if (paloMayus.equals("TREBOLES")) {
+            return "T";
+        } else {
+            return "?";
         }
     }
 
