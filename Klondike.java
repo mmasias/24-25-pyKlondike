@@ -10,10 +10,10 @@ public class Klondike {
         this.columna = new Columna[7];
         this.palo = new Palo[4];
         this.puntuacion = 0;
-        menu();
+        mostrarMenu();
     }
 
-    private void menu() {
+    private void mostrarMenu() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'menu'");
     }
