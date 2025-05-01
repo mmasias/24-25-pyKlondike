@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private Mensajes mensaje;
-    private Scanner scanner;
+    private final Mensajes mensaje;
+    private final Scanner scanner;
 
-    private String[] opciones = {
+    private final String[] opciones = {
             "1. Mover de Baraja a Descarte",
             "2. Mover de Descarte a Palo",
             "3. Mover de Descarte a Columna",
@@ -31,24 +31,24 @@ public class Menu {
         }
     }
 
-    public boolean elegirOpcion(Tapete tapete) {
+    public boolean elegirOpcion(Tablero tablero) {
         int opcion = scanner.nextInt();
         if (opcion == 1) {
-            tapete.moverBarajaADescarte();
+            tablero.moverBarajaADescarte();
         } else if (opcion == 2) {
-            tapete.moverDescarteAPalo();
+            tablero.moverDescarteAPalo();
         } else if (opcion == 3) {
-            tapete.moverDescarteAColumna();
+            tablero.moverDescarteAColumna();
         } else if (opcion == 4) {
-            tapete.moverPaloAColumna();
+            tablero.moverPaloAColumna();
         } else if (opcion == 5) {
-            tapete.moverColumnaAPalo();
+            tablero.moverColumnaAPalo();
         } else if (opcion == 6) {
-            tapete.moverColumnaAColumna();
+            tablero.moverColumnaAColumna();
         } else if (opcion == 7) {
-            tapete.darVueltaCartaColumna();
+            tablero.darVueltaCartaColumna();
         } else if (opcion == 8) {
-            tapete.darVueltaDescarteEnBaraja();
+            tablero.darVueltaDescarteEnBaraja();
         } else if (opcion == 9) {
             mensaje.mostrarMensajeLn("Gracias por jugar TIO!!!");
             return false;

@@ -2,7 +2,7 @@ package Filothjose;
 
 public class Columna {
 
-    private Carta[] cartas;
+    private final Carta[] cartas;
     private int cantidad;
     private final int MAX_CARTAS_POR_COLUMNA = 20;
 

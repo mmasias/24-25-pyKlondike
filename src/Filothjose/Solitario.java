@@ -1,19 +1,19 @@
 package Filothjose;
 
 public class Solitario {
-    private Tapete tapete;
-    private Baraja baraja;
-    private Descarte descarte;
-    private Palo[] palos;
-    private Columna[] columnas;
-    private Menu menu;
-    private Mensajes mensaje;
+    private final Tablero tablero;
+    private final Baraja baraja;
+    private final Descarte descarte;
+    private final Palo[] palos;
+    private final Columna[] columnas;
+    private final Menu menu;
+    private final Mensajes mensaje;
     private final int NUM_PALOS = 4;
     private final int NUM_COLUMNAS = 7;
 
     public Solitario() {
         baraja = new Baraja();
-        tapete = new Tapete();
+        tablero = new Tablero();
         descarte = new Descarte();
         menu = new Menu();
         palos = new Palo[NUM_PALOS];
@@ -34,13 +34,13 @@ public class Solitario {
         mensaje.mostrarMensajeLn("BIENVENIDO AL SOLITARIO");
         System.out.println();
 
-        tapete.repartirCartasIniciales();
+        tablero.repartirCartasIniciales();
 
         while (sigueJugando) {
             menu.mostrarOpciones();
-            tapete.mostrar();
+            tablero.mostrar();
             mensaje.mostrarMensajeLn("Elige una opcion :");
-            sigueJugando = menu.elegirOpcion(tapete);
+            sigueJugando = menu.elegirOpcion(tablero);
         }
         mensaje.mostrarMensajeLn("Gracias por jugar.");
     }
