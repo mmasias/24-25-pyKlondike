@@ -38,13 +38,13 @@ public class Menu {
         } else if (opcion == 2) {
             tapete.moverDescarteAPalo();
         } else if (opcion == 3) {
-            tapete.moverDescarteAPalo();
+            tapete.moverDescarteAColumna();
         } else if (opcion == 4) {
             tapete.moverPaloAColumna();
         } else if (opcion == 5) {
             tapete.moverColumnaAPalo();
         } else if (opcion == 6) {
-            tapete.moverColumnaAPalo();
+            tapete.moverColumnaAColumna();
         } else if (opcion == 7) {
             tapete.darVueltaCartaColumna();
         } else if (opcion == 8) {
