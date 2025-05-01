@@ -2,7 +2,7 @@ package Filothjose;
 
 public class Descarte {
 
-    private Carta[] cartas;
+    private final Carta[] cartas;
     private int cantidad;
     private final int CARTAS_TOTALES = 52;
 

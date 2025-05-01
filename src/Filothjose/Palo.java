@@ -1,7 +1,7 @@
 package Filothjose;
 
 public class Palo {
-    private Carta[] cartas;
+    private final Carta[] cartas;
     private int cantidad;
     private final int CARTAS_POR_PALO = 13;
 

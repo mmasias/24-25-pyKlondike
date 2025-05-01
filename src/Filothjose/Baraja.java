@@ -2,7 +2,7 @@ package Filothjose;
 
 public class Baraja {
 
-    private Carta[] cartas;
+    private final Carta[] cartas;
     private int indiceCartaActual;
 
     private final int CARTAS_TOTALES = 52;
