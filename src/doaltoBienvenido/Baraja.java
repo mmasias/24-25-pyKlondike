@@ -7,7 +7,7 @@ public class Baraja {
     
     private final int CARTAS_TOTALES = 52;
     private final int VALOR_MINIMO_CARTAS = 1;
-    private final int VALOR_MAXIMO_CARTAS = 12;
+    private final int VALOR_MAXIMO_CARTAS = 13;
 
 
     public Baraja(){
@@ -17,18 +17,18 @@ public class Baraja {
         mezclarBaraja();
     }
 
-    public void inicializarBaraja(){
+    private void inicializarBaraja(){
         String[] palos = {"Corazones", "Diamantes", "Picas", "Treboles"};
         int contador = 0;
         for (String palo : palos) {
-            for (int valor = 1; valor <= 13; valor++) {
+            for (int valor = VALOR_MINIMO_CARTAS; valor <= VALOR_MAXIMO_CARTAS; valor++) {
                 cartas[contador] = new Carta(palo, valor);
                 contador++;
             }
         }
     }
 
-    public void mezclarBaraja(){
+    private void mezclarBaraja(){
         for (int i = 0; i < cartas.length; i++) {
             int j = (int) (Math.random() * cartas.length);
             Carta temporal = cartas[i];
