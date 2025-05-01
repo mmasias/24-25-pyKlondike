@@ -1,7 +1,10 @@
+
 package romeroLeslie.src;
 import java.util.Scanner;
 
 public class Partida {
+    public static void main(String[] args) {
+        public class Partida {
     private final Scanner scanner;
     private boolean ejecutando;
 
@@ -105,5 +108,8 @@ public class Partida {
         System.out.println("Columna [5]: [? ?][? ?][? ?][? ?][X ]");
         System.out.println("Columna [6]: [? ?][? ?][? ?][? ?][? ?][6 ]");
         System.out.println("Columna [7]: [? ?][? ?][? ?][? ?][? ?][? ?][9 ]");
+    }
+}
+
     }
 }
