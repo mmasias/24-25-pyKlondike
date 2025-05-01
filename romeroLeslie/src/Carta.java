@@ -4,11 +4,9 @@ public class Carta {
     private boolean visible;
 
     public Carta(String valor, String palo) {
-        if (valor == null || palo == null) {
-            throw new IllegalArgumentException("Valor y palo no pueden ser nulos.");
-        }
-        this.valor = valor;
-        this.palo = palo;
+      
+        this.valor = valor.isEmpty() ? "?" : valor;
+        this.palo = palo.isEmpty() ? "?" : palo;
         this.visible = false;
     }
 
