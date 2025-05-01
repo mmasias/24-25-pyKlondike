@@ -40,4 +40,34 @@ public class Tapete {
         }
     }
 
+    public void moverBarajaADescarte() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'moverBarajaADescarte'");
+    }
+
+    public void moverDescarteAPalo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'moverDescarteAPalo'");
+    }
+
+    public void moverPaloAColumna() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'moverPaloAColumna'");
+    }
+
+    public void moverColumnaAPalo() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'moverColumnaAPalo'");
+    }
+
+    public void darVueltaCartaColumna() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'darVueltaCartaColumna'");
+    }
+
+    public void darVueltaDescarteEnBaraja() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'darVueltaDescarteEnBaraja'");
+    }
+
 }

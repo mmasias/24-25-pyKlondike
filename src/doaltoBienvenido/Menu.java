@@ -14,13 +14,10 @@ public class Menu {
             "4. Mover de Palo a Columna",
             "5. Mover de Columna a Palo",
             "6. Mover de Columna a Columna",
-            "7. Voltear carta de Columna",
-            "8. Voltear Descarte en Baraja",
+            "7. Dar vuelta a carta de Columna",
+            "8. Dar vuelta a Descarte en Baraja",
             "9. Salir"
     };
-
-    private final int MIN_OPCIONES = 1;
-    private final int MAX_OPCIONES = 9;
 
     public Menu() {
         mensaje = new Mensajes();
@@ -34,15 +31,30 @@ public class Menu {
         }
     }
 
-    public int elegirOpcion() {
-        mensaje.mostrarMensajeLn("Elije una opción (1-9): ");
-        int respuestaOpcion = scanner.nextInt();
-
-        while (respuestaOpcion < MIN_OPCIONES || respuestaOpcion > MAX_OPCIONES) {
-            mensaje.mostrarMensajeLn("Opción inválida. Intente de nuevo.");
-            mensaje.mostrarMensajeLn("Elije una opción (1-9): ");
-            respuestaOpcion = scanner.nextInt();
+    public boolean elegirOpcion(Tapete tapete) {
+        int opcion = scanner.nextInt();
+        if (opcion == 1) {
+            tapete.moverBarajaADescarte();
+        } else if (opcion == 2) {
+            tapete.moverDescarteAPalo();
+        } else if (opcion == 3) {
+            tapete.moverDescarteAPalo();
+        } else if (opcion == 4) {
+            tapete.moverPaloAColumna();
+        } else if (opcion == 5) {
+            tapete.moverColumnaAPalo();
+        } else if (opcion == 6) {
+            tapete.moverColumnaAPalo();
+        } else if (opcion == 7) {
+            tapete.darVueltaCartaColumna();
+        } else if (opcion == 8) {
+            tapete.darVueltaDescarteEnBaraja();
+        } else if (opcion == 9) {
+            mensaje.mostrarMensajeLn("Gracias por jugar TIO!!!");
+            return false;
+        } else {
+            mensaje.mostrarMensajeLn("Opcion no valida.");
         }
-        return respuestaOpcion;
+        return true;
     }
 }
