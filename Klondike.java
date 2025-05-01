@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Klondike {
     private Baraja baraja;
     private Columna[] columnas;
-    private Palo[] palos;
+    private Fundacion[] fundaciones;
     private int puntuacion;
     private Scanner scanner;
     private Descarte descarte;
@@ -11,7 +11,7 @@ public class Klondike {
     public Klondike() {
         this.baraja = new Baraja();
         this.columnas = new Columna[7];
-        this.palos = new Palo[4];
+        this.fundaciones = new Fundacion[4];
         this.descarte = new Descarte();
         this.puntuacion = 0;
         this.scanner = new Scanner(System.in);
@@ -31,8 +31,8 @@ public class Klondike {
     }
 
     private boolean haGanado() {
-        for (Palo palo : palos) {
-            if (palo.numeroCartas() < 13) {
+        for (Fundacion fundacion : fundaciones) {
+            if (fundacion.numeroCartas() < 13) {
                 return false;
             }
         }
@@ -47,8 +47,8 @@ public class Klondike {
     }
 
     private void inicializarPalos(){
-        for (int i = 0; i < palos.length; i++) {
-            palos[i] = new Palo();
+        for (int i = 0; i < fundaciones.length; i++) {
+            fundaciones[i] = new Fundacion();
         }
     }
 
@@ -60,13 +60,13 @@ public class Klondike {
     private void procesarOpcion(int opcion) {
         switch (opcion) {
             case 1 -> moverBarajaADescarte();
-            case 2 -> moverDescarteAPalo();
-            case 3 -> moverDescarteAColumna();
-            case 4 -> moverPaloAColumna();
-            case 5 -> moverColumnaAFundacion();
-            case 6 -> moverColumnaAColumna();
-            case 7 -> voltearCartaColumna();
-            case 8 -> voltearDescarte();
+            // case 2 -> moverDescarteAPalo();
+            // case 3 -> moverDescarteAColumna();
+            // case 4 -> moverPaloAColumna();
+            // case 5 -> moverColumnaAFundacion();
+            // case 6 -> moverColumnaAColumna();
+            // case 7 -> voltearCartaColumna();
+            // case 8 -> voltearDescarte();
             case 9 -> System.exit(0);
             default -> System.out.println("Opción no válida.");
         }
@@ -75,7 +75,7 @@ public class Klondike {
 
     private void moverBarajaADescarte() {
         Carta carta = baraja.sacarCarta();
-        descarte.añadir(carta);
+        descarte.añadirCarta(carta);
     }
 
     private void mostrarMenu() {
