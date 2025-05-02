@@ -18,7 +18,7 @@ public class Foundation {
     }
     
     public boolean placeCard(Card card) {
-        if (canPlace(card) {
+        if (canPlace(card)) {
             cards[size++] = card;
             return true;
         }

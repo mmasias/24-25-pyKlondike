@@ -1,5 +1,6 @@
 package navasNicolas;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -10,14 +11,20 @@ public class Game {
     private Scanner scanner;
     
     public Game() {
-        initializeGame();
+        stock = new Stock();
+        waste = new Waste();
+        foundations = new Foundation[4];
+        for (int i = 0; i < 4; i++) {
+            foundations[i] = new Foundation(Card.Suit.values()[i]);
+        }
+        tableaus = new Tableau[7];
         scanner = new Scanner(System.in);
+        initializeGame();
     }
     
     private void initializeGame() {
         Deck deck = new Deck();
         
-        tableaus = new Tableau[7];
         for (int i = 0; i < 7; i++) {
             Card[] tableauCards = new Card[i+1];
             for (int j = 0; j <= i; j++) {
@@ -86,7 +93,7 @@ public class Game {
             return;
         }
         
-        List<Card> drawnCards = stock.drawToWaste(3);
+        Card[] drawnCards = stock.drawToWaste(3);
         waste.addCards(drawnCards);
     }
     
@@ -166,17 +173,19 @@ public class Game {
             return;
         }
         
-        Card card = tableaus[column].getVisibleCards().isEmpty() ? null : 
-                   tableaus[column].getVisibleCards().get(tableaus[column].getVisibleCards().size() - 1);
-        
-        if (card == null) {
+        Tableau tableau = tableaus[column];
+        if (tableau.getVisibleCount() == 0) {
             System.out.println("No hay cartas visibles en la columna seleccionada.");
             return;
         }
         
+        Card card = tableau.getVisibleCard(tableau.getVisibleCount() - 1);
         Foundation foundation = foundations[card.getSuit().ordinal()];
+        
         if (foundation.placeCard(card)) {
-            tableaus[column].removeStack(tableaus[column].getVisibleCards().size() - 1);
+            // Remove the card from tableau
+            int removePosition = tableau.getFirstVisiblePosition() + tableau.getVisibleCount() - 1;
+            tableau.removeStack(removePosition);
         } else {
             System.out.println("Movimiento no válido. No se puede colocar " + card + " en el palo.");
         }
@@ -191,16 +200,18 @@ public class Game {
             return;
         }
         
-        List<Card> visibleCards = tableaus[fromColumn].getVisibleCards();
-        if (visibleCards.isEmpty()) {
+        Tableau fromTableau = tableaus[fromColumn];
+        int visibleCount = fromTableau.getVisibleCount();
+        
+        if (visibleCount == 0) {
             System.out.println("No hay cartas visibles en la columna de origen.");
             return;
         }
         
-        System.out.print("Selecciona cuántas cartas mover (1-" + visibleCards.size() + "): ");
+        System.out.print("Selecciona cuántas cartas mover (1-" + visibleCount + "): ");
         int count = scanner.nextInt();
         
-        if (count < 1 || count > visibleCards.size()) {
+        if (count < 1 || count > visibleCount) {
             System.out.println("Número de cartas no válido.");
             return;
         }
@@ -213,14 +224,16 @@ public class Game {
             return;
         }
         
-        int fromIndex = tableaus[fromColumn].getVisibleCards().size() - count;
-        List<Card> stackToMove = tableaus[fromColumn].removeStack(fromIndex);
+        int firstVisiblePos = fromTableau.getFirstVisiblePosition();
+        int fromIndex = firstVisiblePos + visibleCount - count;
+        Card[] stackToMove = fromTableau.removeStack(fromIndex);
         
         if (stackToMove != null && tableaus[toColumn].placeStack(stackToMove)) {
+            // Success
         } else {
             System.out.println("Movimiento no válido.");
             if (stackToMove != null) {
-                tableaus[fromColumn].placeStack(stackToMove);
+                fromTableau.placeStack(stackToMove);
             }
         }
     }

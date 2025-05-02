@@ -75,4 +75,36 @@ public class Tableau {
         }
         return sb.toString();
     }
+
+    public int getVisibleCount() {
+        int count = 0;
+        for (int i = 0; i < size; i++) {
+            if (cards[i].isFaceUp()) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    public Card getVisibleCard(int index) {
+        int visibleIndex = 0;
+        for (int i = 0; i < size; i++) {
+            if (cards[i].isFaceUp()) {
+                if (visibleIndex == index) {
+                    return cards[i];
+                }
+                visibleIndex++;
+            }
+        }
+        return null;
+    }
+    
+    public int getFirstVisiblePosition() {
+        for (int i = 0; i < size; i++) {
+            if (cards[i].isFaceUp()) {
+                return i;
+            }
+        }
+        return size; 
+    }
 }
