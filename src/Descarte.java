@@ -1,7 +1,7 @@
 
 public class Descarte {
 
-    public void imprimir() {
+    public void mostrar() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'imprimir'");
     }
@@ -19,6 +19,11 @@ public class Descarte {
     public Object voltear(Baraja baraja) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'voltear'");
+    }
+
+    public void poner(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'poner'");
     }
 
 }

@@ -16,4 +16,9 @@ public class Utilidades {
         throw new UnsupportedOperationException("Unimplemented method 'preguntarInt'");
     }
 
+    public void imprimirln() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'imprimirln'");
+    }
+
 }
