@@ -64,12 +64,9 @@ public class Klondike {
 
     private void procesarOpcion(int opcion) {
         switch (opcion) {
-            case 1:
-                moverBarajaADescarte();
-            case 9:
-                System.exit(0);
-            default:
-                System.out.println("Opción no válida.");
+            case 1 -> moverBarajaADescarte();
+            case 9 -> System.exit(0);
+            default -> System.out.println("Opción no válida.");
         }
     }
 
