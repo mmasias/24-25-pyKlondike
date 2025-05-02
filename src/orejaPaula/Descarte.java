@@ -34,4 +34,3 @@ public class Descarte {
         return new ArrayList<>(cartas);
     }
 }
-

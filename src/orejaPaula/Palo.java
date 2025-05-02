@@ -2,16 +2,16 @@ import java.util.*;
 
 public class Palo {
     private Stack<Carta> cartas;
-    private Carta.Palo palo;
+    private Carta.Palo tipoDePalo;
 
-    public Palo(Carta.Palo palo) {
-        this.palo = palo;
+    public Palo(Carta.Palo tipoDePalo) {
+        this.tipoDePalo = tipoDePalo;
         this.cartas = new Stack<>();
     }
 
     public boolean puedeAgregar(Carta carta) {
-        if (carta.getPalo() != palo) return false;
-        if (cartas.isEmpty()) return carta.getValor() == 1;
+        if (carta.getPalo() != tipoDePalo) return false;
+        if (cartas.isEmpty()) return carta.getValor() == Carta.VALOR_MINIMO;
         return carta.getValor() == cartas.peek().getValor() + 1;
     }
 

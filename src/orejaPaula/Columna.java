@@ -12,11 +12,11 @@ public class Columna {
     }
 
     public boolean puedeAgregar(Carta carta) {
-        if (cartas.isEmpty()) return carta.getValor() == 13;
-        Carta tope = cartas.peek();
-        return tope.estaBocaArriba() &&
-               carta.getValor() == tope.getValor() - 1 &&
-               carta.esRoja() != tope.esRoja();
+        if (cartas.isEmpty()) return carta.getValor() == Carta.VALOR_MAXIMO;
+        Carta cartaTope = cartas.peek();
+        return cartaTope.estaBocaArriba() &&
+               carta.getValor() == cartaTope.getValor() - 1 &&
+               carta.esRoja() != cartaTope.esRoja();
     }
 
     public Carta sacarCarta() {

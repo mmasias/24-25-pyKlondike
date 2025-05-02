@@ -3,6 +3,9 @@ import java.util.Scanner;
 public class Menu {
     private Scanner scanner;
 
+    public static final int OPCION_MINIMA = 1;
+    public static final int OPCION_MAXIMA = 9;
+
     public Menu() {
         scanner = new Scanner(System.in);
     }
@@ -21,25 +24,20 @@ public class Menu {
     }
 
     public int pedirOpcion() {
-        System.out.print("Elige una opción [1-9]: ");
-        while (!scanner.hasNextInt()) {
-            scanner.next();
-            System.out.print("Elige una opción [1-9]: ");
-        }
-        return scanner.nextInt();
+        return pedirNumero("Elige una opción", OPCION_MINIMA, OPCION_MAXIMA);
     }
 
     public int pedirNumero(String mensaje, int minimo, int maximo) {
-        int num;
+        int numero;
         do {
             System.out.print(mensaje + " [" + minimo + "-" + maximo + "]: ");
             while (!scanner.hasNextInt()) {
                 scanner.next();
                 System.out.print(mensaje + " [" + minimo + "-" + maximo + "]: ");
             }
-            num = scanner.nextInt();
-        } while (num < minimo || num > maximo);
-        return num;
+            numero = scanner.nextInt();
+        } while (numero < minimo || numero > maximo);
+        return numero;
     }
 }
 

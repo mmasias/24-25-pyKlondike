@@ -6,8 +6,8 @@ public class Baraja {
     public Baraja() {
         cartas = new Stack<>();
         for (Carta.Palo palo : Carta.Palo.values()) {
-            for (int i = 1; i <= 13; i++) {
-                cartas.push(new Carta(palo, i));
+            for (int valor = Carta.VALOR_MINIMO; valor <= Carta.VALOR_MAXIMO; valor++) {
+                cartas.push(new Carta(palo, valor));
             }
         }
         Collections.shuffle(cartas);
@@ -21,12 +21,12 @@ public class Baraja {
         return estaVacia() ? null : cartas.pop();
     }
 
-    public void agregarCartas(List<Carta> nuevas) {
-        Collections.reverse(nuevas);
-        cartas.addAll(nuevas);
+    public void agregarCartas(List<Carta> nuevasCartas) {
+        Collections.reverse(nuevasCartas);
+        cartas.addAll(nuevasCartas);
     }
 
-    public int cantidad() {
+    public int cantidadDeCartas() {
         return cartas.size();
     }
 
@@ -34,3 +34,4 @@ public class Baraja {
         return new ArrayList<>(cartas);
     }
 }
+

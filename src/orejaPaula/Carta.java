@@ -1,14 +1,17 @@
 public class Carta {
+    public static final int VALOR_MINIMO = 1;
+    public static final int VALOR_MAXIMO = 13;
+
     public enum Palo { CORAZONES, DIAMANTES, TREBOLES, PICAS }
 
     private Palo palo;
     private int valor;
-    private boolean bocaArriba;
+    private boolean estaBocaArriba;
 
     public Carta(Palo palo, int valor) {
         this.palo = palo;
         this.valor = valor;
-        this.bocaArriba = false;
+        this.estaBocaArriba = false;
     }
 
     public Palo getPalo() {
@@ -20,11 +23,11 @@ public class Carta {
     }
 
     public boolean estaBocaArriba() {
-        return bocaArriba;
+        return estaBocaArriba;
     }
 
     public void voltear() {
-        bocaArriba = !bocaArriba;
+        estaBocaArriba = !estaBocaArriba;
     }
 
     public boolean esRoja() {
@@ -33,15 +36,14 @@ public class Carta {
 
     @Override
     public String toString() {
-        if (!bocaArriba) return "[? ?]";
+        if (!estaBocaArriba) return "[? ?]";
         String[] valores = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         String simbolo = switch (palo) {
-            case CORAZONES -> "♥️";
-            case DIAMANTES -> "♦️";
-            case TREBOLES -> "♣️";
-            case PICAS -> "♠️";
+            case CORAZONES -> "corazon";
+            case DIAMANTES -> "diamante";
+            case TREBOLES -> "trebol";
+            case PICAS -> "pica";
         };
         return "[" + valores[valor - 1] + " " + simbolo + "]";
     }
 }
-
