@@ -21,7 +21,7 @@ public class Klondike {
         this.scanner = new Scanner(System.in);
 
         inicializarColumnas();
-        inicializarPalos();
+        inicializarFundaciones();
         prepararBaraja();
     }
 
@@ -43,7 +43,7 @@ public class Klondike {
         }
     }
 
-    private void inicializarPalos() {
+    private void inicializarFundaciones() {
         Palo[] palos = baraja.obtenerPalos();
         for (int i = 0; i < NUM_FUNDACIONES; i++) {
             fundaciones[i] = new Fundacion(palos[i]);
@@ -66,29 +66,88 @@ public class Klondike {
         switch (opcion) {
             case 1 ->
                 moverBarajaADescarte();
+            case 2 ->
+                moverDescarteAPalo();
             case 9 ->
                 System.exit(0);
             default ->
                 System.out.println("Opción no válida.");
         }
     }
-
+    
     private void moverBarajaADescarte() {
         Carta carta = baraja.sacarCarta();
-
+    
         if (carta == null) {
-            System.out.println("No hay más cartas en la baraja para mover al descarte.");
+            if (descarte.estaVacio()) {
+                System.out.println("No hay más cartas en la baraja ni en el descarte.");
+                return;
+            }
+    
+            System.out.println("La baraja está vacía. Moviendo cartas del descarte a la baraja...");
+            Carta[] cartasDescarte = descarte.obtenerCartas();
+            for (Carta cartaDescarte : cartasDescarte) {
+                baraja.agregarCarta(cartaDescarte);
+            }
+            descarte.vaciar();
+            System.out.println("Cartas del descarte movidas a la baraja y mezcladas.");
             return;
         }
     
-        if (carta.estaEnColumna(columnas)) {
-            System.out.println("La carta ya está en una columna. No se puede mover al descarte.");
-            return;
-        }
-        
         carta.voltear();
         descarte.añadirCarta(carta);
         System.out.println("Carta movida al descarte: " + carta);
+    }
+    
+    private void moverDescarteAPalo() {
+        Carta carta = descarte.sacarCarta();
+    
+        if (carta == null) {
+            System.out.println("No hay más cartas en el descarte.");
+            return;
+        }
+    
+        System.out.print("Elige un palo [1-" + NUM_FUNDACIONES + "]: ");
+        int opcion = scanner.nextInt();
+        scanner.nextLine();
+    
+        if (opcion < 1 || opcion > NUM_FUNDACIONES) {
+            System.out.println("Número de palo inválido. Selección cancelada.");
+            descarte.añadirCarta(carta);
+            return;
+        }
+    
+        Fundacion fundacion = fundaciones[opcion - 1];
+    
+        if (puedeMoverAFundacion(carta, fundacion)) {
+            fundacion.agregarCarta(carta);
+            System.out.println("Carta movida al palo: " + carta);
+        } else {
+            System.out.println("Movimiento inválido. La carta no puede ser movida al palo.");
+            descarte.añadirCarta(carta);
+        }
+    }
+
+    private boolean puedeMoverAFundacion(Carta carta, Fundacion fundacion) {
+        if (fundacion.estaVacia()){
+            return carta.valor() == 1;
+        }
+
+        Carta cartaSuperior = fundacion.cartaSuperior();
+
+        return carta.palo().equals(cartaSuperior.palo()) && carta.valor() == cartaSuperior.valor() + 1;
+    }
+
+    private Columna escogerColumna() {
+        int opcion = scanner.nextInt();
+        scanner.nextLine();
+
+        if (opcion >= 1 && opcion <= NUM_COLUMNAS){
+            return columnas[opcion - 1];
+        } else {
+            System.out.println("Numero de columna inválido. Selección cancelada");
+            return null;
+        }
     }
 
     private void mostrarMenu() {
@@ -127,14 +186,12 @@ public class Klondike {
 
     private void mostrarDescarte() {
         System.out.print("Descarte: ");
-        Carta[] cartasDescarte = descarte.obtenerCartas();
-        if (cartasDescarte.length == 0) {
+        Carta cartaSuperior = descarte.cartaSuperior();
+    
+        if (cartaSuperior == null) {
             System.out.println("[]");
         } else {
-            for (Carta carta : cartasDescarte) {
-                System.out.print(carta + " ");
-            }
-            System.out.println();
+            System.out.println(cartaSuperior);
         }
     }
 
@@ -162,5 +219,4 @@ public class Klondike {
             System.out.println();
         }
     }
-
 }
