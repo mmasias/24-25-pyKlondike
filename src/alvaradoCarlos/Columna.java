@@ -19,4 +19,8 @@ public class Columna {
     public Carta[] cartas() {
         return cartas;
     }
+
+    public Carta cartaSuperior() {
+        return cartas[cartas.length - 1];
+    }
 }

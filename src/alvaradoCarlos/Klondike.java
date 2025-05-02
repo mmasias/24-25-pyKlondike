@@ -57,7 +57,7 @@ public class Klondike {
         for (Columna columna : columnas) {
             Carta[] cartas = columna.cartas();
             if (cartas.length > 0) {
-                cartas[cartas.length - 1].voltear();
+                columna.cartaSuperior().voltear();
             }
         }
     }
