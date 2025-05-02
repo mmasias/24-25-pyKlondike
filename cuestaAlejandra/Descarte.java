@@ -1,32 +1,33 @@
 public class Descarte {
-    private static final int MAX_DESCARTE = 52;
-    private Carta[] cartas = new Carta[MAX_DESCARTE];
+    private static final int MAX = 52;
+    private Carta[] cartas = new Carta[MAX];
     private int cantidad = 0;
 
     public void agregar(Carta carta) {
-        if (cantidad < MAX_DESCARTE) {
+        if (cantidad < MAX) {
             cartas[cantidad] = carta;
             cantidad++;
         }
+    }
+
+    public Carta quitarUltima() {
+        if (cantidad == 0) return null;
+        Carta carta = cartas[cantidad - 1];
+        cartas[cantidad - 1] = null;
+        cantidad--;
+        return carta;
     }
 
     public boolean estaVacio() {
         return cantidad == 0;
     }
 
-    public Carta quitarUltima() {
-        if (!estaVacio()) {
-            cantidad--;
-            return cartas[cantidad];
-        }
-        return null;
-    }
-
     public String toString() {
-        String resultado = "";
+        if (cantidad == 0) return "Vacía";
+        String texto = "";
         for (int i = 0; i < cantidad; i++) {
-            resultado = resultado + cartas[i].toString();
+            texto += cartas[i];
         }
-        return resultado;
+        return texto;
     }
 }
