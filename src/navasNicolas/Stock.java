@@ -1,27 +1,23 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Stock extends Deck {
     public Stock() {
         super();
     }
     
-    public List<Card> drawToWaste(int count) {
-        List<Card> drawnCards = new ArrayList<>();
-        for (int i = 0; i < count && !isEmpty(); i++) {
-            Card card = deal();
-            card.flip(); // Cards are face up in waste
-            drawnCards.add(card);
+    public Card[] drawToWaste(int count) {
+        int drawSize = Math.min(count, size);
+        Card[] drawnCards = new Card[drawSize];
+        
+        for (int i = 0; i < drawSize; i++) {
+            drawnCards[i] = deal();
+            drawnCards[i].flip();
         }
+        
         return drawnCards;
     }
     
     public String toString() {
-        if (isEmpty()) {
-            return "No hay cartas en la baraja";
-        }
-        return "[? ?]";
+        return isEmpty() ? "No hay cartas en la baraja" : "[? ?]";
     }
 }

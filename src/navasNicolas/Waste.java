@@ -1,48 +1,43 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Waste {
-    private List<Card> cards;
+    private Card[] cards;
+    private int size;
     
     public Waste() {
-        cards = new ArrayList<>();
+        cards = new Card[52];
+        size = 0;
     }
     
-    public void addCards(List<Card> newCards) {
-        cards.addAll(newCards);
+    public void addCards(Card[] newCards) {
+        for (Card card : newCards) {
+            if (size < cards.length) {
+                cards[size++] = card;
+            }
+        }
     }
     
     public Card getTopCard() {
-        if (cards.isEmpty()) {
-            return null;
-        }
-        return cards.get(cards.size() - 1);
+        return size > 0 ? cards[size - 1] : null;
     }
     
     public Card removeTopCard() {
-        if (cards.isEmpty()) {
-            return null;
-        }
-        return cards.remove(cards.size() - 1);
+        return size > 0 ? cards[--size] : null;
     }
     
     public boolean isEmpty() {
-        return cards.isEmpty();
+        return size == 0;
     }
     
     public void clear() {
-        cards.clear();
+        size = 0;
     }
     
     public String toString() {
-        if (cards.isEmpty()) {
-            return "No hay cartas en el descarte";
-        }
+        if (size == 0) return "No hay cartas en el descarte";
         StringBuilder sb = new StringBuilder();
-        for (Card card : cards) {
-            sb.append(card.toString());
+        for (int i = 0; i < size; i++) {
+            sb.append(cards[i].toString());
         }
         return sb.toString();
     }

@@ -1,50 +1,51 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 public class Deck {
-    protected List<Card> cards;
+    protected Card[] cards;
+    protected int size;
     
     public Deck() {
-        cards = new ArrayList<>();
+        cards = new Card[52];
+        size = 0;
         initializeDeck();
         shuffle();
     }
     
     private void initializeDeck() {
+        int index = 0;
         for (Card.Suit suit : Card.Suit.values()) {
             for (Card.Rank rank : Card.Rank.values()) {
-                cards.add(new Card(suit, rank));
+                cards[index++] = new Card(suit, rank);
             }
         }
+        size = 52;
     }
     
     public void shuffle() {
-        Collections.shuffle(cards);
+        for (int i = size - 1; i > 0; i--) {
+            int j = (int) (Math.random() * (i + 1));
+            Card temp = cards[i];
+            cards[i] = cards[j];
+            cards[j] = temp;
+        }
     }
     
     public boolean isEmpty() {
-        return cards.isEmpty();
+        return size == 0;
     }
     
     public int size() {
-        return cards.size();
+        return size;
     }
     
     public Card deal() {
-        if (isEmpty()) {
-            return null;
-        }
-        return cards.remove(cards.size() - 1);
+        if (isEmpty()) return null;
+        return cards[--size];
     }
     
     public void addCard(Card card) {
-        cards.add(card);
-    }
-    
-    public List<Card> getCards() {
-        return new ArrayList<>(cards);
+        if (size < cards.length) {
+            cards[size++] = card;
+        }
     }
 }

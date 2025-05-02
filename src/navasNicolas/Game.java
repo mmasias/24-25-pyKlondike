@@ -1,7 +1,5 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -17,32 +15,19 @@ public class Game {
     }
     
     private void initializeGame() {
-        // Create and shuffle a new deck
         Deck deck = new Deck();
         
-        // Initialize stock with all cards
-        stock = new Stock();
-        
-        // Initialize empty waste
-        waste = new Waste();
-        
-        // Initialize foundations (one per suit)
-        foundations = new Foundation[4];
-        for (int i = 0; i < 4; i++) {
-            foundations[i] = new Foundation(Card.Suit.values()[i]);
-        }
-        
-        // Initialize tableaus with cards from the deck
+        // Initialize tableaus
         tableaus = new Tableau[7];
         for (int i = 0; i < 7; i++) {
-            List<Card> tableauCards = new ArrayList<>();
+            Card[] tableauCards = new Card[i+1];
             for (int j = 0; j <= i; j++) {
-                tableauCards.add(deck.deal());
+                tableauCards[j] = deck.deal();
             }
             tableaus[i] = new Tableau(tableauCards);
         }
         
-        // Remaining cards go to stock
+        // Add remaining cards to stock
         while (!deck.isEmpty()) {
             stock.addCard(deck.deal());
         }

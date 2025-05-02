@@ -1,106 +1,77 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Tableau {
-    private final List<Card> cards;
+    private Card[] cards;
+    private int size;
     
-    public Tableau(List<Card> initialCards) {
-        this.cards = new ArrayList<>();
-        if (initialCards != null && !initialCards.isEmpty()) {
-            cards.addAll(initialCards);
-            // Only the last card is face up initially
-            cards.get(cards.size() - 1).flip();
+    public Tableau(Card[] initialCards) {
+        this.cards = new Card[20];
+        this.size = 0;
+        if (initialCards != null) {
+            for (Card card : initialCards) {
+                if (card != null) {
+                    cards[size++] = card;
+                }
+            }
+            if (size > 0) {
+                cards[size-1].flip();
+            }
         }
     }
     
     public boolean canPlace(Card card) {
-        if (cards.isEmpty()) {
-            return card.getRank() == Card.Rank.KING;
-        }
-        
-        Card lastCard = cards.get(cards.size() - 1);
+        if (size == 0) return card.getRank() == Card.Rank.KING;
+        Card lastCard = cards[size-1];
         return lastCard.isFaceUp() && 
-               card.isBlack() != lastCard.isBlack() && 
-               card.getRank().ordinal() == lastCard.getRank().ordinal() - 1;
+             card.isBlack() != lastCard.isBlack() && 
+             card.getRank().ordinal() == lastCard.getRank().ordinal() - 1;
     }
     
     public boolean placeCard(Card card) {
         if (canPlace(card)) {
-            cards.add(card);
+            cards[size++] = card;
             return true;
         }
         return false;
     }
     
-    public boolean placeStack(List<Card> stack) {
-        if (stack == null || stack.isEmpty()) {
-            return false;
-        }
+    public boolean placeStack(Card[] stack) {
+        if (stack == null || stack.length == 0) return false;
+        if (!canPlace(stack[0])) return false;
         
-        Card bottomCard = stack.get(0);
-        if (canPlace(bottomCard)) {
-            cards.addAll(stack);
-            return true;
+        for (Card card : stack) {
+            if (size < cards.length) {
+                cards[size++] = card;
+            }
         }
-        return false;
+        return true;
     }
     
-    public List<Card> removeStack(int fromIndex) {
-        if (fromIndex < 0 || fromIndex >= cards.size()) {
-            return null;
-        }
+    public Card[] removeStack(int fromIndex) {
+        if (fromIndex < 0 || fromIndex >= size) return null;
         
-        List<Card> removed = new ArrayList<>();
-        for (int i = fromIndex; i < cards.size(); i++) {
-            if (!cards.get(i).isFaceUp()) {
-                return null; // Can't remove face-down cards
-            }
-        }
+        int newSize = size - fromIndex;
+        Card[] removed = new Card[newSize];
+        System.arraycopy(cards, fromIndex, removed, 0, newSize);
         
-        while (fromIndex < cards.size()) {
-            removed.add(cards.remove(fromIndex));
+        size = fromIndex;
+        if (size > 0 && !cards[size-1].isFaceUp()) {
+            cards[size-1].flip();
         }
-        
-        // Flip the new last card if it exists
-        if (!cards.isEmpty()) {
-            Card lastCard = cards.get(cards.size() - 1);
-            if (!lastCard.isFaceUp()) {
-                lastCard.flip();
-            }
-        }
-        
         return removed;
     }
     
     public void flipTopCard() {
-        if (!cards.isEmpty()) {
-            Card topCard = cards.get(cards.size() - 1);
-            if (!topCard.isFaceUp()) {
-                topCard.flip();
-            }
+        if (size > 0) {
+            cards[size-1].flip();
         }
-    }
-    
-    public List<Card> getVisibleCards() {
-        List<Card> visible = new ArrayList<>();
-        for (Card card : cards) {
-            if (card.isFaceUp()) {
-                visible.add(card);
-            }
-        }
-        return visible;
     }
     
     public String toString() {
-        if (cards.isEmpty()) {
-            return "No hay cartas en la columna";
-        }
-        
+        if (size == 0) return "No hay cartas en la columna";
         StringBuilder sb = new StringBuilder();
-        for (Card card : cards) {
-            sb.append(card.toString());
+        for (int i = 0; i < size; i++) {
+            sb.append(cards[i].toString());
         }
         return sb.toString();
     }

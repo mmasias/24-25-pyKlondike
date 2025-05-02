@@ -1,60 +1,43 @@
 package navasNicolas;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Foundation {
     private final Card.Suit suit;
-    private final List<Card> cards;
+    private Card[] cards;
+    private int size;
     
     public Foundation(Card.Suit suit) {
         this.suit = suit;
-        this.cards = new ArrayList<>();
+        this.cards = new Card[13];
+        this.size = 0;
     }
     
     public boolean canPlace(Card card) {
-        if (card.getSuit() != suit) {
-            return false;
-        }
-        
-        if (cards.isEmpty()) {
-            return card.getRank() == Card.Rank.ACE;
-        }
-        
-        Card topCard = cards.get(cards.size() - 1);
-        return card.getRank().ordinal() == topCard.getRank().ordinal() + 1;
+        if (card.getSuit() != suit) return false;
+        if (size == 0) return card.getRank() == Card.Rank.ACE;
+        return card.getRank().ordinal() == cards[size-1].getRank().ordinal() + 1;
     }
     
     public boolean placeCard(Card card) {
-        if (canPlace(card)) {
-            cards.add(card);
+        if (canPlace(card) {
+            cards[size++] = card;
             return true;
         }
         return false;
     }
     
     public Card getTopCard() {
-        if (cards.isEmpty()) {
-            return null;
-        }
-        return cards.get(cards.size() - 1);
+        return size > 0 ? cards[size-1] : null;
     }
     
     public Card removeTopCard() {
-        if (cards.isEmpty()) {
-            return null;
-        }
-        return cards.remove(cards.size() - 1);
+        return size > 0 ? cards[--size] : null;
     }
     
     public boolean isComplete() {
-        return !cards.isEmpty() && cards.get(cards.size() - 1).getRank() == Card.Rank.KING;
+        return size == 13;
     }
     
     public String toString() {
-        if (cards.isEmpty()) {
-            return "No hay cartas en el palo";
-        }
-        return getTopCard().toString();
+        return size == 0 ? "No hay cartas en el palo" : getTopCard().toString();
     }
 }
