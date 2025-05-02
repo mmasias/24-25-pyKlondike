@@ -1,5 +1,5 @@
 public class Columna {
-    private static final int MAX = 20;
+    private static final int MAX = 52;
     private Carta[] cartas = new Carta[MAX];
     private int cantidad = 0;
 
@@ -11,10 +11,11 @@ public class Columna {
     }
 
     public String toString() {
-        String resultado = "";
+        if (cantidad == 0) return "";
+        String texto = "";
         for (int i = 0; i < cantidad; i++) {
-            resultado = resultado + cartas[i].toString();
+            texto += cartas[i];
         }
-        return resultado;
+        return texto;
     }
 }
