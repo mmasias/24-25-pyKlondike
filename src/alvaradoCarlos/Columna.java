@@ -1,3 +1,4 @@
+package src.alvaradoCarlos;
 public class Columna {
 
     private Carta[] cartas;

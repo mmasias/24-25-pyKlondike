@@ -1,10 +1,12 @@
+package src.alvaradoCarlos;
 
 public class Fundacion {
+
     private final int MAXIMO_CARTAS_FUNDACION = 13;
     private Palo palo;
     private Carta[] cartas;
 
-    public Fundacion(Palo palo){
+    public Fundacion(Palo palo) {
         this.palo = palo;
         this.cartas = new Carta[MAXIMO_CARTAS_FUNDACION];
     }
@@ -14,11 +16,12 @@ public class Fundacion {
     }
 
     public boolean estaVacia() {
-        if (cartas == null || cartas.length == 0){
-            return true;
-        } else {
-            return false;
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                return false;
+            }
         }
+        return true;
     }
 
     public Carta cartaSuperior() {

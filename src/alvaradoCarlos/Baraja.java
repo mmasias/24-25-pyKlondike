@@ -1,3 +1,4 @@
+package src.alvaradoCarlos;
 
 public class Baraja {
     private final int MAXIMO_NUMERO_CARTAS = 52;

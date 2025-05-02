@@ -1,3 +1,4 @@
+package src.alvaradoCarlos;
 public class Descarte {
     private final int MAXIMO_NUMERO_DESCARTES = 3;
     private Carta[] cartasDescartadas;

@@ -1,3 +1,4 @@
+package src.alvaradoCarlos;
 
 public class Carta {
 
@@ -19,7 +20,7 @@ public class Carta {
         return palo;
     }
 
-    public void voltear(){
+    public void voltear() {
         descubierta = true;
     }
 
@@ -42,7 +43,7 @@ public class Carta {
         } else if (valor == 13) {
             return "[K " + palo + "]";
         } else {
-            return "["+ valor + " " + palo + "]";
+            return "[" + valor + " " + palo + "]";
         }
     }
 

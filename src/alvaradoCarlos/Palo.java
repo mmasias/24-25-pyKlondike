@@ -1,3 +1,4 @@
+package src.alvaradoCarlos;
 public class Palo {
 
     private String denominacion;
