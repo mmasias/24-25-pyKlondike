@@ -4,7 +4,6 @@ public class Klondike {
     private Baraja baraja;
     private Columna[] columnas;
     private Fundacion[] fundaciones;
-    private int puntuacion;
     private Scanner scanner;
     private Descarte descarte;
 
@@ -13,7 +12,6 @@ public class Klondike {
         this.columnas = new Columna[7];
         this.fundaciones = new Fundacion[4];
         this.descarte = new Descarte();
-        this.puntuacion = 0;
         this.scanner = new Scanner(System.in);
     
         inicializarColumnas();
@@ -22,21 +20,21 @@ public class Klondike {
     }
 
     public void jugar() {
+        System.out.println("Iniciando juego...");
         while (!haGanado()) {
+            System.out.println("Mostrando menú...");
             mostrarMenu();
+            System.out.println("Esperando entrada del usuario...");
             int opcion = scanner.nextInt();
             scanner.nextLine();
+            System.out.println("Procesando opción: " + opcion);
             procesarOpcion(opcion);
         }
+        System.out.println("¡Juego terminado!");
     }
 
     private boolean haGanado() {
-        for (Fundacion fundacion : fundaciones) {
-            if (fundacion.numeroCartas() < 13) {
-                return false;
-            }
-        }
-        return true;
+        return false;
     }
     
 
@@ -60,16 +58,9 @@ public class Klondike {
 
     private void procesarOpcion(int opcion) {
         switch (opcion) {
-            case 1 -> moverBarajaADescarte();
-            // case 2 -> moverDescarteAPalo();
-            // case 3 -> moverDescarteAColumna();
-            // case 4 -> moverPaloAColumna();
-            // case 5 -> moverColumnaAFundacion();
-            // case 6 -> moverColumnaAColumna();
-            // case 7 -> voltearCartaColumna();
-            // case 8 -> voltearDescarte();
-            case 9 -> System.exit(0);
-            default -> System.out.println("Opción no válida.");
+            case 1: moverBarajaADescarte();
+            case 9: System.exit(0);
+            default: System.out.println("Opción no válida.");
         }
     }
     
@@ -80,6 +71,7 @@ public class Klondike {
     }
 
     private void mostrarMenu() {
+        System.out.println("=== MENÚ DEL JUEGO ===");
         System.out.println("OPCIONES>");
         System.out.println("  1. Mover de Baraja a Descarte");
         System.out.println("  2. Mover de Descarte a Palo");
@@ -100,7 +92,7 @@ public class Klondike {
 
         System.out.print("Descarte: ");
         for (Carta carta : baraja.cartasDeDescarte()) {
-            System.out.print("[" + carta + "]");
+            System.out.print(carta);
         }
         System.out.println();
 
@@ -109,7 +101,7 @@ public class Klondike {
             if (fundaciones[i].estaVacia()) {
                 System.out.println("No hay cartas en el palo");
             } else {
-                System.out.println("[" + fundaciones[i].cartaSuperior() + "]");
+                System.out.println(fundaciones[i].cartaSuperior());
             }
         }
 
@@ -119,7 +111,7 @@ public class Klondike {
                 if (!carta.estaDescubierta()) {
                     System.out.print("[? ?]");
                 } else {
-                    System.out.print("[" + carta + "]");
+                    System.out.print(carta);
                 }
             }
             System.out.println();
