@@ -1,17 +1,17 @@
 package doaltoBienvenido;
 
 public class Tapete {
-    
+
     private Baraja baraja;
     private Descarte descarte;
     private Palo[] palos;
     private Columna[] columnas;
     private Mensajes mensaje;
-    
+
     private final int NUM_PALOS = 4;
     private final int NUM_COLUMNAS = 7;
 
-    public Tapete(){
+    public Tapete() {
         baraja = new Baraja();
         descarte = new Descarte();
         palos = new Palo[NUM_PALOS];
@@ -74,16 +74,18 @@ public class Tapete {
     public void moverDescarteAPalo() {
         if (descarte.tieneCartas()) {
             Carta carta = descarte.sacarCarta();
-            boolean colocado = false;
-            for (int i = 0; i < NUM_PALOS; i++) {
+            boolean cartaColocada = false;
+            int i = 0;
+            while (i < NUM_PALOS && !cartaColocada) {
                 if (palos[i].puedeAgregar(carta)) {
                     palos[i].agregarCarta(carta);
                     mensaje.mostrarMensajeLn("Carta movida de descarte a palo: " + carta);
-                    colocado = true;
-                    break;
+                    cartaColocada = true;
                 }
+                i++;
             }
-            if (!colocado) {
+            if (!cartaColocada) {
+                descarte.agregarCarta(carta);
                 mensaje.mostrarMensajeLn("No se pudo mover la carta al palo.");
             }
         } else {
@@ -94,16 +96,18 @@ public class Tapete {
     public void moverDescarteAColumna() {
         if (descarte.tieneCartas()) {
             Carta carta = descarte.sacarCarta();
-            boolean colocado = false;
-            for (int i = 0; i < NUM_COLUMNAS; i++) {
+            boolean cartaColocada = false;
+            int i = 0;
+            while (i < NUM_COLUMNAS && !cartaColocada) {
                 if (columnas[i].puedeAgregar(carta)) {
                     columnas[i].agregarCarta(carta);
                     mensaje.mostrarMensajeLn("Carta movida de descarte a columna: " + carta);
-                    colocado = true;
-                    break;
+                    cartaColocada = true;
                 }
+                i++;
             }
-            if (!colocado) {
+            if (!cartaColocada) {
+                descarte.agregarCarta(carta);
                 mensaje.mostrarMensajeLn("No se pudo mover la carta a la columna.");
             }
         } else {
@@ -112,81 +116,97 @@ public class Tapete {
     }
 
     public void moverPaloAColumna() {
-        boolean movido = false;
-        for (int i = 0; i < NUM_PALOS; i++) {
+        boolean cartaMovida = false;
+        int i = 0;
+        while (i < NUM_PALOS && !cartaMovida) {
             if (palos[i].tieneCartas()) {
                 Carta carta = palos[i].extraerCarta();
-                for (int j = 0; j < NUM_COLUMNAS; j++) {
+                int j = 0;
+                while (j < NUM_COLUMNAS && !cartaMovida) {
                     if (columnas[j].puedeAgregar(carta)) {
                         columnas[j].agregarCarta(carta);
                         mensaje.mostrarMensajeLn("Carta movida de palo a columna: " + carta);
-                        movido = true;
-                        break;
+                        cartaMovida = true;
                     }
+                    j++;
                 }
-                if (movido) {
-                    break;
+                if (!cartaMovida) {
+                    palos[i].agregarCarta(carta);
                 }
             }
+            i++;
         }
-        if (!movido) {
+        if (!cartaMovida) {
             mensaje.mostrarMensajeLn("No se pudo mover la carta de palo a columna.");
         }
     }
 
     public void moverColumnaAPalo() {
-        boolean movido = false;
-        for (int i = 0; i < NUM_COLUMNAS; i++) {
+        boolean cartaMovida = false;
+        int i = 0;
+        while (i < NUM_COLUMNAS && !cartaMovida) {
             if (columnas[i].tieneCartas()) {
                 Carta carta = columnas[i].extraerCarta();
-                for (int j = 0; j < NUM_PALOS; j++) {
+                int j = 0;
+                while (j < NUM_PALOS && !cartaMovida) {
                     if (palos[j].puedeAgregar(carta)) {
                         palos[j].agregarCarta(carta);
                         mensaje.mostrarMensajeLn("Carta movida de columna a palo: " + carta);
-                        movido = true;
-                        break;
+                        cartaMovida = true;
                     }
+                    j++;
                 }
-                if (movido) {
-                    break;
+                if (!cartaMovida) {
+                    columnas[i].agregarCarta(carta);
                 }
             }
+            i++;
         }
-        if (!movido) {
+        if (!cartaMovida) {
             mensaje.mostrarMensajeLn("No se pudo mover la carta de columna a palo.");
         }
     }
 
     public void moverColumnaAColumna() {
-        boolean movido = false;
-        for (int i = 0; i < NUM_COLUMNAS; i++) {
+        boolean cartaMovida = false;
+        int i = 0;
+        while (i < NUM_COLUMNAS && !cartaMovida) {
             if (columnas[i].tieneCartas()) {
                 Carta carta = columnas[i].extraerCarta();
-                for (int j = 0; j < NUM_COLUMNAS; j++) {
+                int j = 0;
+                while (j < NUM_COLUMNAS && !cartaMovida) {
                     if (i != j && columnas[j].puedeAgregar(carta)) {
                         columnas[j].agregarCarta(carta);
                         mensaje.mostrarMensajeLn("Carta movida de columna a columna: " + carta);
-                        movido = true;
-                        break;
+                        cartaMovida = true;
                     }
+                    j++;
                 }
-                if (movido) {
-                    break;
+                if (!cartaMovida) {
+                    columnas[i].agregarCarta(carta);
                 }
             }
+            i++;
         }
-        if (!movido) {
+        if (!cartaMovida) {
             mensaje.mostrarMensajeLn("No se pudo mover la carta de columna a columna.");
         }
     }
 
     public void darVueltaCartaColumna() {
-        for (int i = 0; i < NUM_COLUMNAS; i++) {
+        int i = 0;
+        boolean dadaVuelta = false;
+        while (i < NUM_COLUMNAS && !dadaVuelta) {
             if (columnas[i].tieneCartas()) {
-                columnas[i].darVueltaCarta();
-                mensaje.mostrarMensajeLn("Carta volteada en la columna [" + (i + 1) + "]");
-                break;
+                dadaVuelta = columnas[i].darVueltaCarta();
+                if (dadaVuelta) {
+                    mensaje.mostrarMensajeLn("Carta dada la vuelta en la columna [" + (i + 1) + "]");
+                }
             }
+            i++;
+        }
+        if (!dadaVuelta) {
+            mensaje.mostrarMensajeLn("No se pudo dar la vuelta a ninguna carta.");
         }
     }
 
@@ -194,7 +214,7 @@ public class Tapete {
         if (descarte.tieneCartas()) {
             Carta carta = descarte.sacarCarta();
             baraja.agregarCarta(carta);
-            mensaje.mostrarMensajeLn("Carta volteada del descarte a la baraja: " + carta);
+            mensaje.mostrarMensajeLn("Carta dada la vuelta del descarte a la baraja: " + carta);
         } else {
             mensaje.mostrarMensajeLn("No hay cartas en el descarte.");
         }

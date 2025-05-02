@@ -36,10 +36,14 @@ public class Columna {
         return cartaSuperior.puedeColocarSobre(carta);
     }
 
-    public void darVueltaCarta() {
-        if (tieneCartas()) {
-            cartas[cantidad - 1].darVuelta();
+    public boolean darVueltaCarta() {
+        for (int i = cantidad - 1; i >= 0; i--) {
+            if (!cartas[i].esVisible()) {
+                cartas[i].darVuelta();
+                return true;
+            }
         }
+        return false;
     }
 
 
