@@ -1,14 +1,21 @@
-
 public class Columna {
 
+    private Carta[] cartas;
+
+    public Columna(){
+        this.cartas = new Carta[0];
+    }
+
     public void agregarCarta(Carta carta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'agregarCarta'");
+        Carta[] nuevoCartas = new Carta[cartas.length + 1];
+        for (int i = 0; i < cartas.length; i++) {
+            nuevoCartas[i] = cartas[i];
+        }
+        nuevoCartas[cartas.length] = carta;
+        cartas = nuevoCartas;
     }
 
     public Carta[] cartas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cartas'");
+        return cartas;
     }
-
 }
