@@ -26,12 +26,7 @@ public class Descarte {
     }
 
     private Carta cartaSuperior() {
-        for (int i = MAXIMO_NUMERO_DESCARTES - 1; i >= 0; i--) {
-            if (cartas[i] != null) {
-                return cartas[i];
-            }
-        }
-        return null;
+        return cartas[MAXIMO_NUMERO_DESCARTES - 1];
     }
 
     public Carta[] obtenerCartas() {

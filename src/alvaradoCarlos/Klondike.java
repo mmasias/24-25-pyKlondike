@@ -75,8 +75,20 @@ public class Klondike {
 
     private void moverBarajaADescarte() {
         Carta carta = baraja.sacarCarta();
+
+        if (carta == null) {
+            System.out.println("No hay más cartas en la baraja para mover al descarte.");
+            return;
+        }
+    
+        if (carta.estaEnColumna(columnas)) {
+            System.out.println("La carta ya está en una columna. No se puede mover al descarte.");
+            return;
+        }
+        
         carta.voltear();
         descarte.añadirCarta(carta);
+        System.out.println("Carta movida al descarte: " + carta);
     }
 
     private void mostrarMenu() {

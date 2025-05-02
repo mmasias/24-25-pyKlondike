@@ -47,4 +47,13 @@ public class Carta {
         }
     }
 
+    public boolean estaEnColumna(Columna[] columnas) {
+        for (Columna columna: columnas){
+            if (columna.contieneCarta(this)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

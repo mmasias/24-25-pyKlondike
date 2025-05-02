@@ -23,4 +23,13 @@ public class Columna {
     public Carta cartaSuperior() {
         return cartas[cartas.length - 1];
     }
+
+    public boolean contieneCarta(Carta cartaEnColumna) {
+        for (Carta carta: cartas){
+            if (carta == cartaEnColumna){
+                return true;
+            }
+        }
+        return false;
+    }
 }
