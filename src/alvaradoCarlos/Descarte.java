@@ -2,7 +2,9 @@ package src.alvaradoCarlos;
 
 public class Descarte {
 
-    private final int MAXIMO_NUMERO_DESCARTES = 3;
+    private final int MAXIMO_NUMERO_CARTAS = 52;
+    private final int NUM_COLUMNAS = 7;
+    private final int MAXIMO_NUMERO_DESCARTES = MAXIMO_NUMERO_CARTAS - (NUM_COLUMNAS * (NUM_COLUMNAS + 1) / 2);
     private Carta[] cartas;
 
     public Descarte() {
@@ -25,8 +27,13 @@ public class Descarte {
         }
     }
 
-    private Carta cartaSuperior() {
-        return cartas[MAXIMO_NUMERO_DESCARTES - 1];
+    public Carta cartaSuperior() {
+        for (int i = cartas.length - 1; i >= 0; i--) {
+            if (cartas[i] != null) {
+                return cartas[i];
+            }
+        }
+        return null;
     }
 
     public Carta[] obtenerCartas() {
@@ -49,5 +56,31 @@ public class Descarte {
         }
 
         return cartasNoNulas;
+    }
+
+    public Carta sacarCarta() {
+        for (int i = MAXIMO_NUMERO_DESCARTES - 1; i >= 0; i--) {
+            if (cartas[i] != null) {
+                Carta carta = cartas[i];
+                cartas[i] = null;
+                return carta;
+            }
+        }
+        return null;
+    }
+
+    public boolean estaVacio() {
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                return false; 
+            }
+        }
+        return true;
+    }
+
+    public void vaciar() {
+        for (int i = 0; i < cartas.length; i++) {
+            cartas[i] = null;
+        }
     }
 }
