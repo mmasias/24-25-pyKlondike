@@ -59,8 +59,8 @@ public class Klondike {
     }
 
     private void imprimirTapete(Utilidades utilidades) {
-        baraja.imprimir();
-        descarte.imprimir();
+        baraja.mostrar();
+        descarte.mostrar();
         for (int palo = 0; palo < NUMERO_PALOS; palo++) {
             utilidades.imprimir((palo + 1) + "º Palo: ");
             palos[palo].imprimir();
