@@ -32,4 +32,13 @@ public class Columna {
         }
         return false;
     }
+
+    public boolean estaVacia() {
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                return false;
+            }
+        }
+        return true;
+    }
 }

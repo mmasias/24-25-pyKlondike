@@ -21,4 +21,11 @@ public class Palo {
         return simbolo;
     }
 
+    public boolean mismoColor(Palo otroPalo) {
+        boolean esRojo = this.denominacion.equals("Corazones") || this.denominacion.equals("Diamantes");
+        boolean otroEsRojo = otroPalo.denominacion.equals("Corazones") || otroPalo.denominacion.equals("Diamantes");
+    
+        return esRojo == otroEsRojo;
+    }
+
 }
