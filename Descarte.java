@@ -1,9 +1,9 @@
 public class Descarte {
-    private final int MAXIMO_NUMERO_DESCARTADAS = 3;
+    private final int MAXIMO_NUMERO_DESCARTES = 3;
     private Carta[] cartasDescartadas;
 
     public Descarte() {
-        this.cartasDescartadas = new Carta[MAXIMO_NUMERO_DESCARTADAS];
+        this.cartasDescartadas = new Carta[MAXIMO_NUMERO_DESCARTES];
     }
 
     public void añadirCarta(Carta carta) {
