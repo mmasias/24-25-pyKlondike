@@ -23,7 +23,7 @@ public class GameLauncher {
                 choice = scanner.nextInt();
             } catch (Exception e) {
                 System.out.println("Entrada no válida. Por favor ingrese un número.");
-                scanner.nextLine(); // Clear the buffer
+                scanner.nextLine(); 
                 continue;
             }
             
@@ -51,7 +51,6 @@ public class GameLauncher {
         Game game = new Game();
         game.play();
         
-        // After game ends, ask if player wants to play again
         System.out.print("\n¿Desea jugar otra partida? (s/n): ");
         String playAgain = scanner.next().toLowerCase();
         
@@ -87,8 +86,6 @@ public class GameLauncher {
         System.out.println("\nPresione Enter para continuar...");
         try {
             System.in.read();
-        } catch (Exception e) {
-            // Just continue if there's an exception
-        }
+        } catch (Exception e) {}
     }
 }

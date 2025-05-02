@@ -17,7 +17,6 @@ public class Game {
     private void initializeGame() {
         Deck deck = new Deck();
         
-        // Initialize tableaus
         tableaus = new Tableau[7];
         for (int i = 0; i < 7; i++) {
             Card[] tableauCards = new Card[i+1];
@@ -27,7 +26,6 @@ public class Game {
             tableaus[i] = new Tableau(tableauCards);
         }
         
-        // Add remaining cards to stock
         while (!deck.isEmpty()) {
             stock.addCard(deck.deal());
         }
@@ -219,10 +217,8 @@ public class Game {
         List<Card> stackToMove = tableaus[fromColumn].removeStack(fromIndex);
         
         if (stackToMove != null && tableaus[toColumn].placeStack(stackToMove)) {
-            // Success - already handled in the methods
         } else {
             System.out.println("Movimiento no válido.");
-            // Return the cards to the original column if the move failed
             if (stackToMove != null) {
                 tableaus[fromColumn].placeStack(stackToMove);
             }
@@ -252,10 +248,9 @@ public class Game {
             return;
         }
         
-        // Move all cards from waste back to stock (face down)
         while (!waste.isEmpty()) {
             Card card = waste.removeTopCard();
-            card.flip(); // Flip back to face down
+            card.flip();
             stock.addCard(card);
         }
     }
