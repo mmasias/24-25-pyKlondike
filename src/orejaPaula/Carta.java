@@ -36,7 +36,7 @@ public class Carta {
 
     @Override
     public String toString() {
-        if (!estaBocaArriba) return "[? ?]";
+        if (!estaBocaArriba) return "[?]";
         String[] valores = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         String simbolo = switch (palo) {
             case CORAZONES -> "C";
