@@ -1,26 +1,43 @@
 package src.alvaradoCarlos;
+
 public class Descarte {
+
     private final int MAXIMO_NUMERO_DESCARTES = 3;
-    private Carta[] cartasDescartadas;
+    private Carta[] cartas;
 
     public Descarte() {
-        this.cartasDescartadas = new Carta[MAXIMO_NUMERO_DESCARTES];
+        this.cartas = new Carta[MAXIMO_NUMERO_DESCARTES];
     }
 
     public void añadirCarta(Carta carta) {
-        for (int i = 0; i < cartasDescartadas.length; i++) {
-            if (cartasDescartadas[i] == null) {
-                cartasDescartadas[i] = carta;
-                return;
+        if (cartaSuperior() != null) {
+            for (int i = 0; i < MAXIMO_NUMERO_DESCARTES - 1; i++) {
+                cartas[i] = cartas[i + 1];
+            }
+            cartas[MAXIMO_NUMERO_DESCARTES - 1] = carta;
+        } else {
+            for (int i = 0; i < MAXIMO_NUMERO_DESCARTES; i++) {
+                if (cartas[i] == null) {
+                    cartas[i] = carta;
+                    return;
+                }
             }
         }
-        System.out.println("El descarte está lleno. No se puede añadir más cartas.");
+    }
+
+    private Carta cartaSuperior() {
+        for (int i = MAXIMO_NUMERO_DESCARTES - 1; i >= 0; i--) {
+            if (cartas[i] != null) {
+                return cartas[i];
+            }
+        }
+        return null;
     }
 
     public Carta[] obtenerCartas() {
         int contador = 0;
 
-        for (Carta carta : cartasDescartadas) {
+        for (Carta carta : cartas) {
             if (carta != null) {
                 contador++;
             }
@@ -29,7 +46,7 @@ public class Descarte {
         Carta[] cartasNoNulas = new Carta[contador];
         int indice = 0;
 
-        for (Carta carta : cartasDescartadas) {
+        for (Carta carta : cartas) {
             if (carta != null) {
                 cartasNoNulas[indice] = carta;
                 indice++;

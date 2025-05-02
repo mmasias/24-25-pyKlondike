@@ -64,14 +64,18 @@ public class Klondike {
 
     private void procesarOpcion(int opcion) {
         switch (opcion) {
-            case 1 -> moverBarajaADescarte();
-            case 9 -> System.exit(0);
-            default -> System.out.println("Opción no válida.");
+            case 1 ->
+                moverBarajaADescarte();
+            case 9 ->
+                System.exit(0);
+            default ->
+                System.out.println("Opción no válida.");
         }
     }
 
     private void moverBarajaADescarte() {
         Carta carta = baraja.sacarCarta();
+        carta.voltear();
         descarte.añadirCarta(carta);
     }
 
@@ -111,10 +115,15 @@ public class Klondike {
 
     private void mostrarDescarte() {
         System.out.print("Descarte: ");
-        for (Carta carta : baraja.cartasDeDescarte()) {
-            System.out.print(carta);
+        Carta[] cartasDescarte = descarte.obtenerCartas();
+        if (cartasDescarte.length == 0) {
+            System.out.println("[]");
+        } else {
+            for (Carta carta : cartasDescarte) {
+                System.out.print(carta + " ");
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     private void mostrarFundaciones() {
