@@ -5,7 +5,6 @@ public class Klondike {
     private Descarte descarte = new Descarte();
     private Palo[] palo = new Palo[4];
     private Columna[] columna = new Columna[7];
-   
 
     public void ejecutar() {
         inicializarEjemplo();
@@ -18,14 +17,27 @@ public class Klondike {
 
             System.out.print("Elige una opción [1-9]: ");
             int opcion = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
             if (opcion == 1) {
                 baraja.voltear(descarte);
             } else if (opcion == 2) {
                 System.out.println("Mover de Descarte a Palo (no implementado aún).");
             } else if (opcion == 3) {
-                System.out.println("Mover de Descarte a Columna (no implementado aún).");
+                if (descarte.estaVacio()) {
+                    System.out.println("No hay cartas en el descarte.");
+                } else {
+                    System.out.print("¿A qué columna deseas mover la carta? [1-7]: ");
+                    int col = scanner.nextInt();
+                    scanner.nextLine();
+                    if (col >= 1 && col <= 7) {
+                        Carta carta = descarte.quitarUltima();
+                        columna[col - 1].agregar(carta);
+                        System.out.println("Carta movida a la columna " + col + ".");
+                    } else {
+                        System.out.println("Columna inválida.");
+                    }
+                }
             } else if (opcion == 4) {
                 System.out.println("Mover de Palo a Columna (no implementado aún).");
             } else if (opcion == 5) {
@@ -45,7 +57,7 @@ public class Klondike {
         }
     }
 
-   private void mostrarEstado() {
+    private void mostrarEstado() {
         System.out.println("BARAJA: " + baraja);
         System.out.println("Descarte: " + descarte);
         for (int i = 0; i < 4; i++) {
@@ -80,25 +92,48 @@ public class Klondike {
     }
 
     private void inicializarEjemplo() {
-        baraja.agregar(new Carta("Q", PaloCarta.DIAMANTES, false));
-        baraja.agregar(new Carta("7", PaloCarta.DIAMANTES, false));
-        baraja.agregar(new Carta("9", PaloCarta.TREBOLES, false));
+    
+    String[] valores = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+    PaloCarta[] palos = { PaloCarta.CORAZONES, PaloCarta.DIAMANTES, PaloCarta.TREBOLES, PaloCarta.PICAS };
+    Carta[] todasLasCartas = new Carta[52];
+    int index = 0;
 
-        for (int i = 0; i < 4; i++) {
-            palo[i] = new Palo();
+    for (int i = 0; i < valores.length; i++) {
+        for (int j = 0; j < palos.length; j++) {
+            todasLasCartas[index++] = new Carta(valores[i], palos[j], false);
         }
-
-        for (int i = 0; i < 7; i++) {
-            columna[i] = new Columna();
-        }
-
-        
-        palo[0].agregar(new Carta("A", PaloCarta.CORAZONES, true));
-        palo[1].agregar(new Carta("A", PaloCarta.DIAMANTES, true));
-
-        columna[0].agregar(new Carta("3", PaloCarta.PICAS, true));
-        columna[1].agregar(new Carta("K", PaloCarta.CORAZONES, true));
     }
+
+    
+    mezclarCartas(todasLasCartas);
+
+    
+    for (int i = 0; i < todasLasCartas.length; i++) {
+        baraja.agregar(todasLasCartas[i]);
+    }
+
+    
+    for (int i = 0; i < 4; i++) {
+        palo[i] = new Palo();
+    }
+
+    for (int i = 0; i < 7; i++) {
+        columna[i] = new Columna();
+    }
+
+    
+    columna[0].agregar(new Carta("3", PaloCarta.PICAS, true));
+    columna[1].agregar(new Carta("K", PaloCarta.CORAZONES, true));
+    }
+
+    private void mezclarCartas(Carta[] cartas) {
+    for (int i = cartas.length - 1; i > 0; i--) {
+        int j = (int)(Math.random() * (i + 1));
+        Carta temp = cartas[i];
+        cartas[i] = cartas[j];
+        cartas[j] = temp;
+    }
+}
 
     public static void main(String[] args) {
         new Klondike().ejecutar();
