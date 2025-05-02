@@ -5,10 +5,12 @@ public class Baraja {
     private final int MAXIMO_NUMERO_CARTAS = 52;
     private Carta[] cartas;
     private Descarte descarte;
+    private int siguienteCarta;
 
     public Baraja() {
         this.cartas = new Carta[MAXIMO_NUMERO_CARTAS];
         this.descarte = new Descarte();
+        this.siguienteCarta = 0;
         inicializarCartas();
     }
 
@@ -58,30 +60,32 @@ public class Baraja {
                 indiceCarta++;
             }
         }
+
+        this.siguienteCarta = 28;
     }
 
     public Carta sacarCarta() {
-        for (int i = MAXIMO_NUMERO_CARTAS - 1; i >= 0; i--) {
-            if (cartas[i] != null) {
-                Carta carta = cartas[i];
-                cartas[i] = null;
-
-                descarte.añadirCarta(carta);
-                return carta;
-            }
+        if (siguienteCarta >= MAXIMO_NUMERO_CARTAS) {
+            return null;
         }
-        return null;
+        Carta carta = cartas[siguienteCarta];
+        cartas[siguienteCarta] = null;
+        siguienteCarta++;
+        return carta;
     }
-
+    
     public boolean estaVacia() {
-        if (cartas == null || MAXIMO_NUMERO_CARTAS == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return siguienteCarta >= MAXIMO_NUMERO_CARTAS;
     }
 
     public Carta[] cartasDeDescarte() {
         return descarte.obtenerCartas();
+    }
+
+    public void agregarCarta(Carta carta) {
+        if (siguienteCarta > 0) {
+            siguienteCarta--;
+            cartas[siguienteCarta] = carta;
+        }
     }
 }
