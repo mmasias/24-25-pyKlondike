@@ -46,36 +46,15 @@ public class Game {
             int option = scanner.nextInt();
             
             switch (option) {
-                case 1:
-                    moveStockToWaste();
-                    break;
-                case 2:
-                    moveWasteToFoundation();
-                    break;
-                case 3:
-                    moveWasteToTableau();
-                    break;
-                case 4:
-                    moveFoundationToTableau();
-                    break;
-                case 5:
-                    moveTableauToFoundation();
-                    break;
-                case 6:
-                    moveTableauToTableau();
-                    break;
-                case 7:
-                    flipTableauCard();
-                    break;
-                case 8:
-                    resetWasteToStock();
-                    break;
-                case 9:
-                    exit = true;
-                    System.out.println("¡Gracias por jugar!");
-                    break;
-                default:
-                    System.out.println("Opción no válida. Inténtalo de nuevo.");
+                case 1-> moveStockToWaste();
+                case 2-> moveWasteToFoundation();
+                case 3-> moveWasteToTableau();
+                case 4-> moveFoundationToTableau();
+                case 5-> moveTableauToFoundation();
+                case 6-> moveTableauToTableau();
+                case 7-> flipTableauCard();
+                case 8-> resetWasteToStock();
+                case 9->exit = !exit;
             }
             
             if (checkWin()) {
