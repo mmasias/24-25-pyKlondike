@@ -42,11 +42,7 @@ public class Baraja {
     }
 
     public Carta sacarCarta(){
-        if (tieneCartas()) {
-            return cartas[indiceCartaActual++];
-        } else {
-            return null;
-        }
+       return cartas[indiceCartaActual++];
     }
     
     public void agregarCarta(Carta carta) {
