@@ -80,6 +80,17 @@ public class Klondike {
 
     private void mostrarMenu() {
         System.out.println("=== MENÚ DEL JUEGO ===");
+
+        mostrarOpciones();
+        mostrarBaraja();
+        mostrarDescarte();
+        mostrarFundaciones();
+        mostrarColumnas();
+
+        System.out.print("\nElige una opción  [1-9]: ");
+    }
+
+    private void mostrarOpciones() {
         System.out.println("OPCIONES>");
         System.out.println("  1. Mover de Baraja a Descarte");
         System.out.println("  2. Mover de Descarte a Palo");
@@ -90,13 +101,6 @@ public class Klondike {
         System.out.println("  7. Voltear carta de Columna");
         System.out.println("  8. Voltear Descarte en Baraja");
         System.out.println("  9. Salir\n");
-
-        mostrarBaraja();
-        mostrarDescarte();
-        mostrarFundaciones();
-        mostrarColumnas();
-
-        System.out.print("\nElige una opción  [1-9]: ");
     }
 
     private void mostrarBaraja() {
