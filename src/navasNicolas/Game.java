@@ -1,6 +1,5 @@
 package navasNicolas;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
