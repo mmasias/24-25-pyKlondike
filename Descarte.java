@@ -28,7 +28,6 @@ public class Descarte {
         Carta[] cartasNoNulas = new Carta[contador];
         int indice = 0;
 
-        // Copiar las cartas no nulas al nuevo arreglo
         for (Carta carta : cartasDescartadas) {
             if (carta != null) {
                 cartasNoNulas[indice] = carta;
