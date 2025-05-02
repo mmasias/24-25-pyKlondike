@@ -6,6 +6,7 @@ public class Carta {
     private boolean visible;
 
     final String[] palos = {"♥", "♦", "♣", "♠"};
+    final String[] valores = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
 
     public Carta(int palo, int valor) {
         this.PALO = palo;
@@ -38,11 +39,20 @@ public class Carta {
 
     private String parseValor() {
         return switch (VALOR) {
-            case 1 -> "A";
-            case 11 -> "J";
-            case 12 -> "Q";
-            case 13 -> "K";
-            default -> String.valueOf(VALOR);
+            case 0 -> valores[0];
+            case 1 -> valores[1];
+            case 2 -> valores[2];
+            case 3 -> valores[3];
+            case 4 -> valores[4];
+            case 5 -> valores[5];
+            case 6 -> valores[6];
+            case 7 -> valores[7];
+            case 8 -> valores[8];
+            case 9 -> valores[9];
+            case 10 -> valores[10];
+            case 11 -> valores[11];
+            case 12 -> valores[12];
+            default -> "Error";
         };
     }
 
