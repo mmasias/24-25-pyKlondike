@@ -12,8 +12,6 @@ public class Palo {
         return simbolo;
     }
 
-    
-
     public String toString(){
         if (denominacion == "Corazones"){
             return "♥️";
