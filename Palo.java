@@ -12,18 +12,12 @@ public class Palo {
         return simbolo;
     }
 
+    public String denominacion(){
+        return denominacion;
+    }
+
     public String toString(){
-        if (denominacion == "Corazones"){
-            return "♥️";
-        } else if (denominacion == "Diamantes"){
-            return "♦️";
-        } else if (denominacion == "Tréboles"){
-            return "♣️";
-        } else if (denominacion == "Picas") {
-            return "♠️";
-        } else {
-            return null;
-        }
+        return simbolo;
     }
 
 }
