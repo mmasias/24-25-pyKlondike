@@ -54,6 +54,13 @@ public class Klondike {
     private void prepararBaraja(){
         baraja.mezclar();
         baraja.repartir(columnas);
+
+        for (Columna columna : columnas) {
+            Carta[] cartas = columna.cartas();
+            if (cartas.length > 0) {
+                cartas[cartas.length - 1].voltear();
+            }
+        }
     }
 
     private void procesarOpcion(int opcion) {
