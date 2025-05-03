@@ -41,4 +41,8 @@ public class Fundacion {
         nuevoCartas[cartas.length] = carta;
         cartas = nuevoCartas;
     }
+
+    public boolean estaCompleta() {
+        return cartas.length == 13;
+    }
 }
