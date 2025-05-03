@@ -33,8 +33,21 @@ public class Klondike {
             int opcion = scanner.nextInt();
             scanner.nextLine();
             procesarOpcion(opcion);
+            if (haGanado()){
+                System.out.println("Ha ganado el Klondike mas dificil del mundo!!");
+                juegoActivo = false;
+            }
         }
         System.out.println("¡Juego terminado!");
+    }
+
+    private boolean haGanado() {
+        for (Fundacion fundacion : fundaciones) {
+            if (!fundacion.estaCompleta()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void inicializarColumnas() {
@@ -75,6 +88,14 @@ public class Klondike {
                 moverDescarteAColumna();
             case 4 ->
                 moverDePaloAColumna();
+            case 5 ->
+                moverDeColumnaAPalo();
+            case 6 ->
+                moverDeColumnaAColumna();
+            case 7 ->
+                voltearCartaDeColumna();
+            case 8 -> 
+                reiniciarBarajaDesdeDescarte();
             case 9 ->
                 System.exit(0);
             default ->
@@ -82,6 +103,57 @@ public class Klondike {
         }
     }
     
+    private void voltearCartaDeColumna() {
+        Columna columnaSeleccionada = pedirColumna();
+        if (columnaSeleccionada == null) return;
+
+        Carta carta = columnaSeleccionada.cartaSuperior();
+        if (carta.estaDescubierta()){
+            System.out.println("Carta superior ya descubierta");
+            return;
+        }
+
+        carta.voltear();
+    }
+
+    private void moverDeColumnaAColumna() {
+        Columna columnaOrigen = pedirColumna();
+        if (columnaOrigen == null) return;
+    
+        Carta carta = columnaOrigen.cartaSuperior();
+        if (carta == null || !carta.estaDescubierta()) {
+            System.out.println("No hay una carta descubierta para mover.");
+            return;
+        }
+    
+        Columna columnaDestino = pedirColumna();
+        if (columnaDestino == null) return;
+    
+        if (puedeMoverAColumna(carta, columnaDestino)) {
+            columnaOrigen.sacarCarta();
+            columnaDestino.agregarCarta(carta);
+            System.out.println("Carta movida a la columna.");
+        } else {
+            System.out.println("Movimiento inválido.");
+        }
+    }
+
+    private void moverDeColumnaAPalo() {
+        Columna columna = pedirColumna();
+        if (columna == null) return;
+    
+        Carta carta = columna.sacarCarta();
+        Fundacion fundacion = pedirFundacion();
+        if (fundacion == null) return;
+    
+        if (puedeMoverAFundacion(carta, fundacion)) {
+            fundacion.agregarCarta(carta);
+            System.out.println("Carta movida al palo.");
+        } else {
+            System.out.println("Movimiento inválido.");
+        }
+    }
+
     private void moverBarajaADescarte() {
         Carta carta = baraja.sacarCarta();
     
