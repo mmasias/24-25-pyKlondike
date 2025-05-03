@@ -12,7 +12,15 @@ public class Fundacion {
     }
 
     public int numeroCartas() {
-        return cartas.length;
+        int contadorCartas = 0;
+
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                contadorCartas++;
+            }
+        }
+
+        return contadorCartas;
     }
 
     public boolean estaVacia() {
@@ -33,6 +41,14 @@ public class Fundacion {
         return null;
     }
 
+    public Carta[] cartas(){
+        return cartas;
+    }
+
+    public Palo palo(){
+        return palo;
+    }
+
     public void agregarCarta(Carta carta) {
         Carta[] nuevoCartas = new Carta[cartas.length + 1];
         for (int i = 0; i < cartas.length; i++) {
@@ -43,6 +59,14 @@ public class Fundacion {
     }
 
     public boolean estaCompleta() {
-        return cartas.length == 13;
+        int contadorCartas = 0;
+
+        for (Carta carta : cartas) {
+            if (carta != null) {
+                contadorCartas++;
+            }
+        }
+
+        return contadorCartas == MAXIMO_CARTAS_FUNDACION;
     }
 }

@@ -42,7 +42,9 @@ public class Klondike {
     }
 
     private boolean haGanado() {
-        for (Fundacion fundacion : fundaciones) {
+        for (int i = 0; i < fundaciones.length; i++) {
+            Fundacion fundacion = fundaciones[i];
+            System.out.println("Fundación " + (i + 1) + " tiene " + fundacion.cartas().length + " cartas.");
             if (!fundacion.estaCompleta()) {
                 return false;
             }
