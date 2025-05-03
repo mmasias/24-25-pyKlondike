@@ -34,7 +34,7 @@ public class Columna {
         return false;
     }
 
-    public boolean estaVacia() {    
+    public boolean estaVacia() {
         for (Carta carta : cartas) {
             if (carta != null) {
                 return false;
@@ -44,30 +44,28 @@ public class Columna {
     }
 
     public Carta sacarCarta() {
-    if (estaVacia()) {
-        return null; // Si la columna está vacía, no hay carta para sacar
-    }
-
-    // Buscar la primera carta descubierta
-    for (int i = 0; i < cartas.length; i++) {
-        if (cartas[i].estaDescubierta()) { // Verificar si la carta está descubierta
-            Carta carta = cartas[i];
-
-            // Crear un nuevo arreglo sin la carta encontrada
-            Carta[] nuevoCartas = new Carta[cartas.length - 1];
-            for (int j = 0, k = 0; j < cartas.length; j++) {
-                if (j != i) { // Copiar todas las cartas excepto la encontrada
-                    nuevoCartas[k++] = cartas[j];
-                }
-            }
-
-            actualizarCartas(nuevoCartas); // Actualizar el arreglo de cartas
-            return carta; // Devolver la carta encontrada
+        if (estaVacia()) {
+            return null;
         }
-    }
 
-    return null; // Si no hay cartas descubiertas, devolver null
-}
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i].estaDescubierta()) {
+                Carta carta = cartas[i];
+
+                Carta[] nuevoCartas = new Carta[cartas.length - 1];
+                for (int j = 0, k = 0; j < cartas.length; j++) {
+                    if (j != i) {
+                        nuevoCartas[k++] = cartas[j];
+                    }
+                }
+
+                actualizarCartas(nuevoCartas);
+                return carta;
+            }
+        }
+
+        return null;
+    }
 
     private void actualizarCartas(Carta[] nuevoCartas) {
         cartas = nuevoCartas;
