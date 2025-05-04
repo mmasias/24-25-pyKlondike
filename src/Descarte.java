@@ -1,23 +1,75 @@
 class Descarte {
 
-        public void ponerCarta(Carta[] cartas) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'ponerCarta'");
-        }
+        private static final int MAXIMO_CARTAS = 26;
+        private final int CARTAS_VISIBLES = 3;
+        private final Carta[] CARTAS = new Carta[MAXIMO_CARTAS];
+        private int numeroCartas;
 
         public Carta sacarCarta() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'sacarCarta'");
+                if (numeroCartas > 0) {
+                        ultimaCarta().setVisible(false);
+                        Carta carta = CARTAS[numeroCartas - 1];
+                        CARTAS[numeroCartas - 1] = null;
+                        numeroCartas--;
+                        ultimaCarta().setVisible(true);
+                        return carta;
+                } else {
+                        return null;
+                }
+        }
+
+        public void ponerCarta(Carta[] cartas) {
+                int inicio = Math.max(0, numeroCartas - CARTAS_VISIBLES);
+                int fin = numeroCartas;
+                for (int i = inicio; i < fin; i++) {
+                        if (CARTAS[i] != null) {
+                                CARTAS[i].setVisible(false);
+                        }
+                }
+                for (Carta carta : cartas) {
+                        ponerCarta(carta);
+                }
+                inicio = Math.max(0, numeroCartas - CARTAS_VISIBLES);
+                fin = numeroCartas;
+                for (int i = inicio; i < fin; i++) {
+                        if (CARTAS[i] != null) {
+                                CARTAS[i].setVisible(true);
+                        }
+                }
+        }
+
+        private void ponerCarta(Carta carta) {
+                if (numeroCartas < MAXIMO_CARTAS) {
+                        this.CARTAS[numeroCartas] = carta;
+                        numeroCartas++;
+                } else {
+                        System.out.println("No se pueden poner más cartas en el descarte.");
+                }
+        }
+
+        private Carta ultimaCarta() {
+                if (numeroCartas > 0) {
+                        return CARTAS[numeroCartas - 1];
+                } else {
+                        return null;
+                }
         }
 
         public Carta[] vaciar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'vaciar'");
+                Carta[] cartasVacias = new Carta[numeroCartas];
+                for (int i = 0; i < numeroCartas; i++) {
+                        ultimaCarta().setVisible(false);
+                        cartasVacias[i] = CARTAS[i];
+                        CARTAS[i] = null;
+                }
+                numeroCartas = 0;
+                return cartasVacias;
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                for (int i = numeroCartas; i < numeroCartas - 3; i--) {
+                        System.out.println(CARTAS[i]);
+                }
         }
 
 }

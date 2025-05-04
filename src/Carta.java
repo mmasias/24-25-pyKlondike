@@ -38,4 +38,8 @@ public class Carta {
                 return palos[palo - 1];
         }
 
+        public void setVisible(boolean valor) {
+                this.visible = valor;
+        }
+
 }

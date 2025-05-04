@@ -1,8 +1,8 @@
 class Baraja {
 
-    private static final int NUM_CARTAS = 52;
-    private final Carta[] CARTAS = new Carta[NUM_CARTAS];
-    private int numeroCartas = NUM_CARTAS;
+    private static final int MAXIMO_CARTAS = 52;
+    private final Carta[] CARTAS = new Carta[MAXIMO_CARTAS];
+    private int numeroCartas = MAXIMO_CARTAS;
 
     public Baraja() {
         for (int palo = 1; palo <= 4; palo++) {
@@ -44,7 +44,7 @@ class Baraja {
 
     public void ponerCarta(Carta[] cartas) {
         for (Carta carta : cartas) {
-            if (numeroCartas < NUM_CARTAS) {
+            if (numeroCartas < MAXIMO_CARTAS) {
                 this.CARTAS[numeroCartas] = carta;
                 numeroCartas++;
             } else {
