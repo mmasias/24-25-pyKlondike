@@ -80,50 +80,19 @@ public class Tapete {
         public void moverBarajaDescarte() {
                 Carta[] cartas = baraja.sacarCarta(3);
                 descarte.ponerCarta(cartas);
-                if (cartas[0] != null) {
-                        baraja.ponerCarta(cartas);
-                }
+                baraja.ponerCarta(cartas);
         }
 
         public void moverDescartePalo() {
                 Carta carta = descarte.sacarCarta();
-                int palo = 0;
-                do {
-                        Palo paloActivo = palos[palo];
-                        if (paloActivo.estaVacio()) {
-                                paloActivo.ponerCarta(carta);
-                        } else {
-                                boolean esMismoPalo = paloActivo.getPalo() == carta.getPalo();
-                                boolean esUnValorMenos = paloActivo.getUltimaCarta().getValor() == carta.getValor() + 1;
-                                boolean movimientoValido = esMismoPalo
-                                                && esUnValorMenos;
-                                if (movimientoValido) {
-                                        paloActivo.ponerCarta(carta);
-                                }
-                        }
-                        palo++;
-                } while (palo < palos.length);
+                Palo palo = seleccionarPalo("A");
+                palo.ponerCarta(carta);
         }
 
         public void moverDescarteColumna() {
                 Carta carta = descarte.sacarCarta();
-                int columna = 0;
-                do {
-                        Columna columnaActiva = columnas[columna];
-                        if (columnaActiva.estaVacio()) {
-                                columnaActiva.ponerCarta(carta);
-                        } else {
-                                boolean esMismoPalo = columnaActiva.getPalo() == carta.getPalo();
-                                boolean esUnValorMenos = columnaActiva.getUltimaCarta().getValor() == carta.getValor()
-                                                + 1;
-                                boolean movimientoValido = esMismoPalo
-                                                && esUnValorMenos;
-                                if (movimientoValido) {
-                                        columnaActiva.ponerCarta(carta);
-                                }
-                        }
-                        columna++;
-                } while (columna < columnas.length);
+                Columna columna = seleccionarColumna("A");
+                columna.ponerCarta(carta);
         }
 
         public void moverPaloColumna() {
