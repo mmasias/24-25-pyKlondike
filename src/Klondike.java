@@ -7,7 +7,7 @@ public class Klondike {
     private boolean estaJugando = true;
 
     public Klondike() {
-        tapete = new Tapete();
+        tapete = new Tapete(jugador);
     }
 
     private void iniciarJugador() {

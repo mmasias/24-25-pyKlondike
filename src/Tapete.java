@@ -9,6 +9,8 @@ public class Tapete {
         private Palo[] palos;
         private Columna[] columnas;
 
+        private Jugador jugador;
+
         public Tapete() {
                 iniciarBaraja();
                 iniciarDescarte();
@@ -16,6 +18,11 @@ public class Tapete {
                 iniciarColumnas();
 
                 repartir();
+        }
+
+        public Tapete(Jugador jugador) {
+                this();
+                this.jugador = jugador;
         }
 
         private void iniciarDescarte() {
@@ -61,43 +68,97 @@ public class Tapete {
         }
 
         public void moverBarajaDescarte() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverBarajaDescarte'");
+                Carta[] cartas = baraja.sacarCarta(3);
+                descarte.ponerCarta(cartas);
         }
 
         public void moverDescartePalo() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverDescartePalo'");
+                Carta carta = descarte.sacarCarta();
+                int palo = 0;
+                do {
+                        Palo paloActivo = palos[palo];
+                        if (paloActivo.estaVacio()) {
+                                paloActivo.ponerCarta(carta);
+                        } else {
+                                boolean esMismoPalo = paloActivo.getPalo() == carta.getPalo();
+                                boolean esUnValorMenos = paloActivo.getUltimaCarta().getValor() == carta.getValor() + 1;
+                                boolean movimientoValido = esMismoPalo
+                                                && esUnValorMenos;
+                                if (movimientoValido) {
+                                        paloActivo.ponerCarta(carta);
+                                }
+                        }
+                        palo++;
+                } while (palo < palos.length);
         }
 
         public void moverDescarteColumna() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverDescarteColumna'");
+                Carta carta = descarte.sacarCarta();
+                int columna = 0;
+                do {
+                        Columna columnaActiva = columnas[columna];
+                        if (columnaActiva.estaVacio()) {
+                                columnaActiva.ponerCarta(carta);
+                        } else {
+                                boolean esMismoPalo = columnaActiva.getPalo() == carta.getPalo();
+                                boolean esUnValorMenos = columnaActiva.getUltimaCarta().getValor() == carta.getValor()
+                                                + 1;
+                                boolean movimientoValido = esMismoPalo
+                                                && esUnValorMenos;
+                                if (movimientoValido) {
+                                        columnaActiva.ponerCarta(carta);
+                                }
+                        }
+                        columna++;
+                } while (columna < columnas.length);
         }
 
         public void moverPaloColumna() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverPaloColumna'");
+                Palo palo = seleccionarPalo("De");
+                Columna columna = seleccionarColumna("A");
+
+                Carta carta = palo.sacarCarta();
+                columna.ponerCarta(carta);
         }
 
         public void moverColumnaPalo() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverColumnaPalo'");
+                Columna columna = seleccionarColumna("De");
+                Palo palo = seleccionarPalo("A");
+
+                Carta carta = columna.sacarCarta();
+                palo.ponerCarta(carta);
+        }
+
+        private Columna seleccionarColumna(String prefijo) {
+                int columna = jugador.pedirColumna(prefijo, columnas.length);
+                return columnas[columna];
+        }
+
+        private Palo seleccionarPalo(String prefijo) {
+                int palo = jugador.pedirPalo(prefijo, palos.length);
+                return palos[palo];
         }
 
         public void moverColumnaColumna() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverColumnaColumna'");
+                Columna columnaOrigen = seleccionarColumna("De");
+                Columna columnaDestino = seleccionarColumna("A");
+
+                Carta carta = columnaOrigen.sacarCarta();
+                columnaDestino.ponerCarta(carta);
         }
 
         public void voltearCartaColumna() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'voltearCartaColumna'");
+                Columna columna = seleccionarColumna("De");
+                columna.getUltimaCarta().voltear();
         }
 
         public void voltearDescarteBaraja() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'voltearDescarteBaraja'");
+                if (baraja.estaVacio()) {
+                        Carta[] cartas = descarte.vaciar();
+                        baraja.ponerCarta(cartas);
+                } else {
+                        System.out.println("La baraja no está vacía, no se puede voltear.");
+                }
         }
 
 }
