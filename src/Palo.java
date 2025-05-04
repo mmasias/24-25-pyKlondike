@@ -1,37 +1,51 @@
 class Palo {
 
-    public int getPalo() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        private final int CARTAS_MAXIMAS = 13;
+        private int palo;
+        private final Carta[] cartas = new Carta[CARTAS_MAXIMAS];
+        private int numeroCartas = 0;
 
-    public boolean estaVacio() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'estaVacio'");
-    }
+        public int getPalo() {
+                return palo;
+        }
 
-    public Carta getUltimaCarta() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getUltimaCarta'");
-    }
+        public boolean estaVacio() {
+                return numeroCartas == 0;
+        }
 
-    public void ponerCarta(Carta carta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'ponerCarta'");
-    }
+        public Carta getUltimaCarta() {
+                return cartas[numeroCartas];
+        }
 
-    public Carta sacarCarta() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'sacarCarta'");
-    }
+        public void ponerCarta(Carta carta) {
+                boolean cartaValida = carta.getPalo() == palo
+                                && carta.getValor() == cartas[numeroCartas].getValor() + 1
+                                && numeroCartas < CARTAS_MAXIMAS;
+                if (cartaValida) {
+                        cartas[numeroCartas] = carta;
+                        numeroCartas++;
+                }
+        }
 
-    public void mostrar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
-    }
+        public Carta sacarCarta() {
+                if (numeroCartas != 0) {
+                        Carta carta = cartas[numeroCartas];
+                        numeroCartas--;
+                        return carta;
+                } else {
+                        return null;
+                }
+        }
 
-    public boolean estaCompleto() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'estaCompleto'");
-    }
+        public void mostrar() {
+                Utilidades.mostrarln("Palo " + palo + ": ");
+                for (int carta = 0; carta < numeroCartas; carta++) {
+                        cartas[carta].mostrar();
+                }
+        }
+
+        public boolean estaCompleto() {
+                return numeroCartas == CARTAS_MAXIMAS;
+        }
 
 }
