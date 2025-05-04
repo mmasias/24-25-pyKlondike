@@ -18,8 +18,8 @@ class Palo {
         }
 
         public void ponerCarta(Carta carta) {
-                boolean cartaValida = carta.getPalo() == palo
-                                && carta.getValor() == cartas[numeroCartas].getValor() + 1
+                boolean cartaValida = carta.getPALO() == palo
+                                && carta.getVALOR() == cartas[numeroCartas].getVALOR() + 1
                                 && numeroCartas < CARTAS_MAXIMAS;
                 if (cartaValida) {
                         cartas[numeroCartas] = carta;

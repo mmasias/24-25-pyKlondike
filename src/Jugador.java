@@ -1,13 +1,6 @@
 
 public class Jugador {
 
-        private String nombre;
-
-        public void preguntarNombre() {
-                Utilidades.mostrar("Ingrese su nombre: ");
-                nombre = Utilidades.leerString();
-        }
-
         public int elegirOpcion(Opciones opciones) {
                 Utilidades.mostrar("Elija una opción [1-" + opciones.numeroDeOpciones() + "]: ");
                 int opcion = Utilidades.leerInt(opciones.numeroDeOpciones());

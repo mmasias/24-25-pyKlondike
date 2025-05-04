@@ -1,22 +1,22 @@
 
 public class Carta {
 
-        private int palo;
-        private int valor;
+        private final int PALO;
+        private final int VALOR;
         private boolean visible;
 
         public Carta(int palo, int valor) {
-                this.palo = palo;
-                this.valor = valor;
+                this.PALO = palo;
+                this.VALOR = valor;
                 this.visible = false;
         }
 
-        public int getPalo() {
-                return palo;
+        public int getPALO() {
+                return PALO;
         }
 
-        public int getValor() {
-                return valor;
+        public int getVALOR() {
+                return VALOR;
         }
 
         public void voltear() {
@@ -29,13 +29,13 @@ public class Carta {
 
         private String parseValor() {
                 final String[] valores = { "As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
-                return valores[valor - 1];
+                return valores[VALOR - 1];
 
         }
 
         private String parsePalo() {
                 final String[] palos = { "Corazones", "Diamantes", "Tréboles", "Picas" };
-                return palos[palo - 1];
+                return palos[PALO - 1];
         }
 
         public void setVisible(boolean valor) {
