@@ -1,24 +1,29 @@
 
 public class Jugador {
 
+        private String nombre;
+
         public void preguntarNombre() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'preguntarNombre'");
+                Utilidades.mostrar("Ingrese su nombre: ");
+                nombre = Utilidades.leerString();
         }
 
-        public int elegirOpcion(Object opciones) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'elegirOpcion'");
+        public int elegirOpcion(Opciones opciones) {
+                Utilidades.mostrar("Elija una opción [1-" + opciones.numeroDeOpciones() + "]: ");
+                int opcion = Utilidades.leerInt(opciones.numeroDeOpciones());
+                return opcion - 1;
         }
 
         public int pedirColumna(String prefijo, int columnas) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'pedirColumna'");
+                Utilidades.mostrar(prefijo + "qué columna? [1-" + columnas + "]: ");
+                int columna = Utilidades.leerInt(columnas);
+                return columna - 1;
         }
 
         public int pedirPalo(String prefijo, int length) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'pedirPalo'");
+                Utilidades.mostrar(prefijo + "qué palo? [1-" + length + "]: ");
+                int palo = Utilidades.leerInt(length);
+                return palo - 1;
         }
 
 }
