@@ -5,6 +5,12 @@ public class Carta {
         private int valor;
         private boolean visible;
 
+        public Carta(int palo, int valor) {
+                this.palo = palo;
+                this.valor = valor;
+                this.visible = false;
+        }
+
         public int getPalo() {
                 return palo;
         }
