@@ -1,21 +1,27 @@
 public class Klondike {
 
-    private Jugador jugador;
+    private final Jugador JUGADOR;
     private final Tapete TAPETE;
-    private Opciones opciones;
+    private final Opciones OPCIONES;
 
     private boolean estaJugando = true;
 
     public Klondike() {
-        TAPETE = new Tapete(jugador);
+    	JUGADOR = new Jugador();
+    	OPCIONES = new Opciones();
+    	TAPETE = new Tapete(JUGADOR);
     }
 
     public void jugar() {
         while (jugando()) {
-            opciones.imprimir();
+            Utilidades.saltarLinea(2);
+
+            OPCIONES.imprimir();
+
+            Utilidades.saltarLinea(2);
+
             TAPETE.mostrar();
-            int opcion = jugador.elegirOpcion(opciones);
-            seleccionarAccion(opcion);
+            seleccionarAccion(JUGADOR.elegirOpcion(OPCIONES));
         }
     }
 

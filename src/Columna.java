@@ -12,13 +12,20 @@ class Columna {
                         }
                 }
                 numCartas = cartas.length;
+                if (numCartas > 0) {
+                        CARTAS[numCartas - 1].voltear();
+                }
         }
 
         public Carta sacarCarta() {
                 if (numCartas > 0) {
+                        getUltimaCarta().setVisible(false);
                         Carta carta = CARTAS[numCartas - 1];
                         CARTAS[numCartas - 1] = null;
                         numCartas--;
+                        if (numCartas > 0) {
+                                getUltimaCarta().setVisible(true);
+                        }
                         return carta;
                 } else {
                         return null;
@@ -27,8 +34,10 @@ class Columna {
 
         public void ponerCarta(Carta carta) {
                 if (numCartas < MAX_CARDS) {
+                        getUltimaCarta().voltear();
                         CARTAS[numCartas] = carta;
                         numCartas++;
+                        getUltimaCarta().voltear();
                 } else {
                         System.out.println("No se pueden poner más cartas en la columna.");
                 }
@@ -44,7 +53,7 @@ class Columna {
 
         public int getPalo() {
                 if (numCartas > 0) {
-                        return CARTAS[numCartas - 1].getPALO();
+                        return CARTAS[numCartas - 1].getPalo();
                 } else {
                         return -1;
                 }

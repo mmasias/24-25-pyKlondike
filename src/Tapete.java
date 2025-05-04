@@ -33,10 +33,10 @@ public class Tapete {
         }
 
         private void iniciarPalos() {
-                palos = new Palo[NUM_PALOS];
-                for (Palo palo : palos) {
-                        palo = new Palo();
-                }
+        	palos = new Palo[NUM_PALOS];
+        	for (int i = 0; i < palos.length; i++) {
+        		palos[i] = new Palo();
+        	}
         }
 
         private void iniciarColumnas() {
@@ -49,17 +49,23 @@ public class Tapete {
         }
 
         public void mostrar() {
-                Utilidades.mostrarln("Baraja: ");
+                Utilidades.mostrar("Baraja: ");
                 baraja.mostrar();
-                Utilidades.mostrarln("Descarte: ");
+                Utilidades.saltarLinea(2);
+
+                Utilidades.mostrar("Descarte: ");
                 descarte.mostrar();
-                for (int palo = 0; palo < palos.length; palo++) {
-                        Utilidades.mostrarln("Palo " + palo + ": ");
-                        palos[palo].mostrar();
+                Utilidades.saltarLinea(2);
+
+                for (int palo = 1; palo <= palos.length; palo++) {
+                        Utilidades.mostrar("Palo " + palo + ": ");
+                        palos[palo-1].mostrar();
+                        Utilidades.saltarLinea(2);
                 }
-                for (int columna = 0; columna < columnas.length; columna++) {
-                        Utilidades.mostrarln("Columna " + columna + ": ");
-                        columnas[columna].mostrar();
+                for (int columna = 1; columna <= columnas.length; columna++) {
+                        Utilidades.mostrar("Columna " + columna + ": ");
+                        columnas[columna-1].mostrar();
+                        Utilidades.saltarLinea(2);
                 }
         }
 
@@ -80,7 +86,6 @@ public class Tapete {
         public void moverBarajaDescarte() {
                 Carta[] cartas = baraja.sacarCarta(3);
                 descarte.ponerCarta(cartas);
-                baraja.ponerCarta(cartas);
         }
 
         public void moverDescartePalo() {

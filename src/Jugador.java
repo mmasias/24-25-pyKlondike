@@ -1,10 +1,9 @@
-
 public class Jugador {
 
         public int elegirOpcion(Opciones opciones) {
                 Utilidades.mostrar("Elija una opción [1-" + opciones.numeroDeOpciones() + "]: ");
                 int opcion = Utilidades.leerInt(opciones.numeroDeOpciones());
-                return opcion - 1;
+                return opcion;
         }
 
         public int pedirColumna(String prefijo, int columnas) {

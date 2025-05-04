@@ -4,21 +4,19 @@ import java.util.Scanner;
 
 public class Utilidades {
 
+        static Scanner scanner = new Scanner(System.in);
+
         public static void mostrar(String string) {
                 System.out.print(string);
         }
 
         public static String leerString() {
-                Scanner scanner = new Scanner(System.in);
                 String input = scanner.nextLine();
-                scanner.close();
                 return input;
         }
 
         public static int leerInt() {
-                Scanner scanner = new Scanner(System.in);
                 int input = scanner.nextInt();
-                scanner.close();
                 return input;
         }
 
@@ -35,6 +33,12 @@ public class Utilidades {
 
         public static void mostrarln(String string) {
                 System.out.println(string);
+        }
+
+        public static void saltarLinea(int numeroDeLineas) {
+                for (int linea = 0; linea < numeroDeLineas; linea++) {
+                        mostrarln("");
+                }
         }
 
 }

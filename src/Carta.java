@@ -11,7 +11,7 @@ public class Carta {
                 this.visible = false;
         }
 
-        public int getPALO() {
+        public int getPalo() {
                 return PALO;
         }
 
@@ -24,7 +24,7 @@ public class Carta {
         }
 
         public void mostrar() {
-                System.out.println(visible ? "[" + parsePalo() + " " + parseValor() + "]" : "[? ?]");
+                Utilidades.mostrar(visible ? "[" + parsePalo() + " " + parseValor() + "]" : "[? ?]");
         }
 
         private String parseValor() {

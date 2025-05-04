@@ -58,9 +58,11 @@ class Baraja {
     }
 
     public void mostrar() {
-        for (int carta = 0; carta < numeroCartas; carta++) {
-            CARTAS[carta].mostrar();
-        }
+        getUltimaCarta().mostrar();
+    }
+
+    private Carta getUltimaCarta() {
+        return CARTAS[numeroCartas - 1];
     }
 
 }

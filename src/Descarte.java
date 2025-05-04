@@ -8,10 +8,12 @@ class Descarte {
         public Carta sacarCarta() {
                 if (numeroCartas > 0) {
                         ultimaCarta().setVisible(false);
-                        Carta carta = CARTAS[numeroCartas - 1];
-                        CARTAS[numeroCartas - 1] = null;
+                        Carta carta = CARTAS[numeroCartas];
+                        CARTAS[numeroCartas] = null;
                         numeroCartas--;
-                        ultimaCarta().setVisible(true);
+                        if (numeroCartas > 0) {
+                                ultimaCarta().setVisible(true);
+                        }
                         return carta;
                 } else {
                         return null;
@@ -67,8 +69,10 @@ class Descarte {
         }
 
         public void mostrar() {
-                for (int i = numeroCartas; i < numeroCartas - 3; i--) {
-                        System.out.println(CARTAS[i]);
+                for (int i = numeroCartas - 1; i >= Math.max(0, numeroCartas - 3); i--) {
+                        if (CARTAS[i] != null) {
+                                CARTAS[i].mostrar();
+                        }
                 }
         }
 

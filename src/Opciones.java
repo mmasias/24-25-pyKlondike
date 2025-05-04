@@ -14,9 +14,9 @@ public class Opciones {
         };
 
         public void imprimir() {
-                Utilidades.mostrar("Opciones> ");
+                Utilidades.mostrarln("Opciones> ");
                 for (int i = 0; i < opciones.length; i++) {
-                        Utilidades.mostrar((i + 1) + ". " + opciones[i]);
+                        Utilidades.mostrarln((i + 1) + ". " + opciones[i]);
                 }
         }
 
