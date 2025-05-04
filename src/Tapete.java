@@ -16,7 +16,6 @@ public class Tapete {
                 iniciarDescarte();
                 iniciarPalos();
                 iniciarColumnas();
-
         }
 
         public Tapete(Jugador jugador) {
@@ -50,13 +49,32 @@ public class Tapete {
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                Utilidades.mostrarln("Baraja: ");
+                baraja.mostrar();
+                Utilidades.mostrarln("Descarte: ");
+                descarte.mostrar();
+                for (int palo = 0; palo < palos.length; palo++) {
+                        Utilidades.mostrarln("Palo " + palo + ": ");
+                        palos[palo].mostrar();
+                }
+                for (int columna = 0; columna < columnas.length; columna++) {
+                        Utilidades.mostrarln("Columna " + columna + ": ");
+                        columnas[columna].mostrar();
+                }
         }
 
         public boolean jugando() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'jugando'");
+                for (Palo palo : palos) {
+                        if (palo.estaCompleto()) {
+                                return false;
+                        }
+                }
+                for (Columna columna : columnas) {
+                        if (columna.estaCompleto()) {
+                                return false;
+                        }
+                }
+                return true;
         }
 
         public void moverBarajaDescarte() {

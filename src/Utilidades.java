@@ -33,4 +33,9 @@ public class Utilidades {
                 return respuesta;
         }
 
+        public static void mostrarln(String string) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'mostrarln'");
+        }
+
 }
