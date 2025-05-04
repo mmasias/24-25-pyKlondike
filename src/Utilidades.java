@@ -34,8 +34,7 @@ public class Utilidades {
         }
 
         public static void mostrarln(String string) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrarln'");
+                System.out.println(string);
         }
 
 }
