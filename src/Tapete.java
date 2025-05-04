@@ -17,7 +17,6 @@ public class Tapete {
                 iniciarPalos();
                 iniciarColumnas();
 
-                repartir();
         }
 
         public Tapete(Jugador jugador) {
@@ -43,17 +42,10 @@ public class Tapete {
 
         private void iniciarColumnas() {
                 columnas = new Columna[NUM_COLUMNAS];
-                for (Columna columna : columnas) {
-                        columna = new Columna();
-                }
-        }
-
-        private void repartir() {
                 final int[] CARTAS_COLUMNA = { 1, 1, 3, 3, 5, 6, 7 };
                 for (int columna = 0; columna < columnas.length; columna++) {
-                        for (int carta = 0; carta < CARTAS_COLUMNA[columna]; carta++) {
-                                columnas[columna].ponerCarta(baraja.sacarCarta());
-                        }
+                        Carta[] cartas = baraja.sacarCarta(CARTAS_COLUMNA[columna]);
+                        columnas[columna] = new Columna(cartas);
                 }
         }
 
@@ -70,6 +62,9 @@ public class Tapete {
         public void moverBarajaDescarte() {
                 Carta[] cartas = baraja.sacarCarta(3);
                 descarte.ponerCarta(cartas);
+                if (cartas[0] != null) {
+                        baraja.ponerCarta(cartas);
+                }
         }
 
         public void moverDescartePalo() {
