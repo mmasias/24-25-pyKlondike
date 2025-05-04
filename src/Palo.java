@@ -9,12 +9,12 @@ class Palo {
         }
 
         public Carta getUltimaCarta() {
-                return CARTAS[numeroCartas];
+                return numeroCartas > 0 ? CARTAS[numeroCartas - 1] : null;
         }
 
         public void ponerCarta(Carta carta) {
                 boolean cartaValida = getUltimaCarta() == null || (carta.getPalo() == getUltimaCarta().getPalo()
-                                && carta.getVALOR() == CARTAS[numeroCartas].getVALOR() + 1
+                                && carta.getValor() == CARTAS[numeroCartas - 1].getValor() + 1
                                 && numeroCartas < CARTAS_MAXIMAS);
                 if (cartaValida) {
                         CARTAS[numeroCartas] = carta;
@@ -25,7 +25,7 @@ class Palo {
 
         public Carta sacarCarta() {
                 if (numeroCartas != 0) {
-                        Carta carta = CARTAS[numeroCartas];
+                        Carta carta = CARTAS[numeroCartas - 1];
                         numeroCartas--;
                         return carta;
                 } else {

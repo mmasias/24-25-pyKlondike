@@ -11,7 +11,6 @@ class Columna {
                                 numCartas++;
                         }
                 }
-                numCartas = cartas.length;
                 if (numCartas > 0) {
                         CARTAS[numCartas - 1].voltear();
                 }
@@ -34,10 +33,23 @@ class Columna {
 
         public void ponerCarta(Carta carta) {
                 if (numCartas < MAX_CARDS) {
-                        getUltimaCarta().voltear();
-                        CARTAS[numCartas] = carta;
-                        numCartas++;
-                        getUltimaCarta().voltear();
+                        if (numCartas == 0) {
+                                final int K = 13;
+                                if (carta.getValor() == K) {
+                                        CARTAS[numCartas] = carta;
+                                        numCartas++;
+                                } else {
+                                        System.out.println("Solo se pueden colocar cartas K en una columna vacía.");
+                                }
+                        } else if (carta.getValor() == getUltimaCarta().getValor() - 1 &&
+                                        carta.getColor() != getUltimaCarta().getColor()) {
+                                getUltimaCarta().voltear();
+                                CARTAS[numCartas] = carta;
+                                numCartas++;
+                                getUltimaCarta().voltear();
+                        } else {
+                                System.out.println("La carta no cumple las reglas para ser colocada en la columna.");
+                        }
                 } else {
                         System.out.println("No se pueden poner más cartas en la columna.");
                 }

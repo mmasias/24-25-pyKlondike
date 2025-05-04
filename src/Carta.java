@@ -5,6 +5,11 @@ public class Carta {
         private final int VALOR;
         private boolean visible;
 
+        final static int CORAZONES = 1, DIAMANTES = 2, TREBOLES = 3, PICAS = 4;
+        final static int AS = 1, DOS = 2, TRES = 3, CUATRO = 4, CINCO = 5, SEIS = 6, SIETE = 7, OCHO = 8, NUEVE = 9,
+                        DIEZ = 10, J = 11, Q = 12, K = 13;
+        final int NEGRO = 1, ROJO = 0;
+
         public Carta(int palo, int valor) {
                 this.PALO = palo;
                 this.VALOR = valor;
@@ -15,7 +20,7 @@ public class Carta {
                 return PALO;
         }
 
-        public int getVALOR() {
+        public int getValor() {
                 return VALOR;
         }
 
@@ -40,6 +45,10 @@ public class Carta {
 
         public void setVisible(boolean valor) {
                 this.visible = valor;
+        }
+
+        public int getColor() {
+                return (PALO == CORAZONES || PALO == DIAMANTES) ? ROJO : NEGRO;
         }
 
 }

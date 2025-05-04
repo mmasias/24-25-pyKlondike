@@ -8,8 +8,8 @@ class Descarte {
         public Carta sacarCarta() {
                 if (numeroCartas > 0) {
                         ultimaCarta().setVisible(false);
-                        Carta carta = CARTAS[numeroCartas];
-                        CARTAS[numeroCartas] = null;
+                        Carta carta = CARTAS[numeroCartas - 1];
+                        CARTAS[numeroCartas - 1] = null;
                         numeroCartas--;
                         if (numeroCartas > 0) {
                                 ultimaCarta().setVisible(true);
