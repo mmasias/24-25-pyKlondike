@@ -51,13 +51,15 @@ class Columna {
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                for (Carta carta : cartas) {
+                        if (carta != null) {
+                                carta.mostrar();
+                        }
+                }
         }
 
         public boolean estaCompleto() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'estaCompleto'");
+                return numCartas == MAX_CARDS;
         }
 
 }
