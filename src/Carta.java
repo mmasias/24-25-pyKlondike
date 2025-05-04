@@ -1,22 +1,35 @@
 
 public class Carta {
 
-    public int getPalo() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        private int palo;
+        private int valor;
+        private boolean visible;
 
-    public int getValor() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+        public int getPalo() {
+                return palo;
+        }
 
-    public void voltear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'voltear'");
-    }
+        public int getValor() {
+                return valor;
+        }
 
-    public void mostrar() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
-    }
+        public void voltear() {
+                visible = !visible;
+        }
+
+        public void mostrar() {
+                System.out.println(visible ? "[" + parsePalo() + " " + parseValor() + "]" : "[? ?]");
+        }
+
+        private String parseValor() {
+                final String[] valores = { "As", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
+                return valores[valor - 1];
+
+        }
+
+        private String parsePalo() {
+                final String[] palos = { "Corazones", "Diamantes", "Tréboles", "Picas" };
+                return palos[palo - 1];
+        }
 
 }
