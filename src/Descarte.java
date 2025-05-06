@@ -12,12 +12,6 @@ public class Descarte {
                 }
         }
 
-        public void moverCarta(Baraja baraja) {
-                if (baraja.verificar(ultima())) {
-                        baraja.poner(sacar());
-                }
-        }
-
         public void poner(Carta carta) {
                 ultima++;
                 cartas[ultima] = carta;
@@ -43,6 +37,11 @@ public class Descarte {
 
         public void vaciarEn(Baraja baraja) {
                 while (ultima > 0) baraja.poner(sacar());
+        }
+
+        public boolean valida(Carta ultima2) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'valida'");
         }
 
 }
