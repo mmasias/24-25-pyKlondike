@@ -1,5 +1,5 @@
 
-public class Opciones {
+public class Menu {
 
         public void mostrar() {
                 // TODO Auto-generated method stub
