@@ -9,6 +9,8 @@ public class Klondike {
         private Palo[] palos;
         private Columna[] columnas;
 
+        private boolean jugando = true;
+
         public Klondike() {
                 iniciarBaraja();
                 iniciarDescarte();
@@ -49,8 +51,6 @@ public class Klondike {
                         columna.mostrar();
                 }
         }
-
-        private boolean jugando = true;
 
         public void jugar() {
                 do {
