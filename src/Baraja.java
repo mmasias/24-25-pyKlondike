@@ -1,38 +1,52 @@
 
 public class Baraja {
 
-        private static final int CARTAS_MAXIMAS = 13;
+        private static final int CARTAS_MAXIMAS = 52;
         private Carta[] cartas = new Carta[CARTAS_MAXIMAS];
         private int ultima = 0;
 
+        public Baraja() {
+                for (int palo = 1; palo <= 4; palo++) {
+                        for (int valor = 1; valor <= 13; valor++) {
+                                cartas[palo*valor] = new Carta(palo-1, valor-1);
+                        }
+                }
+        }
+
         public void barajar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'barajar'");
+                for (int index = 0; index < cartas.length; index++) {
+                        int aleatorio = (int) (Math.random() * cartas.length);
+                        Carta carta = cartas[index];
+                        cartas[index] = cartas[aleatorio];
+                        cartas[aleatorio] = carta;
+                }
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                ultima().mostrar();
+        }
+
+        private Carta ultima() {
+                return cartas[ultima];
         }
 
         public void moverCarta(Descarte descarte) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+                if (descarte.valida(ultima())) descarte.poner(sacar());
         }
 
-        public boolean verificar(Carta carta) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'verificar'");
+        private Carta sacar() {
+                Carta carta = ultima();
+                ultima--;
+                return carta;
         }
 
         public void poner(Carta carta) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'poner'");
+                ultima++;
+                cartas[ultima] = carta;
         }
 
         public void moverCarta(Columna columna) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+                if (columna.verificar(ultima())) columna.poner(sacar());
         }
 
 }
