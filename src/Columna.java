@@ -25,4 +25,14 @@ public class Columna {
                 throw new UnsupportedOperationException("Unimplemented method 'ultimaCarta'");
         }
 
+        public boolean verificar(Carta carta) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'verificar'");
+        }
+
+        public void poner(Carta carta) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'poner'");
+        }
+
 }

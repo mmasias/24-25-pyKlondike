@@ -16,4 +16,14 @@ public class Baraja {
                 throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
         }
 
+        public boolean verificar(Carta carta) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'verificar'");
+        }
+
+        public void poner(Carta carta) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'poner'");
+        }
+
 }

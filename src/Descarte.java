@@ -1,34 +1,50 @@
 
 public class Descarte {
 
+        private Carta[] cartas;
+        private int ultima = 0;
+        private final int CARTAS_VISIBLES = 3;
+
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                Consola.mostrar("Baraja: ");
+                for (int i = 0; i < CARTAS_VISIBLES; i++) {
+                        cartas[ultima-i].mostrar();
+                }
         }
 
-        public Object moverCarta(Baraja baraja) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+        public void moverCarta(Baraja baraja) {
+                if (baraja.verificar(ultimaCarta())) {
+                        baraja.poner(sacar());
+                }
         }
 
-        public Object moverCarta(Columna elegirColumna) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+        public void poner(Carta carta) {
+                ultima++;
+                cartas[ultima] = carta;
+                ultimaCarta().voltear();
         }
 
-        public Object moverCarta(Palo elegirPalo) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+        private Carta sacar() {
+                Carta carta = ultimaCarta();
+                carta.voltear();
+                ultima--;
+                return carta;
         }
 
-        public Object vaciar(Baraja baraja) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'vaciar'");
+        public Carta ultimaCarta() {
+                return cartas[ultima];
         }
 
-        public Object vaciarEn(Baraja baraja) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'vaciarEn'");
+        public void moverCarta(Columna columna) {
+                if (columna.verificar(ultimaCarta())) columna.poner(sacar());
+        }
+
+        public void moverCarta(Palo palo) {
+                if (palo.verificar(ultimaCarta())) palo.poner(sacar());
+        }
+
+        public void vaciarEn(Baraja baraja) {
+                while (ultima > 0) baraja.poner(sacar());
         }
 
 }
