@@ -37,8 +37,7 @@ public class Carta {
         }
 
         public int color() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'color'");
+                return (palo == 0||palo == 1) ? 1 : 0;
         }
 
 }
