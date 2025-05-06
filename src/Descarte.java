@@ -36,7 +36,11 @@ public class Descarte {
         }
 
         public void vaciarEn(Baraja baraja) {
-                while (ultima > 0) baraja.poner(sacar());
+                while (ultima > 0) {
+                        Carta carta = sacar();
+                        carta.voltear();
+                        baraja.poner(carta);
+                }
         }
 
 }

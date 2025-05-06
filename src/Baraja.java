@@ -37,6 +37,7 @@ public class Baraja {
         private Carta sacar() {
                 Carta carta = ultima();
                 ultima--;
+                carta.voltear();
                 return carta;
         }
 
