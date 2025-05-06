@@ -13,7 +13,7 @@ public class Descarte {
         }
 
         public void moverCarta(Baraja baraja) {
-                if (baraja.verificar(ultimaCarta())) {
+                if (baraja.verificar(ultima())) {
                         baraja.poner(sacar());
                 }
         }
@@ -24,21 +24,21 @@ public class Descarte {
         }
 
         private Carta sacar() {
-                Carta carta = ultimaCarta();
+                Carta carta = ultima();
                 ultima--;
                 return carta;
         }
 
-        public Carta ultimaCarta() {
+        public Carta ultima() {
                 return cartas[ultima];
         }
 
         public void moverCarta(Columna columna) {
-                if (columna.verificar(ultimaCarta())) columna.poner(sacar());
+                if (columna.verificar(ultima())) columna.poner(sacar());
         }
 
         public void moverCarta(Palo palo) {
-                if (palo.verificar(ultimaCarta())) palo.poner(sacar());
+                if (palo.verificar(ultima())) palo.poner(sacar());
         }
 
         public void vaciarEn(Baraja baraja) {
