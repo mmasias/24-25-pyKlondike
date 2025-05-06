@@ -1,7 +1,7 @@
 
 public class Palo {
 
-        private Carta[] cartas = new Carta[20];
+        private Carta[] cartas = new Carta[13];
         private int ultima = 0;
         int palo;
 
