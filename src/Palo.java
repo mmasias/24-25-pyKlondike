@@ -1,28 +1,48 @@
 
 public class Palo {
 
+        private Carta[] cartas = new Carta[20];
+        private int ultima = 0;
+        int palo;
+
         public Palo(int palo) {
-                //TODO Auto-generated constructor stub
+                this.palo = palo;
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                for (Carta carta : cartas)
+                        carta.mostrar();
         }
 
-        public void moverCarta(Columna elegirColumna) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+        public void moverCarta(Columna columna) {
+                if (columna.verificar(ultima()))
+                        columna.poner(sacar());
+        }
+
+        private Carta sacar() {
+                Carta carta = ultima();
+                ultima--;
+                return carta;
+        }
+
+        private Carta ultima() {
+                return cartas[ultima];
         }
 
         public void poner(Carta carta) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'poner'");
+                ultima++;
+                cartas[ultima] = carta;
         }
 
         public boolean verificar(Carta carta) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'verificar'");
+                boolean paloVacio = vacia() && carta.valor() == 1;
+                boolean cartaValida = !vacia() && (ultima().valor() + 1) == carta.valor()
+                                && ultima().palo() == carta.palo();
+                return paloVacio || cartaValida;
+        }
+
+        private boolean vacia() {
+                return ultima == 0;
         }
 
 }

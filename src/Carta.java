@@ -24,4 +24,14 @@ public class Carta {
                 throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
         }
 
+        public int valor() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'valor'");
+        }
+
+        public Object palo() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'palo'");
+        }
+
 }
