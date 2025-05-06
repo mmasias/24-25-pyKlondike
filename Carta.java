@@ -31,9 +31,8 @@ public class Carta {
         bocaArriba = !bocaArriba;
     }
 
-
     public static void main(String[] args) {
-        Carta cartaPrueba = new Carta(1,0);
+        Carta cartaPrueba = new Carta(1, 0);
         System.out.println();
         cartaPrueba.mostrar();
         System.out.println();
@@ -46,23 +45,27 @@ public class Carta {
     }
 
     public boolean bocaArriba() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'bocaArriba'");
+        return bocaArriba;
     }
 
     public boolean esRey() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'esRey'");
+        return numero == 12;
     }
 
     public boolean distintoColor(Carta carta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'distintoColor'");
+        return this.rojo() && carta.negro() || this.negro() && carta.rojo();
+    }
+
+    private boolean rojo() {
+        return palo == 2 || palo == 3;
+    }
+
+    private boolean negro() {
+        return !rojo();
     }
 
     public boolean siguiente(Carta carta) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'siguiente'");
+        return this.numero == carta.numero + 1;
     }
 
 }
