@@ -1,18 +1,25 @@
+import java.util.Scanner;
 
 public class Consola {
+
+        static Scanner scanner = new Scanner(System.in);
 
         public static void mostrar(String string) {
                 System.out.print(string);
         }
 
         public static int preguntarInt() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'preguntarInt'");
+                int respuesta = scanner.nextInt();
+                return respuesta;
         }
 
         public static void mostrarln(String string) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrarln'");
+                mostrar(string);
+                saltarLinea();
+        }
+
+        public static void saltarLinea() {
+                System.out.println();
         }
 
 }
