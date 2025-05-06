@@ -45,4 +45,24 @@ public class Carta {
 
     }
 
+    public boolean bocaArriba() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'bocaArriba'");
+    }
+
+    public boolean esRey() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'esRey'");
+    }
+
+    public boolean distintoColor(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'distintoColor'");
+    }
+
+    public boolean siguiente(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'siguiente'");
+    }
+
 }

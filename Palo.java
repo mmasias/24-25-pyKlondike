@@ -11,4 +11,14 @@ public class Palo {
         throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
     }
 
+    public boolean apilable(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'apilable'");
+    }
+
+    public void poner(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'poner'");
+    }
+
 }

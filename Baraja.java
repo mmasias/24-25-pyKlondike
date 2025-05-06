@@ -48,7 +48,7 @@ public class Baraja {
         }
     }
 
-    private Carta sacar() {
+    public Carta sacar() {
         ultima--;
         return cartas[ultima];
     }
