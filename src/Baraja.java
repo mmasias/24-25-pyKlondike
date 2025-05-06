@@ -8,7 +8,9 @@ public class Baraja {
         public Baraja() {
                 for (int palo = 1; palo <= 4; palo++) {
                         for (int valor = 1; valor <= 13; valor++) {
-                                cartas[palo*valor] = new Carta(palo-1, valor-1);
+                                Carta carta = new Carta(palo, valor);
+                                cartas[ultima] = carta;
+                                ultima++;
                         }
                 }
         }
