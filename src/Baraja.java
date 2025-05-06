@@ -31,7 +31,7 @@ public class Baraja {
         }
 
         public void moverCarta(Descarte descarte) {
-                if (descarte.valida(ultima())) descarte.poner(sacar());
+                for (int i = 0; i < 3; i++) descarte.poner(sacar());
         }
 
         private Carta sacar() {

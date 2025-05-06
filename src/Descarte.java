@@ -39,9 +39,4 @@ public class Descarte {
                 while (ultima > 0) baraja.poner(sacar());
         }
 
-        public boolean valida(Carta ultima2) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'valida'");
-        }
-
 }
