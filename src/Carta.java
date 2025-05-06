@@ -10,8 +10,8 @@ public class Carta {
         private boolean visible;
 
         public Carta(int palo, int valor) {
-                this.palo = palo;
-                this.valor = valor;
+                this.palo = palo - 1;
+                this.valor = valor - 1;
 
                 visible = false;
         }

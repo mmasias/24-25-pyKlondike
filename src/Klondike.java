@@ -29,27 +29,31 @@ public class Klondike {
 
         private void iniciarColumnas() {
                 columnas = new Columna[7];
-                for (int columna = 0; columna < columnas.length; columna++) {
-                        columnas[columna] = new Columna(columna, baraja);
+                for (int columna = 1; columna <= columnas.length; columna++) {
+                        columnas[columna - 1] = new Columna(columna, baraja);
                 }
         }
 
         private void iniciarPalos() {
                 palos = new Palo[4];
-                for (int palo = 0; palo < palos.length; palo++) {
-                        palos[palo] = new Palo(palo);
+                for (int palo = 1; palo <= palos.length; palo++) {
+                        palos[palo - 1] = new Palo(palo);
                 }
         }
 
         public void mostrar() {
                 baraja.mostrar();
+                Consola.saltarLinea();
                 descarte.mostrar();
+                Consola.saltarLinea();
                 for (Palo palo : palos) {
                         palo.mostrar();
                 }
+                Consola.saltarLinea();
                 for (Columna columna : columnas) {
                         columna.mostrar();
                 }
+                Consola.saltarLinea();
         }
 
         public void jugar() {
@@ -76,7 +80,7 @@ public class Klondike {
         }
 
         private Columna elegirColumna(String prefijo) {
-                Consola.mostrar(prefijo + "qué columna?" + " " + "[1-" + columnas.length + "]");
+                Consola.mostrar(prefijo + " qué columna?" + " " + "[1-" + columnas.length + "]");
                 int respuesta = Consola.preguntarInt();
                 if (respuesta < 1 || respuesta > columnas.length) {
                         Consola.mostrarln("Columna erronea.");
@@ -86,7 +90,7 @@ public class Klondike {
         }
 
         private Palo elegirPalo(String prefijo) {
-                Consola.mostrar(prefijo + "qué palo?" + " " + "[1-" + palos.length + "]");
+                Consola.mostrar(prefijo + " qué palo?" + " " + "[1-" + palos.length + "]");
                 int respuesta = Consola.preguntarInt();
                 if (respuesta < 1 || respuesta > palos.length) {
                         Consola.mostrarln("Columna erronea.");

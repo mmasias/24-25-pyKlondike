@@ -24,4 +24,8 @@ public class Menu {
                 return respuesta >= 1 && respuesta <= OPCIONES.length;
         }
 
+        public int tamaño() {
+                return OPCIONES.length;
+        }
+
 }

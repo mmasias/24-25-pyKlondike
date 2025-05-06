@@ -3,7 +3,7 @@ public class Palo {
 
         private static final int CARTAS_MAXIMAS = 13;
         private Carta[] cartas = new Carta[CARTAS_MAXIMAS];
-        private int ultima = 0;
+        private int ultima = -1;
         int palo;
 
         public Palo(int palo) {
@@ -11,8 +11,13 @@ public class Palo {
         }
 
         public void mostrar() {
-                for (Carta carta : cartas)
+                Consola.mostrar("Palo " + palo + ": ");
+                for (Carta carta : cartas) {
+                        if (carta == null)
+                                break;
                         carta.mostrar();
+                }
+                Consola.saltarLinea();
         }
 
         public void moverCarta(Columna columna) {
@@ -43,7 +48,7 @@ public class Palo {
         }
 
         private boolean vacia() {
-                return ultima == 0;
+                return ultima == -1;
         }
 
 }
