@@ -30,7 +30,7 @@ public class Klondike {
         private void iniciarColumnas() {
                 columnas = new Columna[7];
                 for (int columna = 0; columna < columnas.length; columna++) {
-                        columnas[columna] = new Columna(columna);
+                        columnas[columna] = new Columna(columna, baraja);
                 }
         }
 
@@ -68,7 +68,7 @@ public class Klondike {
                         case 4 -> elegirPalo("De").moverCarta(elegirColumna("A"));
                         case 5 -> elegirColumna("De").moverCarta(elegirPalo("A"));
                         case 6 -> elegirColumna("De").moverCarta(elegirColumna("A"));
-                        case 7 -> elegirColumna("De").ultimaCarta().voltear();
+                        case 7 -> elegirColumna("De").ultima().voltear();
                         case 8 -> descarte.vaciarEn(baraja);
                         case 9 -> salir();
                         default -> Consola.mostrar("Respuesta Incorrecta [switch seleccionarOpcion]");

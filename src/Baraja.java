@@ -30,4 +30,9 @@ public class Baraja {
                 throw new UnsupportedOperationException("Unimplemented method 'poner'");
         }
 
+        public void moverCarta(Columna columna) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'moverCarta'");
+        }
+
 }
