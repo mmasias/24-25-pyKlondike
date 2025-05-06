@@ -1,8 +1,7 @@
-
 public class Columna {
 
     public Columna(int i, Baraja baraja) {
-        //TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub
     }
 
     public void moverA(Columna otraColumna) {

@@ -1,4 +1,3 @@
-
 public class Baraja {
 
     private Carta[] cartas;
@@ -20,9 +19,9 @@ public class Baraja {
     }
 
     private void barajar() {
-        for(int i=0;i<1000;i++){
-            int origen = (int)(Math.random()*TOTAL_CARTAS);
-            int destino = (int)(Math.random()*TOTAL_CARTAS);
+        for (int i = 0; i < 1000; i++) {
+            int origen = (int) (Math.random() * TOTAL_CARTAS);
+            int destino = (int) (Math.random() * TOTAL_CARTAS);
             Carta carta = cartas[origen];
             cartas[origen] = cartas[destino];
             cartas[destino] = carta;
@@ -36,11 +35,11 @@ public class Baraja {
 
     public void moverA(Descarte descarte) {
         Console console = new Console();
-        if(vacia()){
-            console.writeln("No hay cartas!!!");    
-        }else{
+        if (vacia()) {
+            console.writeln("No hay cartas!!!");
+        } else {
             int contador = 3;
-            while (contador>0 && !vacia()){
+            while (contador > 0 && !vacia()) {
                 Carta carta = sacar();
                 carta.voltear();
                 descarte.poner(carta);
@@ -58,7 +57,7 @@ public class Baraja {
         Console console = new Console();
         console.write("BARAJA: ");
 
-        if(vacia()) {
+        if (vacia()) {
             console.writeln("La baraja está vacía!!!");
         } else {
             Carta carta = cima();
@@ -66,15 +65,14 @@ public class Baraja {
             console.writeln();
         }
 
-
     }
 
     private boolean vacia() {
-        return ultima==0;
+        return ultima == 0;
     }
 
     private Carta cima() {
-        return cartas[ultima-1];
+        return cartas[ultima - 1];
     }
 
 }

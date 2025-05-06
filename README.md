@@ -1,6 +1,6 @@
 # [24][25] - pyKlondike
 
-```
+```console
 OPCIONES>
   1. Mover de Baraja a Descarte
   2. Mover de Descarte a Palo
@@ -30,3 +30,7 @@ Columna [7]: [? ?][? ?][? ?][? ?][? ?][? ?][9 ♥️]
 
 Elige una opción  [1-9]
 ```
+
+## Proceso de creación
+
+En los commits hasta donde sea posible. En caso de ser necesario al final de la construcción aclararemos temas extra en este archivo.

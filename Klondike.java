@@ -30,7 +30,7 @@ public class Klondike {
             mostrarTapete();
             int opcionUsuario = menu.getOpcion();
 
-            switch(opcionUsuario) {
+            switch (opcionUsuario) {
                 case 1 -> baraja.moverA(descarte);
                 case 2 -> descarte.moverA(escogerPalo("A"));
                 case 3 -> descarte.moverA(escogerColumna("A"));

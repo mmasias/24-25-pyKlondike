@@ -1,4 +1,3 @@
-
 public class Menu {
 
     public void imprimeOpciones() {
@@ -12,12 +11,19 @@ public class Menu {
         console.writeln("6. Mover de Columna a Columna");
         console.writeln("7. Voltear carta de Columna");
         console.writeln("8. Voltear Descarte en Baraja");
-        console.writeln("9. Salir            ");  
+        console.writeln("9. Salir            ");
     }
+
+    private final Intervalo OPCIONES = new Intervalo(1, 9);
 
     public int getOpcion() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getOpcion'");
+        Console console = new Console();
+        int opcion;
+        boolean error;
+        do {
+            opcion = console.readInt("Elige una opción  [1-9]");
+            error = !OPCIONES.incluye(opcion);
+        } while (error);
+        return opcion;
     }
-
 }

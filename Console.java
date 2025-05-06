@@ -1,5 +1,3 @@
-package masiasManuel.v001;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -117,7 +115,7 @@ class Console {
         this.write("FORMAT ERROR! Enter a " + format + " formatted value.");
         this.writeln();
     }
-   
+
     public void clearScreen() {
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -127,5 +125,5 @@ class Console {
         char unChar = this.readChar(title);
         return transformToUpperCase ? Character.toUpperCase(unChar) : unChar;
 
-    }    
+    }
 }

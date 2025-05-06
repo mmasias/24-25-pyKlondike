@@ -1,4 +1,3 @@
-
 public class Descarte {
 
     public void moverA(Columna unaColumna) {
@@ -24,6 +23,11 @@ public class Descarte {
     public void mostrar() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+    }
+
+    public void poner(Carta carta) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'poner'");
     }
 
 }

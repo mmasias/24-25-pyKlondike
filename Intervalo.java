@@ -1,32 +1,31 @@
-import java.util.Scanner;
-
 class Intervalo {
 
 	private double puntoMedio;
-	
 	private double longitud;
-	
+	private Console console;
+
 	private double getInferior() {
-		return puntoMedio - longitud/2;
+		return puntoMedio - longitud / 2;
 	}
 
 	private void setInferior(double inferior) {
 		longitud = this.getSuperior() - inferior;
-		puntoMedio = inferior + longitud/2;
+		puntoMedio = inferior + longitud / 2;
 	}
 
 	private double getSuperior() {
-		return puntoMedio + longitud/2;
+		return puntoMedio + longitud / 2;
 	}
 
 	private void setSuperior(double superior) {
 		longitud = superior - this.getInferior();
-		puntoMedio = superior - longitud/2;
+		puntoMedio = superior - longitud / 2;
 	}
 
 	public Intervalo(double inferior, double superior) {
 		this.setInferior(inferior);
 		this.setSuperior(superior);
+		console = new Console();
 	}
 
 	public Intervalo(double superior) {
@@ -65,24 +64,24 @@ class Intervalo {
 	}
 
 	public boolean incluye(Intervalo intervalo) {
-		assert intervalo!=null;
-		return this.incluye(intervalo.getInferior()) && 
+		assert intervalo != null;
+		return this.incluye(intervalo.getInferior()) &&
 				this.incluye(intervalo.getSuperior());
 	}
 
 	public boolean equals(Intervalo intervalo) {
-		assert intervalo!=null;
-		return getInferior() == intervalo.getInferior() && 
+		assert intervalo != null;
+		return getInferior() == intervalo.getInferior() &&
 				getSuperior() == intervalo.getSuperior();
 	}
 
 	public Intervalo interseccion(Intervalo intervalo) {
 		assert this.intersecta(intervalo);
-		if (this.incluye(intervalo)){
+		if (this.incluye(intervalo)) {
 			return intervalo.clone();
-		} else if (intervalo.incluye(this)){
+		} else if (intervalo.incluye(this)) {
 			return this.clone();
-		} else if (this.incluye(intervalo.getInferior())){
+		} else if (this.incluye(intervalo.getInferior())) {
 			return new Intervalo(intervalo.getInferior(), getSuperior());
 		} else {
 			return new Intervalo(getInferior(), intervalo.getSuperior());
@@ -90,9 +89,9 @@ class Intervalo {
 	}
 
 	public boolean intersecta(Intervalo intervalo) {
-		assert intervalo!=null;
+		assert intervalo != null;
 		return this.incluye(intervalo.getInferior()) ||
-				this.incluye(intervalo.getSuperior()) || 
+				this.incluye(intervalo.getSuperior()) ||
 				intervalo.incluye(this);
 	}
 
@@ -110,14 +109,11 @@ class Intervalo {
 	}
 
 	public void recoger() {
-		System.out.println ("Inferior?");
-		setInferior(new Scanner(System.in).nextDouble());
-		System.out.println ("Superior?");
-		setSuperior(new Scanner(System.in).nextDouble());
+		setInferior(console.readDouble("Inferior?"));
+		setSuperior(console.readDouble("Superior?"));
 	}
 
 	public void mostrar() {
-		System.out.println("[" + getInferior() + "," + getSuperior() + "]");
+		console.writeln("[" + getInferior() + "," + getSuperior() + "]");
 	}
 }
-
