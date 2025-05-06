@@ -36,9 +36,9 @@ public class Palo {
             console.write("No hay cartas en el palo");
         } else {
             Carta carta = cima();
-            carta.mostrar();
-            console.writeln();
+            carta.mostrar();    
         }
+        console.writeln();
     }
 
     private Carta cima() {

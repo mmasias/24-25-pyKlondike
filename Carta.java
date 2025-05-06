@@ -24,7 +24,7 @@ public class Carta {
             numero = NUMEROS[this.numero];
             palo = PALOS[this.palo];
         }
-        console.write(numero + palo);
+        console.write("[" + numero + palo + " ]");
     }
 
     public void voltear() {
