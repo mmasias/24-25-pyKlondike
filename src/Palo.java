@@ -1,7 +1,8 @@
 
 public class Palo {
 
-        private Carta[] cartas = new Carta[13];
+        private static final int CARTAS_MAXIMAS = 13;
+        private Carta[] cartas = new Carta[CARTAS_MAXIMAS];
         private int ultima = 0;
         int palo;
 

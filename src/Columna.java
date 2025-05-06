@@ -1,6 +1,10 @@
 
 public class Columna {
 
+        private static final int CARTAS_MAXIMAS = 19;
+        private Carta[] cartas = new Carta[CARTAS_MAXIMAS];
+        private int ultima = 0;
+
         public Columna(int columna) {
                 //TODO Auto-generated constructor stub
         }
