@@ -68,4 +68,14 @@ public class Carta {
         return this.numero == carta.numero + 1;
     }
 
+    public boolean esAs() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'esAs'");
+    }
+
+    public boolean igualPalo(Carta cima) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'igualPalo'");
+    }
+
 }
