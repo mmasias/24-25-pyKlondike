@@ -3,6 +3,7 @@ public class Carta {
 
         private final String[] PALOS = {"Corazones", "Diamates", "Picas", "Treboles"};
         private final String[] VALORES = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+        private final String NO_VISIBLE = "?";
 
         private int palo;
         private int valor;
@@ -20,18 +21,19 @@ public class Carta {
         }
 
         public void mostrar() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
+                Consola.mostrar(visible ? parse(VALORES[valor], PALOS[palo]) : parse(NO_VISIBLE, NO_VISIBLE));
+        }
+
+        private String parse(String valor, String palo) {
+                return "["+valor+" "+palo+"]";
         }
 
         public int valor() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'valor'");
+                return valor;
         }
 
-        public Object palo() {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'palo'");
+        public int palo() {
+                return palo;
         }
 
 }
