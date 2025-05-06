@@ -21,12 +21,10 @@ public class Descarte {
         public void poner(Carta carta) {
                 ultima++;
                 cartas[ultima] = carta;
-                ultimaCarta().voltear();
         }
 
         private Carta sacar() {
                 Carta carta = ultimaCarta();
-                carta.voltear();
                 ultima--;
                 return carta;
         }
