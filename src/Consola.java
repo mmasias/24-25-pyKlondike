@@ -5,4 +5,14 @@ public class Consola {
                 System.out.print(string);
         }
 
+        public static int preguntarInt() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'preguntarInt'");
+        }
+
+        public static void mostrarln(String string) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'mostrarln'");
+        }
+
 }

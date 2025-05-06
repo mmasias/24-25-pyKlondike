@@ -1,9 +1,12 @@
-
 public class Jugador {
 
         public int preguntar(Opciones opciones) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'preguntar'");
+                int respuesta = Consola.preguntarInt();
+                if (!opciones.esValida(respuesta)) {
+                        Consola.mostrarln("Respuesta no valida");
+                        return preguntar(opciones);
+                }
+                return respuesta;
         }
 
 }
