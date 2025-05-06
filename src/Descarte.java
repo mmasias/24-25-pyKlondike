@@ -1,7 +1,7 @@
 
 public class Descarte {
 
-        private Carta[] cartas;
+        private Carta[] cartas = new Carta[26];
         private int ultima = 0;
         private final int CARTAS_VISIBLES = 3;
 
