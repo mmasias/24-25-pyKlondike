@@ -81,8 +81,8 @@ public class Klondike {
 
         private Columna elegirColumna(String prefijo) {
                 Consola.mostrar(prefijo + " qué columna?" + " " + "[1-" + columnas.length + "]");
-                int respuesta = Consola.preguntarInt();
-                if (respuesta < 1 || respuesta > columnas.length) {
+                int respuesta = Consola.preguntarInt() - 1;
+                if (respuesta < 0 || respuesta >= columnas.length) {
                         Consola.mostrarln("Columna erronea.");
                         return elegirColumna(prefijo);
                 }
@@ -91,9 +91,9 @@ public class Klondike {
 
         private Palo elegirPalo(String prefijo) {
                 Consola.mostrar(prefijo + " qué palo?" + " " + "[1-" + palos.length + "]");
-                int respuesta = Consola.preguntarInt();
-                if (respuesta < 1 || respuesta > palos.length) {
-                        Consola.mostrarln("Columna erronea.");
+                int respuesta = Consola.preguntarInt() - 1;
+                if (respuesta < 0 || respuesta >= palos.length) {
+                        Consola.mostrarln("Palo erroneo.");
                         return elegirPalo(prefijo);
                 }
                 return palos[respuesta];

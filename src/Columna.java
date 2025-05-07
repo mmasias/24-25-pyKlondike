@@ -44,10 +44,7 @@ public class Columna {
         }
 
         public boolean verificar(Carta carta) {
-                if (vacia()) return carta.valor() == 1;
-                boolean cartaValida = (ultima().valor() + 1) == carta.valor()
-                                && ultima().color() != carta.color();
-                return cartaValida;
+                return vacia() && carta.valor() == 13 || (ultima().valor() - 1) == carta.valor() && ultima().color() != carta.color();
         }
 
         public boolean vacia() {

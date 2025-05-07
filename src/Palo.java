@@ -51,4 +51,8 @@ public class Palo {
                 return ultima == -1;
         }
 
+        public boolean estaVacio() {
+                return ultima == -1;
+        }
+
 }
