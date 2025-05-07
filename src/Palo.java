@@ -41,10 +41,22 @@ public class Palo {
         }
 
         public boolean verificar(Carta carta) {
-                boolean paloVacio = vacia() && carta.valor() == 1;
-                boolean cartaValida = !vacia() && (ultima().valor() + 1) == carta.valor()
-                                && ultima().palo() == carta.palo();
-                return paloVacio || cartaValida;
+                boolean paloVacio = vacia();
+                if (paloVacio){
+                        Consola.mostrarln("Palo vacio.");
+                        boolean cartaValida = carta.valor() == 0;
+                        if (cartaValida) Consola.mostrarln("Carta es un As");
+                        Consola.mostrarln("pedo");
+                        return cartaValida;
+                } else {
+                        boolean cartaUnoMasAlto = (ultima().valor() + 1) == carta.valor();
+                        if (cartaUnoMasAlto) Consola.mostrarln("Carta es uno más alto.");
+                        boolean cartaMismoPalo = ultima().palo() == carta.palo();
+                        if (cartaMismoPalo) Consola.mostrarln("Carta es del mismo palo.");
+                        boolean cartaValida = cartaUnoMasAlto && cartaMismoPalo;
+                        Consola.mostrarln("pedo");
+                        return cartaValida;
+                }
         }
 
         private boolean vacia() {
