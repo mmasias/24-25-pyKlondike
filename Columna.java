@@ -18,6 +18,7 @@ public class Columna {
             }
             poner(carta);
         }
+        cartas[ultima-1].voltear();
         console = new Console();
     }
 

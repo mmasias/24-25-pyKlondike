@@ -23,9 +23,9 @@ public class Descarte {
 
             for (int i = primeraVisible; i < ultima; i++) {
                 cartas[i].mostrar();
-            }
-            console.writeln();
+            }    
         }
+        console.writeln();
     }
 
     private boolean vacia() {
