@@ -1,7 +1,7 @@
 
 public class Carta {
 
-        private final String[] PALOS = {"Corazones", "Diamates", "Picas", "Treboles"};
+        private final String[] PALOS = {"♥", "♦", "♠", "♣"};
         private final String[] VALORES = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
         private final String NO_VISIBLE = "?";
 
@@ -21,11 +21,13 @@ public class Carta {
         }
 
         public void mostrar() {
-                Consola.mostrar(visible ? parse(VALORES[valor], PALOS[palo]) : parse(NO_VISIBLE, NO_VISIBLE));
+                Consola.mostrar(parse());
         }
 
-        private String parse(String valor, String palo) {
-                return "["+valor+" "+palo+"]";
+        private String parse() {
+                String valor = visible ? VALORES[this.valor] : NO_VISIBLE;
+                String palo = visible ? PALOS[this.palo] : NO_VISIBLE;
+                return "[" + valor + " " + palo + "]";
         }
 
         public int valor() {
