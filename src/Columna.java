@@ -21,4 +21,9 @@ public class Columna {
                 throw new UnsupportedOperationException("Unimplemented method 'imprimir'");
         }
 
+        public Carta sacar() {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'sacar'");
+        }
+
 }
