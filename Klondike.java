@@ -30,7 +30,7 @@ public class Klondike {
             mostrarTapete();
             int opcionUsuario = menu.getOpcion();
 
-            switch(opcionUsuario) {
+            switch (opcionUsuario) {
                 case 1 -> baraja.moverA(descarte);
                 case 2 -> descarte.moverA(escogerPalo("A"));
                 case 3 -> descarte.moverA(escogerColumna("A"));
@@ -60,15 +60,12 @@ public class Klondike {
     }
 
     private void mostrarTapete() {
-        Console console = new Console();
         baraja.mostrar();
         descarte.mostrar();
         for (int palo = 0; palo < NUMERO_PALOS; palo++) {
-            console.write("Palo " + palo);
             palos[palo].mostrar();
         }
-        for (int columna = 0; columna < NUMERO_PALOS; columna++) {
-            console.write("Columna " + columna);
+        for (int columna = 0; columna < NUMERO_COLUMNAS; columna++) {
             columnas[columna].mostrar();
         }
     }
