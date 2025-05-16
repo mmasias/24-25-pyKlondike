@@ -1,0 +1,19 @@
+class Baraja
+class Descarte
+class Columna
+class Palo 
+
+class Mazo {
+    # Carta[] cartas;
+    # int ultima;
+    # Console console;      
+    ---
+    + void poner(Carta carta)  
+    + boolean vacia()   
+    + Carta sacar()
+}
+
+Baraja -u-|> Mazo
+Descarte -u-|> Mazo
+Columna -u-|> Mazo
+Palo  -u-|> Mazo

@@ -1,11 +1,7 @@
-public class Columna {
+public class Columna extends Mazo {
 
-    private Carta[] cartas;
-    private int ultima;
     private int posicion;
     private final int MAXIMO_CARTAS = 19;
-
-    private Console console;
 
     public Columna(int numeroColumna, Baraja baraja) {
         posicion = numeroColumna;
@@ -13,19 +9,12 @@ public class Columna {
         cartas = new Carta[MAXIMO_CARTAS];
         for (int i = 0; i < posicion; i++) {
             Carta carta = baraja.sacar();
-            if (i == posicion) {
-                carta.voltear();
-            }
             poner(carta);
         }
         cartas[ultima-1].voltear();
         console = new Console();
     }
 
-    public void poner(Carta carta) {
-        cartas[ultima] = carta;
-        ultima++;
-    }
 
     public void moverA(Columna otraColumna) {
         if(vacia()){
@@ -43,20 +32,9 @@ public class Columna {
 
     public boolean apilable(Carta carta) {
 
-        if (this.vacia() && carta.esRey()) {
-            return true;
-        }
-
-        if (!vacia() && cima().bocaArriba() && cima().distintoColor(carta) && cima().siguiente(carta)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    private Carta sacar() {
-        ultima--;
-        return cartas[ultima];
+        return vacia() && carta.esRey()
+                || 
+            !vacia() && cima().bocaArriba() && cima().distintoColor(carta) && cima().siguiente(carta);
     }
 
     public void moverA(Palo unPalo) {
@@ -97,9 +75,5 @@ public class Columna {
             }
         }
         console.writeln();
-    }
-
-    private boolean vacia() {
-        return ultima == 0;
     }
 }

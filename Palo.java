@@ -1,9 +1,5 @@
 
-public class Palo {
-
-    private Carta[] cartas;
-    private int ultima;
-    Console console;
+public class Palo extends Mazo {
 
     public Palo() {
         ultima = 0;
@@ -25,11 +21,6 @@ public class Palo {
         }
     }
 
-    private Carta sacar() {
-        ultima--;
-        return cartas[ultima];
-    }
-
     public void mostrar() {
         console.write("Palo: ");
         if(vacia()){
@@ -45,18 +36,12 @@ public class Palo {
         return cartas[ultima -1];
     }
 
-    private boolean vacia() {
-        return ultima ==0;
-    }
 
     public boolean apilable(Carta carta) {
+        return vacia() && carta.esAs() 
+        
+        || 
 
-        return vacia() && carta.esAs() || 
-        !vacia() && carta.igualPalo(this.cima()) && carta.siguiente(cima());
-    }
-
-    public void poner(Carta carta) {
-        cartas[ultima] = carta;
-        ultima++;
+        !vacia() && carta.igualPalo(cima()) && carta.siguiente(cima());
     }
 }

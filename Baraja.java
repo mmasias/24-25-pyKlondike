@@ -1,7 +1,4 @@
-public class Baraja {
-
-    private Carta[] cartas;
-    private int ultima;
+public class Baraja extends Mazo {
 
     private final int PALOS = 4;
     private final int NUMEROS = 13;
@@ -16,6 +13,7 @@ public class Baraja {
             }
         }
         barajar();
+        console = new Console();
     }
 
     private void barajar() {
@@ -28,13 +26,8 @@ public class Baraja {
         }
     }
 
-    public void poner(Carta carta) {
-        cartas[ultima] = carta;
-        ultima++;
-    }
 
     public void moverA(Descarte descarte) {
-        Console console = new Console();
         if (vacia()) {
             console.writeln("No hay cartas!!!");
         } else {
@@ -48,15 +41,10 @@ public class Baraja {
         }
     }
 
-    public Carta sacar() {
-        ultima--;
-        return cartas[ultima];
-    }
+
 
     public void mostrar() {
-        Console console = new Console();
         console.write("BARAJA: ");
-
         if (vacia()) {
             console.writeln("La baraja está vacía!!!");
         } else {
@@ -67,12 +55,18 @@ public class Baraja {
 
     }
 
-    public boolean vacia() {
-        return ultima == 0;
-    }
-
     private Carta cima() {
         return cartas[ultima - 1];
+    }
+
+    public static void main(String[] args) {
+        Baraja unaBaraja = new Baraja();
+        for(int i=0;i<52;i++){
+            Carta unaCarta = unaBaraja.sacar();
+            unaCarta.voltear();
+            unaCarta.mostrar();
+        }
+
     }
 
 }

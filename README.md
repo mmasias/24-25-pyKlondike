@@ -34,3 +34,14 @@ Elige una opción  [1-9]
 ## Proceso de creación
 
 En los commits hasta donde sea posible. En caso de ser necesario al final de la construcción aclararemos temas extra en este archivo.
+
+### Incluida jerarquía de herencia
+
+<div align=center>
+
+|![](/images/jerarquia.svg)
+|:-:
+|Jerarquía de clases ([*source*](jerarquia.puml))
+
+</div>
+

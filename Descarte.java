@@ -1,13 +1,10 @@
-public class Descarte {
+public class Descarte extends Mazo {  
 
-    private Carta[] cartas;
-    private int ultima;
-    private Console console;
+    private final int MAXIMO_CARTAS = 26;
 
     public Descarte() {
         ultima = 0;
-        final int DICE_JAVIER = 26;
-        cartas = new Carta[DICE_JAVIER];
+        cartas = new Carta[MAXIMO_CARTAS];
         console = new Console();
     }
 
@@ -28,9 +25,6 @@ public class Descarte {
         console.writeln();
     }
 
-    private boolean vacia() {
-        return ultima == 0;
-    }
 
     public void moverA(Columna columna) {
         if (vacia()) {
@@ -63,7 +57,7 @@ public class Descarte {
     public void voltear(Baraja baraja) {
 
         if (vacia() || !baraja.vacia()){
-            console.writeln("No se puede");
+            console.writeln("No se puede voltear!!!");
         } else {
             while(!vacia()){
                 Carta carta = sacar();
@@ -71,15 +65,5 @@ public class Descarte {
                 baraja.poner(carta);
             }
         }
-    }
-
-    private Carta sacar() {
-        ultima--;
-        return cartas[ultima];
-    }
-
-    public void poner(Carta carta) {
-        cartas[ultima]=carta;
-        ultima++;
     }
 }
