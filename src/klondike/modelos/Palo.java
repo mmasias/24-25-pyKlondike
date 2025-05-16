@@ -1,3 +1,6 @@
+package src.klondike.modelos;
+
+import src.klondike.utils.Console;
 
 public class Palo extends Mazo {
 
@@ -36,12 +39,9 @@ public class Palo extends Mazo {
         return cartas[ultima -1];
     }
 
-
     public boolean apilable(Carta carta) {
         return vacia() && carta.esAs() 
-        
         || 
-
         !vacia() && carta.igualPalo(cima()) && carta.siguiente(cima());
     }
 }

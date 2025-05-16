@@ -1,0 +1,56 @@
+@startuml
+package klondike {
+
+    class Klondike
+    class ClienteKlondike
+    class Menu
+
+    package modelo {
+        class Mazo {
+            # Carta[] cartas;
+            # int ultima;
+            # Console console;
+            ---
+            + void poner(Carta carta)
+            + boolean vacia()
+            + Carta sacar()
+        }
+
+        class Baraja
+        class Descarte
+        class Columna
+        class Palo
+        class Carta
+
+        Baraja -u-|> Mazo
+        Descarte -u-|> Mazo
+        Columna -u-|> Mazo
+        Palo  -u-|> Mazo
+        
+        Mazo *--> Carta
+        Baraja --> Descarte : moverA
+        Descarte --> Columna : moverA
+        Descarte --> Palo : moverA
+        Columna --> Palo : moverA
+        Palo --> Columna : moverA
+    }
+
+    package utils {
+        class Console
+        class Intervalo
+    }
+
+    Klondike *--> Baraja
+    Klondike *--> Descarte
+    Klondike *--> Columna
+    Klondike *--> Palo
+    
+    ClienteKlondike --> Klondike
+    Klondike --> Menu
+    
+    Mazo --> Console
+    Menu --> Console
+    Menu --> Intervalo
+    Klondike --> Console
+}
+@enduml

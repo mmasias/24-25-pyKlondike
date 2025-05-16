@@ -35,13 +35,13 @@ Elige una opción  [1-9]
 
 En los commits hasta donde sea posible. En caso de ser necesario al final de la construcción aclararemos temas extra en este archivo.
 
-### Incluida jerarquía de herencia
+### Incluida jerarquía de herencia & paquetes!!!
 
 <div align=center>
 
-|![](/images/jerarquia.svg)
+|![](/images/modelosUML/jerarquia.svg)
 |:-:
-|Jerarquía de clases ([*source*](jerarquia.puml))
+|Jerarquía de clases ([*source*](modelosUML/jerarquia.puml))
 
 </div>
 

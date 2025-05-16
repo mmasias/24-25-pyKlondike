@@ -1,3 +1,7 @@
+package src.klondike.modelos;
+
+import src.klondike.utils.Console;
+
 public class Mazo {
 
     protected Carta[] cartas;

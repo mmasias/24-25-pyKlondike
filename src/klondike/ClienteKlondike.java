@@ -1,3 +1,5 @@
+package src.klondike;
+
 public class ClienteKlondike {
     public static void main(String[] args) {
 

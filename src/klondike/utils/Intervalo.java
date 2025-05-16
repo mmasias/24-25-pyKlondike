@@ -1,3 +1,5 @@
+package src.klondike.utils;
+
 class Intervalo {
 
 	private double puntoMedio;

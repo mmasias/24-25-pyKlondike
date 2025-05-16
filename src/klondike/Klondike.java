@@ -1,3 +1,12 @@
+package src.klondike;
+
+import src.klondike.modelos.Baraja;
+import src.klondike.modelos.Columna;
+import src.klondike.modelos.Descarte;
+import src.klondike.modelos.Palo;
+import src.klondike.utils.Menu;
+import src.klondike.utils.Console;
+
 
 public class Klondike {
 
@@ -5,6 +14,7 @@ public class Klondike {
     private Palo[] palos;
     private Descarte descarte;
     private Columna[] columnas;
+    Console console;
 
     private final int NUMERO_PALOS = 4;
     private final int NUMERO_COLUMNAS = 7;
@@ -20,6 +30,7 @@ public class Klondike {
         for (int columna = 0; columna < NUMERO_COLUMNAS; columna++) {
             columnas[columna] = new Columna(columna + 1, baraja);
         }
+        console = new Console();
     }
 
     public void jugar() {
@@ -55,7 +66,6 @@ public class Klondike {
     }
 
     private int escogerOpcion(String prefijo, int max, String mensaje) {
-        Console console = new Console();
         return console.readInt(prefijo + " " + mensaje + "[1-" + max + "]");
     }
 

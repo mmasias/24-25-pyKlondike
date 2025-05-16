@@ -1,7 +1,9 @@
+package src.klondike.utils;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-class Console {
+public class Console {
 
     public enum ForegroundColor {
         BLACK("\u001B[30m"),

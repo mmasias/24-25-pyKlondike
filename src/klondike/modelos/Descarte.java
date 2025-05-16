@@ -1,3 +1,7 @@
+package src.klondike.modelos;
+
+import src.klondike.utils.Console;
+
 public class Descarte extends Mazo {  
 
     private final int MAXIMO_CARTAS = 26;
@@ -24,7 +28,6 @@ public class Descarte extends Mazo {
         }
         console.writeln();
     }
-
 
     public void moverA(Columna columna) {
         if (vacia()) {

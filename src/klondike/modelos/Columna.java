@@ -1,3 +1,7 @@
+package src.klondike.modelos;
+
+import src.klondike.utils.Console;
+
 public class Columna extends Mazo {
 
     private int posicion;
@@ -14,7 +18,6 @@ public class Columna extends Mazo {
         cartas[ultima-1].voltear();
         console = new Console();
     }
-
 
     public void moverA(Columna otraColumna) {
         if(vacia()){

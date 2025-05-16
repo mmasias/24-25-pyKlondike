@@ -1,3 +1,7 @@
+package src.klondike.modelos;
+
+import src.klondike.utils.Console;
+
 public class Baraja extends Mazo {
 
     private final int PALOS = 4;

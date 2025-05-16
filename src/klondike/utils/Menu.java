@@ -1,3 +1,5 @@
+package src.klondike.utils;
+
 public class Menu {
 
     public void imprimeOpciones() {
