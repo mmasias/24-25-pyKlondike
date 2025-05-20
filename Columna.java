@@ -1,18 +1,17 @@
 public class Columna extends Mazo {
 
     private int posicion;
-    private final int MAXIMO_CARTAS = 19;
+    private static final int MAXIMO_CARTAS = 19;
 
     public Columna(int numeroColumna, Baraja baraja) {
+        super(MAXIMO_CARTAS);
+
         posicion = numeroColumna;
-        ultima = 0;
-        cartas = new Carta[MAXIMO_CARTAS];
         for (int i = 0; i < posicion; i++) {
             Carta carta = baraja.sacar();
             poner(carta);
         }
         cartas[ultima-1].voltear();
-        console = new Console();
     }
 
 

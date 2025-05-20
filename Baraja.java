@@ -1,19 +1,18 @@
 public class Baraja extends Mazo {
 
-    private final int PALOS = 4;
-    private final int NUMEROS = 13;
-    private final int TOTAL_CARTAS = PALOS * NUMEROS;
+    private static final int PALOS = 4;
+    private static final int NUMEROS = 13;
+    private static final int TOTAL_CARTAS = PALOS * NUMEROS;
 
     public Baraja() {
-        ultima = 0;
-        cartas = new Carta[TOTAL_CARTAS];
+        super(TOTAL_CARTAS);
+
         for (int palo = 0; palo < PALOS; palo++) {
             for (int numero = 0; numero < NUMEROS; numero++) {
                 poner(new Carta(palo, numero));
             }
         }
         barajar();
-        console = new Console();
     }
 
     private void barajar() {

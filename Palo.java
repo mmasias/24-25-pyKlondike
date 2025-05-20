@@ -1,10 +1,9 @@
-
 public class Palo extends Mazo {
 
+    private static final int MAXIMO_CARTAS = 13;
+
     public Palo() {
-        ultima = 0;
-        cartas = new Carta[13];
-        console = new Console();
+        super(MAXIMO_CARTAS);
     }
 
     public void moverA(Columna unaColumna) {

@@ -1,11 +1,9 @@
 public class Descarte extends Mazo {  
 
-    private final int MAXIMO_CARTAS = 26;
+    private static final int MAXIMO_CARTAS = 26;
 
     public Descarte() {
-        ultima = 0;
-        cartas = new Carta[MAXIMO_CARTAS];
-        console = new Console();
+        super(MAXIMO_CARTAS);
     }
 
     public void mostrar() {
