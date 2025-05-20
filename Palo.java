@@ -11,7 +11,7 @@ public class Palo extends Mazo {
             console.writeln("No se puede");
         } else {
             Carta carta = sacar();
-            if(unaColumna.apilable(carta)){
+            if (unaColumna.apilable(carta)) {
                 unaColumna.poner(carta);
             } else {
                 poner(carta);
@@ -22,25 +22,22 @@ public class Palo extends Mazo {
 
     public void mostrar() {
         console.write("Palo: ");
-        if(vacia()){
+        if (vacia()) {
             console.write("No hay cartas en el palo");
         } else {
             Carta carta = cima();
-            carta.mostrar();    
+            carta.mostrar();
         }
         console.writeln();
     }
 
     private Carta cima() {
-        return cartas[ultima -1];
+        return cartas[ultima - 1];
     }
 
-
     public boolean apilable(Carta carta) {
-        return vacia() && carta.esAs() 
-        
-        || 
-
-        !vacia() && carta.igualPalo(cima()) && carta.siguiente(cima());
+        return vacia() && carta.esAs()
+                ||
+                !vacia() && carta.igualPalo(cima()) && carta.siguiente(cima());
     }
 }

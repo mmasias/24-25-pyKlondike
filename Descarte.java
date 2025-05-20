@@ -15,14 +15,12 @@ public class Descarte extends Mazo {
             if (primeraVisible < 0) {
                 primeraVisible = 0;
             }
-
             for (int i = primeraVisible; i < ultima; i++) {
                 cartas[i].mostrar();
             }    
         }
         console.writeln();
     }
-
 
     public void moverA(Columna columna) {
         if (vacia()) {
@@ -53,7 +51,6 @@ public class Descarte extends Mazo {
     }
 
     public void voltear(Baraja baraja) {
-
         if (vacia() || !baraja.vacia()){
             console.writeln("No se puede voltear!!!");
         } else {

@@ -14,7 +14,6 @@ public class Columna extends Mazo {
         cartas[ultima-1].voltear();
     }
 
-
     public void moverA(Columna otraColumna) {
         if(vacia()){
             console.writeln("No se puede!");
@@ -30,7 +29,6 @@ public class Columna extends Mazo {
     }
 
     public boolean apilable(Carta carta) {
-
         return vacia() && carta.esRey()
                 || 
             !vacia() && cima().bocaArriba() && cima().distintoColor(carta) && cima().siguiente(carta);

@@ -25,7 +25,6 @@ public class Baraja extends Mazo {
         }
     }
 
-
     public void moverA(Descarte descarte) {
         if (vacia()) {
             console.writeln("No hay cartas!!!");
@@ -40,8 +39,6 @@ public class Baraja extends Mazo {
         }
     }
 
-
-
     public void mostrar() {
         console.write("BARAJA: ");
         if (vacia()) {
@@ -51,21 +48,9 @@ public class Baraja extends Mazo {
             carta.mostrar();
             console.writeln();
         }
-
     }
 
     private Carta cima() {
         return cartas[ultima - 1];
     }
-
-    public static void main(String[] args) {
-        Baraja unaBaraja = new Baraja();
-        for(int i=0;i<52;i++){
-            Carta unaCarta = unaBaraja.sacar();
-            unaCarta.voltear();
-            unaCarta.mostrar();
-        }
-
-    }
-
 }
