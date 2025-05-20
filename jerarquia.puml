@@ -9,6 +9,7 @@ abstract Mazo {
     # Console console;      
     # String titulo
     ---
+    + Mazo(int numeroDeCartas, String titulo)
     + void poner(Carta carta)  
     + boolean vacia()   
     + Carta sacar()
