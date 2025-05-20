@@ -3,23 +3,18 @@ public class Descarte extends Mazo {
     private static final int MAXIMO_CARTAS = 26;
 
     public Descarte() {
-        super(MAXIMO_CARTAS);
+        super(MAXIMO_CARTAS, "Descarte");
     }
 
-    public void mostrar() {
-        console.write("Descarte: ");
-        if (vacia()) {
-            console.write("No hay cartas en el descarte!");
-        } else {
-            int primeraVisible = ultima - 3;
-            if (primeraVisible < 0) {
-                primeraVisible = 0;
-            }
-            for (int i = primeraVisible; i < ultima; i++) {
-                cartas[i].mostrar();
-            }    
+    @Override
+    protected void mostrarContenido(){
+        int primeraVisible = ultima - 3;
+        if (primeraVisible < 0) {
+            primeraVisible = 0;
         }
-        console.writeln();
+        for (int i = primeraVisible; i < ultima; i++) {
+            cartas[i].mostrar();
+        }    
     }
 
     public void moverA(Columna columna) {

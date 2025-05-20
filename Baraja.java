@@ -5,7 +5,7 @@ public class Baraja extends Mazo {
     private static final int TOTAL_CARTAS = PALOS * NUMEROS;
 
     public Baraja() {
-        super(TOTAL_CARTAS);
+        super(TOTAL_CARTAS, "Baraja");
 
         for (int palo = 0; palo < PALOS; palo++) {
             for (int numero = 0; numero < NUMEROS; numero++) {
@@ -15,6 +15,7 @@ public class Baraja extends Mazo {
         barajar();
     }
 
+    
     private void barajar() {
         for (int i = 0; i < 1000; i++) {
             int origen = (int) (Math.random() * TOTAL_CARTAS);
@@ -39,15 +40,10 @@ public class Baraja extends Mazo {
         }
     }
 
-    public void mostrar() {
-        console.write("BARAJA: ");
-        if (vacia()) {
-            console.writeln("La baraja está vacía!!!");
-        } else {
-            Carta carta = cima();
-            carta.mostrar();
-            console.writeln();
-        }
+    @Override
+    protected void mostrarContenido() {
+        Carta carta = cima();
+        carta.mostrar();        
     }
 
     private Carta cima() {

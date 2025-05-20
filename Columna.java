@@ -4,7 +4,7 @@ public class Columna extends Mazo {
     private static final int MAXIMO_CARTAS = 19;
 
     public Columna(int numeroColumna, Baraja baraja) {
-        super(MAXIMO_CARTAS);
+        super(MAXIMO_CARTAS, "Columna " + numeroColumna);
 
         posicion = numeroColumna;
         for (int i = 0; i < posicion; i++) {
@@ -62,15 +62,10 @@ public class Columna extends Mazo {
         return cartas[ultima - 1];
     }
 
-    public void mostrar() {
-        console.write("Columna [" + posicion + "]:");
-        if (vacia()) {
-            console.write("No hay nada");
-        } else {
-            for (int i = 0; i < ultima; i++) {
-                cartas[i].mostrar();
-            }
+    @Override
+    protected void mostrarContenido(){
+        for (int i = 0; i < ultima; i++) {
+            cartas[i].mostrar();
         }
-        console.writeln();
     }
 }

@@ -3,7 +3,7 @@ public class Palo extends Mazo {
     private static final int MAXIMO_CARTAS = 13;
 
     public Palo() {
-        super(MAXIMO_CARTAS);
+        super(MAXIMO_CARTAS, "Palo");
     }
 
     public void moverA(Columna unaColumna) {
@@ -20,15 +20,10 @@ public class Palo extends Mazo {
         }
     }
 
-    public void mostrar() {
-        console.write("Palo: ");
-        if (vacia()) {
-            console.write("No hay cartas en el palo");
-        } else {
-            Carta carta = cima();
-            carta.mostrar();
-        }
-        console.writeln();
+    @Override
+    protected void mostrarContenido(){
+        Carta carta = cima();
+        carta.mostrar();
     }
 
     private Carta cima() {
