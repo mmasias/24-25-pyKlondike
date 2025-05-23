@@ -1,7 +1,7 @@
 # [24][25] - XXI
 
 ```console
-[4♣️ ][J♦️ ][6♦️ ] - Puntaje:20
+[4 ♣️][J ♦️][6 ♦️] - Puntaje:20
 1. Pedir
 2. Empezar de nuevo
 3. Salir
