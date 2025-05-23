@@ -1,10 +1,10 @@
-class XXI {
+class Blackjack {
 
     private Baraja baraja;
     private Mano mano;
     private Console console;
 
-    public XXI() {
+    public Blackjack() {
         baraja = new Baraja();
         mano = new Mano(baraja);
         console = new Console();
