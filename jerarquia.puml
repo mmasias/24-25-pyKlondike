@@ -1,0 +1,23 @@
+class Baraja
+class Descarte
+class Columna
+class Palo
+
+abstract Mazo {
+    # Carta[] cartas;
+    # int ultima;
+    # Console console;      
+    # String titulo
+    ---
+    + Mazo(int numeroDeCartas, String titulo)
+    + void poner(Carta carta)  
+    + boolean vacia()   
+    + Carta sacar()
+    + void mostrar()
+    # {abstract} mostrarContenido()
+}
+
+Baraja -u-|> Mazo
+Descarte -u-|> Mazo
+Columna -u-|> Mazo
+Palo  -u-|> Mazo
