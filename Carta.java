@@ -31,19 +31,6 @@ public class Carta {
         bocaArriba = !bocaArriba;
     }
 
-    public static void main(String[] args) {
-        Carta cartaPrueba = new Carta(1, 0);
-        System.out.println();
-        cartaPrueba.mostrar();
-        System.out.println();
-        cartaPrueba.voltear();
-        cartaPrueba.voltear();
-        cartaPrueba.voltear();
-        cartaPrueba.mostrar();
-        System.out.println();
-
-    }
-
     public boolean bocaArriba() {
         return bocaArriba;
     }
@@ -74,5 +61,9 @@ public class Carta {
 
     public boolean igualPalo(Carta carta) {
         return palo == carta.palo;
+    }
+
+    public int getNumero() {
+        return numero;
     }
 }
