@@ -31,6 +31,34 @@ Columna [7]: [? ?][? ?][? ?][? ?][? ?][? ?][9 ♥️]
 Elige una opción  [1-9]
 ```
 
+## Artefactos del proyecto
+
+### Código fuente
+- [Código de la aplicación](/src) - Contiene todas las clases Java del juego Klondike
+
+### Documentación
+- [Documentación del proyecto](/docs) - Incluye documentación técnica y recursos
+- [Documentación de la clase Console](/docs/Console.md) - Documentación detallada de la clase de utilidad Console
+
+### Modelos UML
+- [Modelos UML](/modelosUML) - Diagramas y modelos del sistema
+- [Jerarquía de clases](/modelosUML/jerarquia.puml) - Diagrama de herencia de clases
+
+## Cómo ejecutar el proyecto
+
+Para compilar y ejecutar el juego:
+
+```bash
+# Navegar al directorio src
+cd src
+
+# Compilar todos los archivos Java
+javac *.java
+
+# Ejecutar el juego
+java ClienteKlondike
+```
+
 ## Proceso de creación
 
 En los commits hasta donde sea posible. En caso de ser necesario al final de la construcción aclararemos temas extra en este archivo.
@@ -39,9 +67,9 @@ En los commits hasta donde sea posible. En caso de ser necesario al final de la 
 
 <div align=center>
 
-|![](/images/jerarquia.svg)
+|![](/docs/images/jerarquia.svg)
 |:-:
-|Jerarquía de clases ([*source*](jerarquia.puml))
+|Jerarquía de clases ([*source*](/modelosUML/jerarquia.puml))
 
 </div>
 
