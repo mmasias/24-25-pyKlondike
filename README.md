@@ -40,6 +40,12 @@ Elige una opción  [1-9]
 - [Documentación del proyecto](/docs) - Incluye documentación técnica y recursos
 - [Documentación de la clase Console](/docs/Console.md) - Documentación detallada de la clase de utilidad Console
 
+### Evaluación de Calidad del Código
+- [**Valoración del Código**](/docs/VALORACION_CODIGO.md) - Resumen ejecutivo de la evaluación de calidad
+- [Evaluación Detallada](/docs/EVALUACION_CALIDAD_CODIGO.md) - Análisis exhaustivo de la calidad del código
+- [Métricas de Código](/docs/METRICAS_CODIGO.md) - Análisis cuantitativo del código
+- [Plan de Mejora](/docs/PLAN_MEJORA.md) - Recomendaciones priorizadas para mejorar el código
+
 ### Modelos UML
 - [Modelos UML](/modelosUML) - Diagramas y modelos del sistema
 - [Jerarquía de clases](/modelosUML/jerarquia.puml) - Diagrama de herencia de clases
